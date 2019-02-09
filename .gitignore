@@ -9,3 +9,5 @@ yarn-error.log
 # Build directory
 /public/
 /coverage/
+
+.DS_Store

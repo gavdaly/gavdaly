@@ -12,11 +12,10 @@ type Presentation = {
 };
 
 const presentation: Presentation = {
-  mail: "",
+  mail: "gavin@gavdaly.com",
   title: "Hi, I’m Gavin 👋",
   // profile: "/profile.webp",
-  description:
-    "",
+  description: "",
   socials: [
     {
       label: "X",

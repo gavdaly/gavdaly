@@ -1,19 +1,14 @@
 ---
-import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
 import Layout from "@/layouts/Layout.astro";
 import SocialLinks from "@/components/SocialLinks.astro";
-import PostCard from "@/components/PostCard.astro";
 import Link from "@/components/shared/Link.astro";
 import ProjectListing from "@/components/ProjectListing.astro";
+import PostsListing from "@/components/PostsListing.astro";
 import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
 
 import presentation from "@/data/presentation";
-
-const posts = (await getCollection("posts")).sort(function (first, second) {
-  return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
-});
 ---
 
 <Layout>

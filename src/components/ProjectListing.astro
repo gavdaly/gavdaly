@@ -1,6 +1,10 @@
 ---
-import projects from "@/data/projects";
+import { getCollection } from "astro:content";
 import ProjectCard from "@/components/ProjectCard.astro";
+
+// import type Project from "@/data/projects.ts";
+
+const projects = await getCollection("projects");
 ---
 
 <article class="flex flex-col gap-8">
@@ -9,12 +13,15 @@ import ProjectCard from "@/components/ProjectCard.astro";
       Selected projects ({projects.length})
     </h3>
   </header>
-  {projects.length === 0 && <p>Oops, I must work^^^^^</p>}
-
-  <section class="flex flex-col gap-4">
-    {
-      projects.length !== 0 &&
-        projects.map((project) => <ProjectCard {...project} />)
-    }
-  </section>
+  {
+    (
+      <pre>
+        <section class="flex flex-col gap-4">
+          {projects.map(({ data: project, slug }) => (
+            <ProjectCard slug={slug} {...project} />
+          ))}
+        </section>
+      </pre>
+    )
+  }
 </article>

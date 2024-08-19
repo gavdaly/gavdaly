@@ -11,7 +11,7 @@ import presentation from "@/data/presentation";
           <Link href={social.link} label={social.label} />
         </li>
 
-        {presentation.socials.length - 1 !== index && <li>/</li>}
+        {presentation.socials.length - 1 !== index && <span>|</span>}
       </>
     ))
   }

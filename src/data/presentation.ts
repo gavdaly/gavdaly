@@ -12,20 +12,15 @@ type Presentation = {
 };
 
 const presentation: Presentation = {
-  mail: "",
+  mail: "gavin@gavdaly.com",
   title: "Hi, I’m Gavin 👋",
-  // profile: "/profile.webp",
-  description:
-    "",
+  profile: "/profile.jpg",
+  description: "",
   socials: [
     {
       label: "X",
       link: "https://twitter.com/gavdaly",
     },
-    // {
-    //   label: "Bento",
-    //   link: "https://bento.me/m-wolff",
-    // },
     {
       label: "Github",
       link: "https://github.com/gavdaly",

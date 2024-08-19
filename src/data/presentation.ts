@@ -21,10 +21,6 @@ const presentation: Presentation = {
       label: "X",
       link: "https://twitter.com/gavdaly",
     },
-    // {
-    //   label: "Bento",
-    //   link: "https://bento.me/m-wolff",
-    // },
     {
       label: "Github",
       link: "https://github.com/gavdaly",

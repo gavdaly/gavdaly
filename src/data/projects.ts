@@ -1,12 +1,12 @@
 type Status = "Comming Soon" | "Completed" | "Inprogress" | "On Hold";
 
 export interface Project {
-  slug?: string;
+  slug: string;
   title: string;
   techs: string[];
+  status: Status;
   link?: string;
-  description?: string;
-  status?: Status;
+  summary?: string;
 }
 
 export const projects: Project[] = [
@@ -22,7 +22,7 @@ export const projects: Project[] = [
       "OpenProps",
     ],
     link: "https://github.com/gavdaly/clockr",
-    description: "A single tenent timetracking app.",
+    summary: "A single tenent timetracking app.",
     status: "On Hold",
   },
   {
@@ -30,6 +30,7 @@ export const projects: Project[] = [
     title: "GavDev",
     techs: ["Astro", "Blog", "Cloudflare Pages"],
     link: "https://www.gavdev.xyz/",
+    status: "Inprogress",
   },
   {
     slug: "lordly",
@@ -42,7 +43,8 @@ export const projects: Project[] = [
     slug: "small-business-internal-network",
     title: "Small Business Internal Network",
     techs: ["pfSense", "Tailscale"],
-    description: "A small business internal network.",
+    summary: "A small business internal network.",
+    status: "Completed",
   },
 ];
 

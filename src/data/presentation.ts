@@ -14,7 +14,7 @@ type Presentation = {
 const presentation: Presentation = {
   mail: "gavin@gavdaly.com",
   title: "Hi, I’m Gavin 👋",
-  // profile: "/profile.webp",
+  profile: "/profile.jpg",
   description: "",
   socials: [
     {

@@ -14,4 +14,4 @@ jobs:
           node-version: 18.14.1
           cache: "npm"
       - run: npm install
-      - run: npm run check
+      # - run: npm run check

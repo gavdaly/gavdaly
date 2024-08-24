@@ -25,6 +25,10 @@ const presentation: Presentation = {
       label: "Github",
       link: "https://github.com/gavdaly",
     },
+    {
+      label: "Nostr",
+      link: "https://snort.social/p/npub1f78kggwlt3pfjtwaxgqw80xlp5vqnux6zjmr0hrg2fzwksjr0sts8shlsu",
+    },
   ],
 };
 

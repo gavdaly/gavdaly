@@ -15,7 +15,7 @@ const presentation: Presentation = {
   mail: "gavin@gavdaly.com",
   title: "Hi, I’m Gavin 👋",
   profile: "/profile.jpg",
-  description: "",
+  description: "Developer from Canada 🇨🇦. I like to build things with code.",
   socials: [
     {
       label: "X",

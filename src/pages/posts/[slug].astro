@@ -21,7 +21,7 @@ type Props = {
 const { post } = Astro.props;
 const {
   post: {
-    data: { title, description, publishedAt },
+    data: { title, description, publishedAt, postState },
   },
 } = Astro.props;
 let parsedDescription = marked.parse(description);
@@ -29,12 +29,18 @@ const { Content } = await post.render();
 ---
 
 <Layout title={title} description={description}>
-  <main class="post mx-auto flex w-full max-w-prose flex-col gap-4">
-    <header role="presentation">
-      <h1 class="text-md">
-        {title} - {formatDate(publishedAt)}
+  <main class="my-10 post mx-auto flex w-full max-w-prose flex-col gap-4">
+    <header
+      role="presentation"
+      class="flex flex-row justify-between align-baseline"
+    >
+      <span>{postState}</span>
+      <h1 class="text-4xl">
+        {title}
       </h1>
-      <p class="italic" set:html={parsedDescription} />
+      <time class="italic" datetime={formatDate(publishedAt)}>
+        {formatDate(publishedAt)}
+      </time>
     </header>
 
     <Content />

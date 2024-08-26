@@ -6,7 +6,6 @@ import SocialLinks from "@/components/SocialLinks.astro";
 import Link from "@/components/shared/Link.astro";
 import ProjectListing from "@/components/ProjectListing.astro";
 import PostsListing from "@/components/PostsListing.astro";
-import convertAsteriskToStrongTag from "@/utils/convertAsteriskToStrongTag";
 
 import presentation from "@/data/presentation";
 ---
@@ -35,7 +34,7 @@ import presentation from "@/data/presentation";
 
         <h2
           class="w-auto max-w-[60ch] leading-6"
-          set:html={convertAsteriskToStrongTag(presentation.description)}
+          set:html={presentation.description}
         />
 
         <SocialLinks />

@@ -6,28 +6,45 @@ import type { CollectionEntry } from "astro:content";
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
 
-  return projects.map((projects) => ({
-    params: { slug: projects.slug },
-    props: { projects },
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
   }));
 }
 
 type Props = {
-  projects: CollectionEntry<"projects">;
+  project: CollectionEntry<"projects">;
 };
 
+const { project } = Astro.props;
 const {
-  projects: {
+  project: {
     data: { title, link, status, technology },
   },
 } = Astro.props;
-// const { Content } = await projects.render();
+const { Content } = await project.render();
 ---
 
-<Layout>
-  <h2>{title} <a href={link}>github</a></h2>
+<Layout title={`GavDaly | Project: ${title}`}>
+  <div class="flex flex-col mt-3 mb-2">
+    <h2 class="font-extrabold text-3xl">{title}</h2>
+    <a
+      class="inline-block"
+      target="_blank"
+      rel="noopener noreferrer"
+      href={link}
+    >
+      <img class="h-5 inline-block" src="/svgs/github.svg" alt="GitHub" />
+    </a>
+  </div>
 
-  <span class="">{status}</span>
-  <ul class="flex-row">{technology.map((tech) => <li>{tech}</li>)}</ul>
-  <!-- <Content /> -->
+  <span class="w-fit rounded-md bg-neutral-900 px-4 py-1 my-4">{status}</span>
+  <ul class="flex flex-row gap-3 my-4">
+    {
+      technology.map((tech: string) => (
+        <li class="py-1 px-2 bg-gray-800 text-xs rounded-full">{tech}</li>
+      ))
+    }
+  </ul>
+  <Content />
 </Layout>

@@ -2,8 +2,7 @@
 title: "Working in Public"
 publishedAt: 2024-09-22
 description: "Journey Working in Public"
-slug: "working-in-public"
-isPublish: true
+postState: "draft"
 ---
 
 ![image of gavin walking through cave](./working-in-public.jpeg)

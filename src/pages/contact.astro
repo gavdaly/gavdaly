@@ -1,0 +1,22 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout title="GavDaly | Contact">
+  <form name="contact" method="POST">
+    <input type="hidden" name="form-name" value="contact" />
+    <div class="label">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" />
+    </div>
+    <div class="label">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" />
+    </div>
+    <div class="label">
+      <label for="message">Message</label>
+      <textarea name="message" id="message"></textarea>
+    </div>
+    <button type="submit">Send</button>
+  </form>
+</Layout>

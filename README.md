@@ -5,7 +5,7 @@ Hi, I’m Gavin, a developer based in Canada 🇨🇦. I focus on privacy, effic
 You can learn more about me here: 
 - [🌐 Website](https://gavdaly.com)
 - [X](https://x.com/gavdaly)
-- [nostr](https://)
+- [nostr](https://snort.social/p/npub1f78kggwlt3pfjtwaxgqw80xlp5vqnux6zjmr0hrg2fzwksjr0sts8shlsu)
 
 I’m always eager to connect with like-minded individuals, collaborate on innovative projects, or discuss new opportunities. [Feel free to reach out](https://gavdaly.com/contact)! ✨
 

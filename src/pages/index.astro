@@ -11,21 +11,24 @@ import { presentation } from "@/data/presentation";
 ---
 
 <Layout>
-  <main class="flex flex-col gap-20">
+  <main class="flex flex-col justify-between">
     <article
-      class="flex flex-col gap-8 md:flex-row-reverse md:justify-end md:gap-12"
+      class="flex flex-col gap-8 md:flex-row-reverse md:justify-between md:gap-12 pb-6"
     >
       {
         presentation.profile && (
-          <Picture
-            src={presentation.profile}
-            class="w-1/4 self-center rounded-full"
-            alt="Profile Image"
-            widths={[200, 400]}
-            formats={["webp", "avif"]}
-            width="200"
-            height="200"
-          />
+          <div class="w-1/4 md:justify-end">
+            <Picture
+              src={presentation.profile}
+              class="rounded-full md:justify-end"
+              alt="Profile Image"
+              widths={[200, 400]}
+              formats={["webp", "avif"]}
+              loading="lazy"
+              width="200"
+              height="200"
+            />
+          </div>
         )
       }
 

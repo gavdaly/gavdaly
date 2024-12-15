@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 
 import Layout from "@/layouts/Layout.astro";
 import SocialLinks from "@/components/SocialLinks.astro";
@@ -17,10 +17,12 @@ import { presentation } from "@/data/presentation";
     >
       {
         presentation.profile && (
-          <Image
+          <Picture
             src={presentation.profile}
             class="w-1/4 self-center rounded-full"
-            alt="Your Profile"
+            alt="Profile Image"
+            widths={[200, 400]}
+            formats={["webp", "avif"]}
             width="200"
             height="200"
           />

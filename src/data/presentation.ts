@@ -1,4 +1,5 @@
 type Social = {
+  image?: string;
   label: string;
   link: string;
 };
@@ -18,16 +19,14 @@ const presentation: Presentation = {
   description: "Developer from Canada 🇨🇦. I like to build things with code.",
   socials: [
     {
-      label: "X",
-      link: "https://twitter.com/gavdaly",
-    },
-    {
       label: "Github",
       link: "https://github.com/gavdaly",
+      image: "/svgs/github.svg",
     },
     {
       label: "Nostr",
       link: "https://snort.social/p/npub1f78kggwlt3pfjtwaxgqw80xlp5vqnux6zjmr0hrg2fzwksjr0sts8shlsu",
+      image: "/nostr.png",
     },
   ],
 };

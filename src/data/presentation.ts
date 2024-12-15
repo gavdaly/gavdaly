@@ -12,7 +12,7 @@ type Presentation = {
   profile?: string;
 };
 
-const presentation: Presentation = {
+export const presentation: Presentation = {
   mail: "gavin@gavdaly.com",
   title: "Hi, I’m Gavin 👋",
   profile: "/profile.jpg",
@@ -30,5 +30,3 @@ const presentation: Presentation = {
     },
   ],
 };
-
-export default presentation;

@@ -4,9 +4,10 @@ import type { HTMLAttributes } from "astro/types";
 type Props = HTMLAttributes<"a"> & {
   label: string;
   isUnderline?: boolean;
+  image?: string;
 };
 
-const { label, isUnderline, ...props } = Astro.props;
+const { label, image, isUnderline, ...props } = Astro.props;
 ---
 
 <a
@@ -19,6 +20,11 @@ const { label, isUnderline, ...props } = Astro.props;
   rel="noreferrer"
   target="_blank"
 >
-  {label}
-  <span class="sr-only">{label} link</span>
+  {
+    image ? (
+      <img src={image} alt={label} class="h-4 w-4" />
+    ) : (
+      <span class="text-lg">{label}</span>
+    )
+  }
 </a>

@@ -15,7 +15,7 @@
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/open-sans": "^5.0.29",
-    "astro": "^4.14.5",
+    "astro": "^4.16.3",
     "astro-robots-txt": "^1.0.0",
     "astro-seo": "0.8.4",
     "marked": "^14.0.0",

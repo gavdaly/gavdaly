@@ -3,20 +3,45 @@ import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="GavDaly | Contact">
-  <form name="contact" method="POST">
+  <form class="mt-6 w-1/3" name="contact" method="POST">
     <input type="hidden" name="form-name" value="contact" />
-    <div class="label">
-      <label for="name">Name</label>
-      <input type="text" name="name" id="name" />
+    <div class="w-full">
+      <label
+        class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2"
+        for="name">Name</label
+      >
+      <input
+        class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+        type="text"
+        name="name"
+        id="name"
+      />
     </div>
-    <div class="label">
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" />
+    <div class="w-full">
+      <label
+        class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2"
+        for="email">Email</label
+      >
+      <input
+        class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+        type="email"
+        name="email"
+        id="email"
+      />
     </div>
-    <div class="label">
-      <label for="message">Message</label>
-      <textarea name="message" id="message"></textarea>
+    <div class="w-full">
+      <label
+        class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2"
+        for="message">Message</label
+      >
+      <textarea
+        class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white resize-none"
+        name="message"
+        id="message"></textarea>
     </div>
-    <button type="submit">Send</button>
+    <button
+      class="w-full mt-3 g-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+      type="submit">Send</button
+    >
   </form>
 </Layout>

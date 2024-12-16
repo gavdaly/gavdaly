@@ -28,6 +28,27 @@ let parsedDescription = marked.parse(description);
 const { Content } = await post.render();
 ---
 
+<head>
+<script is:inline type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": `${title}`,
+    "description": `${description}`,
+    "author": {
+      "@type": "Person",
+      "name": "Gavin Daly"
+    },
+    "datePublished": `${publishedAt.toISOString()}`,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${Astro.url}`
+    }
+  }
+</script>
+
+</head>
+
 <Layout title={title} description={description}>
   <main class="my-10 post mx-auto flex w-full max-w-prose flex-col gap-4">
     <header role="presentation" class="justify-between align-baseline">

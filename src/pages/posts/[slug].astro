@@ -30,17 +30,16 @@ const { Content } = await post.render();
 
 <Layout title={title} description={description}>
   <main class="my-10 post mx-auto flex w-full max-w-prose flex-col gap-4">
-    <header
-      role="presentation"
-      class="flex flex-row justify-between align-baseline"
-    >
-      <span>{postState}</span>
+    <header role="presentation" class="justify-between align-baseline">
       <h1 class="text-4xl">
         {title}
       </h1>
-      <time class="italic" datetime={formatDate(publishedAt)}>
-        {formatDate(publishedAt)}
-      </time>
+      <p class="flex gap-6">
+        <span>{postState}</span>
+        <time class="italic" datetime={formatDate(publishedAt)}>
+          {formatDate(publishedAt)}
+        </time>
+      </p>
     </header>
 
     <Content />

@@ -15,6 +15,7 @@ import {
 export interface Env {
   DISCORD_WEBHOOK: string;
   TURNSTILE_SECRET_KEY: string;
+  DB: D1Database;
 }
 
 /**
@@ -31,7 +32,7 @@ export interface Env {
  */
 export const onRequest: PagesFunction<Env> = async (
   context,
-): Promise<Response> => {
+): Promise<CFResponse> => {
   const discord_hook = context.env.DISCORD_WEBHOOK;
   const turnstile_secret = context.env.TURNSTILE_SECRET_KEY;
 
@@ -41,12 +42,17 @@ export const onRequest: PagesFunction<Env> = async (
     return context.next();
   }
 
+  const connection = context.env.DB;
+
   const formData = await request.formData();
 
   const turnstileToken = formData.get("cf-turnstile-response");
   if (!turnstileToken) {
-    console.error("Turnstile token missing");
-    return response("ok", { status: 200 });
+    storeInvalidRequest;
+
+    await storeInvalidRequest(connection, "missing_token", request, formData);
+
+    return new Response("ok", { status: 200 }) as unknown as CFResponse;
   }
 
   const isValid = await verifyTurnstileToken(
@@ -55,27 +61,70 @@ export const onRequest: PagesFunction<Env> = async (
   );
 
   if (!isValid) {
-    console.error("Invalid Turnstile token");
-    return response("ok", { status: 200 });
+    await storeInvalidRequest(connection, "invalid_token", request, formData);
+
+    return new Response("ok", { status: 200 }) as unknown as CFResponse;
   }
 
   const name = formData.get("form-name") as string;
   switch (name) {
     case "contact":
-      return await contact(formData as unknown as FormData, discord_hook);
+      return await contact(formData, discord_hook, connection, request);
     default:
-      console.error(`*** Unknown form name: ${name}`);
-      return response("Unknown form name", { status: 400 });
+      await storeInvalidRequest(
+        connection,
+        "incorrect_form_name",
+        request,
+        formData,
+      );
+      return new Response("Unknown form name", {
+        status: 400,
+      }) as unknown as CFResponse;
   }
 };
 
 /**
- * Processes a contact form submission and sends it to Discord
- * @param formData - The FormData object containing the contact details
- * @param hook - The Discord webhook URL to send the notification to
- * @returns A Response object indicating success or failure of the webhook send
+ * Records invalid form submissions in the database for security monitoring and analysis
+ * Logs the reason for rejection, timestamp, request headers and submitted form data
+ * @param connection D1 database instance for persistent storage
+ * @param reason Classification of why request was rejected (missing/invalid token, bad form name)
+ * @param request Original incoming HTTP request with headers and metadata
+ * @param formData Form submission data from the rejected request
+ * @returns Promise resolving after database record is created
  */
-async function contact(formData: FormData, hook: string) {
+async function storeInvalidRequest(
+  connection: D1Database,
+  reason: String,
+  request: Request<unknown, IncomingRequestCfProperties<unknown>>,
+  formData: FormData,
+) {
+  return await connection
+    .prepare(
+      "INSERT INTO invalid_request (reason, headers, data) VALUES (?, ?, ?)",
+    )
+    .bind(
+      reason,
+      Object.fromEntries(request.headers),
+      Object.fromEntries(formData),
+    )
+    .run();
+}
+
+/**
+ * Processes a contact form submission and sends it as a Discord message
+ *
+ * @param formData - Form data containing contact details from submission
+ * @param hook - Discord webhook URL to post notification to
+ * @param connection - D1 database instance for storing invalid submissions
+ * @param request - Original HTTP request for capturing details of invalid submissions
+ * @returns Response with 200 status on success, 500 on webhook failure
+ */
+async function contact(
+  formData: FormData,
+  hook: string,
+  connection: D1Database,
+  request: Request<unknown, IncomingRequestCfProperties<unknown>>,
+) {
   const [name, email, tel, message] = entriesToString(formData, [
     "name",
     "email",
@@ -84,7 +133,8 @@ async function contact(formData: FormData, hook: string) {
   ]);
 
   if (check_for_links([message, name, email, tel])) {
-    return response("ok", { status: 200 });
+    await storeInvalidRequest(connection, "contains_link", request, formData);
+    return new Response("ok", { status: 200 });
   }
 
   const body = JSON.stringify({
@@ -114,7 +164,7 @@ export function entriesToString(formData: FormData, names: string[]) {
  * Sends a message to a Discord webhook
  * @param body - The JSON stringified message to send to Discord
  * @param hook - The Discord webhook URL
- * @returns A Response object with status 201 on success, or 500 on error
+ * @returns A Response object with status 200 on success, or 500 on error
  */
 async function send_webhook(body: string, hook: string) {
   try {
@@ -125,9 +175,9 @@ async function send_webhook(body: string, hook: string) {
         "Content-Type": "application/json",
       },
     });
-    return response("ok", { status: 200 });
+    return new Response("ok", { status: 200 }) as unknown as CFResponse;
   } catch (error) {
-    return response("error", { status: 500 });
+    return new Response("error", { status: 500 }) as unknown as CFResponse;
   }
 }
 
@@ -157,16 +207,6 @@ export function check_for_links(texts: string[]) {
   return texts
     .map((s) => s.includes("http://") || s.includes("https://"))
     .reduce((cur, next) => cur || next, false);
-}
-
-/**
- * Creates a Cloudflare Response object with the given body and initialization options
- * @param body - The response body text
- * @param init - Response initialization options like status and headers
- * @returns A Cloudflare-compatible Response object
- */
-function response(body: string, init: ResponseInit): Response {
-  return new Response(body, init);
 }
 
 /**

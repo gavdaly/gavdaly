@@ -1,10 +1,10 @@
-import {
-  type D1Database,
-  type PagesFunction,
-  Response,
+import type {
+  D1Database,
+  PagesFunction,
+  Response as CFResponse,
   FormData,
-  type Request,
-  type IncomingRequestCfProperties,
+  Request,
+  IncomingRequestCfProperties,
 } from "@cloudflare/workers-types";
 
 /**
@@ -134,8 +134,13 @@ async function contact(
 
   if (check_for_links([message, name, email, tel])) {
     await storeInvalidRequest(connection, "contains_link", request, formData);
-    return new Response("ok", { status: 200 });
+    return new Response("ok", { status: 200 }) as unknown as CFResponse;
   }
+
+  await connection
+    .prepare("INSERT INTO valid_request (data) VALUES (?)")
+    .bind(Object.entries(formData))
+    .run();
 
   const body = JSON.stringify({
     content: `**${name}** ${display_email_tel(email, tel)} says: ${message}`,

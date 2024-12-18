@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import formatDate from "@/utils/formatDate";
 import type { CollectionEntry } from "astro:content";
-import { marked } from "marked";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -24,7 +23,6 @@ const {
     data: { title, description, publishedAt, postState },
   },
 } = Astro.props;
-let parsedDescription = marked.parse(description);
 const { Content } = await post.render();
 ---
 

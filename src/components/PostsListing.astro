@@ -16,11 +16,13 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
   </header>
   {posts.length === 0 && <p>Soon, stay connected 👀...</p>}
 
-  <section class="flex flex-col gap-4 md:flex-row md:flex-wrap">
+  <section
+    class="grid grid-cols-1 gap-4 md:grid-cols-2 md:flex-wrap justify-between"
+  >
     {
       posts.length !== 0 &&
         posts
-          .slice(0, 2)
+          .slice(0, 4)
           .map((post) => (
             <PostCard
               publishedAt={post.data.publishedAt}

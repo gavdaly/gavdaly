@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import SEOTags from "@/components/seo/SEOTags.astro";
+import SocialLinks from "@/components/SocialLinks.astro";
 import type { HeadTags } from "@/utils/types/HeadTags";
 
 import "@fontsource/open-sans";
@@ -21,5 +22,7 @@ const headTags = Astro.props;
   >
     <Header />
     <slot />
-  </body>
+  </body><footer>
+    <SocialLinks />
+  </footer>
 </html>

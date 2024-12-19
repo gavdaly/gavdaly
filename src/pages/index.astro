@@ -3,7 +3,6 @@ import { Picture } from "astro:assets";
 
 import Layout from "@/layouts/Layout.astro";
 import SocialLinks from "@/components/SocialLinks.astro";
-import Link from "@/components/shared/Link.astro";
 import ProjectListing from "@/components/ProjectListing.astro";
 import PostsListing from "@/components/PostsListing.astro";
 
@@ -11,57 +10,41 @@ import { presentation } from "@/data/presentation";
 ---
 
 <Layout>
-  <main class="flex flex-col justify-between">
-    <article
-      class="flex flex-col gap-8 md:flex-row-reverse md:justify-between md:gap-12 pb-6"
-    >
-      {
-        presentation.profile && (
-          <div class="w-1/4 md:justify-end">
-            <Picture
-              src={presentation.profile}
-              class="rounded-full md:justify-end"
-              alt="Profile Image"
-              widths={[200, 400]}
-              formats={["webp", "avif"]}
-              loading="lazy"
-              width="200"
-              height="200"
-            />
-          </div>
-        )
-      }
+  <article
+    class="flex flex-col gap-8 md:flex-row-reverse md:justify-between md:gap-12 pb-6"
+  >
+    {
+      presentation.profile && (
+        <div class="w-1/4 md:justify-end">
+          <Picture
+            src={presentation.profile}
+            class="rounded-full md:justify-end"
+            alt="Profile Image"
+            widths={[200, 400]}
+            formats={["webp", "avif"]}
+            loading="lazy"
+            width="200"
+            height="200"
+          />
+        </div>
+      )
+    }
 
-      <div class="flex flex-col gap-8">
-        <h1 class="text-3xl text-neutral-100">
-          {presentation.title}
-        </h1>
+    <div class="flex flex-col gap-8">
+      <h1 class="text-3xl text-neutral-100">
+        {presentation.title}
+      </h1>
 
-        <h2
-          class="w-auto max-w-[60ch] leading-6"
-          set:html={presentation.description}
-        />
-
-        <SocialLinks />
-      </div>
-    </article>
-
-    <PostsListing />
-
-    <ProjectListing />
-
-    <article class="flex flex-col gap-8">
-      <header class="flex w-full flex-row justify-between gap-2">
-        <h3 class="text-lg text-neutral-100">Get in touch</h3>
-      </header>
-      <p>
-        Email me at <Link
-          href={`mailto:${presentation.mail}`}
-          label={presentation.mail}
-        /> or follow me via my social links.
-      </p>
+      <h2
+        class="w-auto max-w-[60ch] leading-6"
+        set:html={presentation.description}
+      />
 
       <SocialLinks />
-    </article>
-  </main>
+    </div>
+  </article>
+
+  <PostsListing />
+
+  <ProjectListing />
 </Layout>

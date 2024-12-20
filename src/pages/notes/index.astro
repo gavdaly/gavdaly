@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import type { CollectionEntry } from "astro:content";
+
+const notes = await getCollection("notes");
+---
+
+<Layout>
+  <h1>Notes</h1>
+  <ul>
+    {
+      notes.map((note) => (
+        <li>
+          <a href={`/notes/${note.slug}`}>{note.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

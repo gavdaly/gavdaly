@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const notes = await getCollection("notes");
+
+  return notes.map((note) => ({
+    params: { slug: note.slug },
+    props: { note },
+  }));
+}
+
+type Props = {
+  note: CollectionEntry<"notes">;
+};
+
+const { note } = Astro.props;
+
+const {
+  data: { title, tags },
+} = note;
+
+const { Content } = await note.render();
+---
+
+<head>
+  <title>{`${title} | Notes | GavDaly`}</title>
+</head>
+
+<Layout>
+  <h2>{title}</h2>
+  <ul>
+    {
+      tags &&
+        tags.map((tag) => (
+          <li>
+            <a href={`/tag/${tag}`}>{tag}</a>
+          </li>
+        ))
+    }
+  </ul>
+  <Content />
+</Layout>

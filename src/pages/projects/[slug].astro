@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+import Tags from "@/components/Tags.astro";
 import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
@@ -19,7 +20,7 @@ type Props = {
 const { project } = Astro.props;
 const {
   project: {
-    data: { title, link, status, technology },
+    data: { title, link, status, technology, tags },
   },
 } = Astro.props;
 const { Content } = await project.render();
@@ -38,6 +39,7 @@ const { Content } = await project.render();
   </div>
 
   <span class="w-fit rounded-md bg-neutral-900 px-4 py-1 my-8">{status}</span>
+  <h3>Technology</h3>
   <ul class="flex flex-row gap-3 my-4">
     {
       technology.map((tech: string) => (
@@ -45,5 +47,6 @@ const { Content } = await project.render();
       ))
     }
   </ul>
+  <Tags names={tags} />
   <Content />
 </Layout>

@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import type { CollectionEntry } from "astro:content";
+import Tags from "@/components/Tags.astro";
 
 export async function getStaticPaths() {
   const notes = await getCollection("notes");
@@ -31,15 +32,6 @@ const { Content } = await note.render();
 
 <Layout>
   <h2>{title}</h2>
-  <ul>
-    {
-      tags &&
-        tags.map((tag) => (
-          <li>
-            <a href={`/tag/${tag}`}>{tag}</a>
-          </li>
-        ))
-    }
-  </ul>
+  <Tags names={tags} />
   <Content />
 </Layout>

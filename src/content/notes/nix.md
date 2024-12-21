@@ -1,5 +1,11 @@
 ---
 title: Nix
+tags:
+  - nix
+  - nixos
+  - flakes
+  - configuration
+  - devops
 ---
 
 # Installation

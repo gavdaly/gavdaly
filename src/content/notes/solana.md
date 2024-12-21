@@ -1,5 +1,8 @@
 ---
 title: Solana
+tags:
+  - solana
+  - blockchain
 ---
 
 - [8 Innovations that Make Solana the First Web-Scale Blockchain](https://medium.com/solana-labs/7-innovations-that-make-solana-the-first-web-scale-blockchain-ddc50b1defda)

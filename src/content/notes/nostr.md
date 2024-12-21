@@ -1,5 +1,11 @@
 ---
 title: Nostr
+tags:
+  - nostr
+  - lightning
+  - layer2
+  - bitcoin
+  - relay
 ---
 
 - https://nostr.com/

@@ -1,5 +1,9 @@
 ---
 title: Email
+tags:
+  - email
+  - encryption
+  - security
 ---
 
 Email is easy to spoof and get into spam

@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import type { CollectionEntry } from "astro:content";
+
+const tag_store: Map<String, [{ title: String; url: String }]> = new Map();
+
+tag_store.set("test", [{ title: "test", url: "/notes/test" }]);
+
+const notes = await getCollection("notes");
+const posts = await getCollection("posts");
+const projects = await getCollection("projects");
+
+notes.forEach((note) => {
+  note.data.tags?.forEach((tag) => {
+    let data = {
+      title: note.data.title,
+      url: `/notes/${note.slug}`,
+    };
+    let t = tag_store.get(tag);
+    if (t) {
+      t.push(data);
+    } else {
+      tag_store.set(tag, [data]);
+    }
+  });
+});
+
+tag_store;
+---
+
+<Layout>
+  <h1>Tags</h1>
+  <ul>
+    {
+      Array.from(tag_store.keys()).map((tag) => (
+        <li>
+          <a href={`/tag/${tag}`}>{tag}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

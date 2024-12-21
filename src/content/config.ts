@@ -35,6 +35,7 @@ const projectsCollection = defineCollection({
     status: StatusSchema,
     link: z.optional(z.string()),
     summary: z.optional(z.string()),
+    tags: z.optional(z.array(z.string())),
   }),
 });
 

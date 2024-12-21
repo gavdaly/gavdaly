@@ -26,6 +26,21 @@ notes.forEach((note) => {
   });
 });
 
+projects.forEach((project) => {
+  project.data.tags?.forEach((tag) => {
+    let data = {
+      title: project.data.title,
+      url: `/projects/${project.slug}`,
+    };
+    let t = tag_store.get(tag);
+    if (t) {
+      t.push(data);
+    } else {
+      tag_store.set(tag, [data]);
+    }
+  });
+});
+
 tag_store;
 ---
 

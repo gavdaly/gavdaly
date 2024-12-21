@@ -13,9 +13,11 @@ interface Env {
 export const onRequest: PagesFunction<Env> = async (
   context,
 ): Promise<CFResponse> => {
+  const { params } = context;
   const { GAV_DALY_REFERRAL } = context.env;
   const { DB } = context.env;
-  const { key } = context.params as { key: string };
+  const campaign = params.campaign as string;
+  const key = params.key as string;
 
   try {
     const url = await GAV_DALY_REFERRAL.get(key);
@@ -24,17 +26,17 @@ export const onRequest: PagesFunction<Env> = async (
         status: 404,
       }) as unknown as CFResponse;
     }
-
     const headers = JSON.stringify(
       Array.from(context.request.headers.entries()),
     );
     const now = () => Math.floor(new Date().getTime() / 1000);
 
     await DB.prepare(
-      "INSERT INTO forwared_links (location, headers, timestamp) VALUES (?, ?, ?)",
+      "INSERT INTO forwared_links (location, headers, campaign, timestamp) VALUES (?, ?, ?, ?)",
     )
-      .bind(key, headers, now())
+      .bind(key, headers, campaign, now())
       .run();
+
     return Response.redirect(url, 302) as unknown as CFResponse;
   } catch (e) {
     console.error(e);

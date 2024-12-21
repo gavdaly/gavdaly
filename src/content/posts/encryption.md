@@ -3,6 +3,10 @@ title: "People Don't Understand Encryption"
 publishedAt: 2024-12-22
 description: "I find many people get confused between encrypted transport and encrypted data. The biggest gap is with email. Most people’s emails aren’t encrypted. The communication between the server"
 postState: "idea"
+tags:
+  - encryption
+  - privacy
+  - security
 ---
 
 I find many people get confused between encrypted transport and encrypted data.

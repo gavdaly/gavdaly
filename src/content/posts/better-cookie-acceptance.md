@@ -3,6 +3,10 @@ title: "Better Cookie Acceptance"
 publishedAt: 2024-12-22
 description: "The current pattern for cookie acceptance has horrible UX. It should be improved to be more user-friendly and take up less space."
 postState: "idea"
+tags:
+  - ux
+  - cookies
+  - privacy
 ---
 
 right now there’s a black pattern for using cookies cause they want you to accept the cookies many websites right now pop up this huge pop up that blocks everything especially on mobile and we have to do is you have to click except or you have to go through multiple steps to disable or not allow cookies, or select which cookies you want this is a horrible pattern that it’s taken in shape.

@@ -28,5 +28,9 @@ export const presentation: Presentation = {
       link: "https://snort.social/p/npub1f78kggwlt3pfjtwaxgqw80xlp5vqnux6zjmr0hrg2fzwksjr0sts8shlsu",
       image: "/nostr.png",
     },
+    {
+      label: "Telegram",
+      link: "https://t.me/gavdaly",
+    },
   ],
 };

@@ -1,0 +1,24 @@
+---
+interface Props {
+  names: string[] | undefined;
+}
+
+let { names } = Astro.props;
+---
+
+<>
+  {
+    names && (
+      <ul class="flex flex-wrap gap-8">
+        {names?.map((name) => (
+          <li class="inline-block bg-gray-200 opacity-75 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            <a href={`/tags/${name}`}>
+              <span>#</span>
+              {name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</>

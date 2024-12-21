@@ -7,4 +7,5 @@ export interface Project {
   status: Status;
   link?: string;
   summary?: string;
+  tags?: string[];
 }

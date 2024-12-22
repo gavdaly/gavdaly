@@ -1,3 +1,10 @@
+---
+title: "lordly"
+publishedAt: 2024-09-23
+description: "The stateful component library"
+postState: "idea"
+---
+
 Article Outline: Creating CSS and HTML-Based Stateful Components in Leptos
 
 1. Introduction

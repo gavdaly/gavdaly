@@ -26,7 +26,17 @@ export const presentation: Presentation = {
     {
       label: "Nostr",
       link: "https://snort.social/p/npub1f78kggwlt3pfjtwaxgqw80xlp5vqnux6zjmr0hrg2fzwksjr0sts8shlsu",
-      image: "/nostr.png",
+      image: "/svgs/nostr.svg",
+    },
+    {
+      label: "Telegram",
+      link: "https://t.me/gavdaly",
+      image: "/svgs/telegram.svg",
+    },
+    {
+      label: "Mastadon",
+      link: "https://indiehackers.social/@gav",
+      image: "/svgs/mastodon.svg",
     },
   ],
 };

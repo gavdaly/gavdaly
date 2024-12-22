@@ -1,8 +1,14 @@
+# temporaly ignore lock file
+package-lock.json
+
 # build output
 dist/
 
 # generated types
 .astro/
+
+# wrangler local testing
+.wrangler/
 
 # dependencies
 node_modules/

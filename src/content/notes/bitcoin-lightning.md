@@ -1,31 +1,41 @@
 ---
-title: Bitcoin Lightning
+title: Bitcoin & Lightning
 tags:
   - bitcoin
   - lightning
   - layer2
 ---
 
-https://stacker.news/
+Bitcoin Lightning is a Layer 2 solution for Bitcoin that allows for faster and cheaper transactions. It is a network of payment channels that are off-chain and can be used to send and receive Bitcoin.
 
-https://geyser.fund/
+## Links
 
-https://www.stacksats.how/guides?guide-categories=how-to-guide
+### News
 
-https://coinos.io/
+- [Stacker](https://stacker.news/)
+- [LNBits](https://lnbits.com/)
+- [Alby | apps](https://getalby.com/discover)
 
-https://nostr.com/clients
+### Crowdfunding / Funding
 
-https://snort.social/
+- [Geyser](https://geyser.fund/)
+- [OpenSats](https://opensats.org/)
 
-https://getalby.com/developers
+### Lightning Payments
 
-https://getalby.com/
+- [coinos](https://coinos.io/)
 
-https://blixtwallet.github.io/
+### Lightning Node
 
-https://breez.technology/sdk/
-https://github.com/breez/breez-sdk
-https://sdk-doc.breez.technology/guide/getting_started.html
+- [Alby](https://getalby.com/)
+  - [Developer](https://getalby.com/developers)
+- [Breez](https://breez.technology/sdk/)
+  - Lightning as a service, take payments but don't run a node
 
-https://bolt12.org/
+### Wallets
+
+- [Blixt Wallet](https://blixtwallet.github.io/)
+
+### Bold12
+
+- [Bolt12](https://bolt12.org/)

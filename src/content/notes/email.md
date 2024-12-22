@@ -6,7 +6,7 @@ tags:
   - security
 ---
 
-Email is easy to spoof and get into spam
+Email is easy to spoof and get into spam here are some ways to secure it.
 
 ## DNS settings
 

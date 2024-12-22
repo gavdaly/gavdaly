@@ -104,8 +104,8 @@ async function storeInvalidRequest(
     )
     .bind(
       reason,
-      Object.fromEntries(request.headers),
-      Object.fromEntries(formData),
+      JSON.stringify(Array.from(request.headers.entries())),
+      JSON.stringify(Array.from(formData.entries())),
     )
     .run();
 }
@@ -138,8 +138,11 @@ async function contact(
   }
 
   await connection
-    .prepare("INSERT INTO valid_request (data) VALUES (?)")
-    .bind(Object.entries(formData))
+    .prepare("INSERT INTO valid_request (headers, data) VALUES (?, ?)")
+    .bind(
+      JSON.stringify(Array.from(request.headers.entries())),
+      JSON.stringify(Array.from(formData.entries())),
+    )
     .run();
 
   const body = JSON.stringify({

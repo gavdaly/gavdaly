@@ -8,9 +8,12 @@ postState: "idea"
 ## How it works
 
 Super simple state machine using just html, css, and js.
-Actions havet to be triggered by the user, in the html of the div.
+
+To ensure that the actions that the user can do have to be represented inside of the div of that type. That way it can only progress in the ways that you want and not have any side effects.
 
 ### Structure
+
+Under the section, each day would be hidden, would not used and show on when it is being used. So only one can be shown at a time and the one that is showing has the actions inside of it. So that only those actions can take place well that is visible.
 
 ```html
 <section data-state="initial">
@@ -37,6 +40,8 @@ Actions havet to be triggered by the user, in the html of the div.
 ```
 
 ### Styling
+
+Here you just simply show the ID of the dive they wanna show and hide everything else.
 
 ```css
 [data-state="initial"] {
@@ -115,12 +120,7 @@ fn cancel() {
 ```
 
 ## Considerations
-### Doesn't Scale
-For small apps or components, this approach is fine.
-State get more complex, there is alot more boilerplate code to manage.
-Larger apps consider using a library or XState.
 
-###	Make sure you don't have implicit states
+This doesn't really scale at all. Don't use it for a large scale deployment for anything. This is great for a personal blog or a small little website. Analyze you have reactivity and have a very light weight and fast site when the state gets a lot bigger you're gonna end up with spaghetti code.
 
-
-## Conclusion
+Larger apps consider using a library like [XState](https://stately.ai/).

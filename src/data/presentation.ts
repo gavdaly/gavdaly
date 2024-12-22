@@ -33,5 +33,10 @@ export const presentation: Presentation = {
       link: "https://t.me/gavdaly",
       image: "/svgs/telegram.svg",
     },
+    {
+      label: "Mastadon",
+      link: "https://indiehackers.social/@gav",
+      image: "/svgs/mastodon.svg",
+    },
   ],
 };

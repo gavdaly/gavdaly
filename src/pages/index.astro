@@ -7,28 +7,25 @@ import ProjectListing from "@/components/ProjectListing.astro";
 import PostsListing from "@/components/PostsListing.astro";
 
 import { presentation } from "@/data/presentation";
+import profile from "./profile.jpg";
 ---
 
 <Layout>
   <article
     class="flex flex-col gap-8 md:flex-row-reverse md:justify-between md:gap-12 pb-6"
   >
-    {
-      presentation.profile && (
-        <div class="w-1/4 md:justify-end">
-          <Picture
-            src={presentation.profile}
-            class="rounded-full md:justify-end"
-            alt="Profile Image"
-            widths={[200, 400]}
-            formats={["webp", "avif"]}
-            loading="lazy"
-            width="200"
-            height="200"
-          />
-        </div>
-      )
-    }
+    <div class="w-1/4 md:justify-end">
+      <Picture
+        src={profile}
+        class="rounded-full md:justify-end"
+        alt="Profile Image"
+        widths={[100, 200, 400, profile.width]}
+        formats={["webp", "avif"]}
+        loading="lazy"
+        width="200"
+        height="200"
+      />
+    </div>
 
     <div class="flex flex-col gap-8">
       <h1 class="text-3xl text-neutral-100">

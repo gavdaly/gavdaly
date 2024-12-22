@@ -1,3 +1,6 @@
+# temporaly ignore lock file
+package-lock.json
+
 # build output
 dist/
 

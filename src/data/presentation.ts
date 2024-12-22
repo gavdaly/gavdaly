@@ -31,6 +31,7 @@ export const presentation: Presentation = {
     {
       label: "Telegram",
       link: "https://t.me/gavdaly",
+      image: "/svgs/telegram.svg",
     },
   ],
 };

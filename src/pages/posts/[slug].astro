@@ -28,6 +28,27 @@ const {
 const { Content } = await post.render();
 ---
 
+<Layout title={title} description={description}>
+  <section class="my-10">
+    <header role="presentation" class="justify-between align-baseline">
+      <h1 class="text-4xl">
+        {title}
+      </h1>
+      <p class="flex gap-6">
+        <span>{postState}</span>
+        <time class="italic" datetime={formatDate(publishedAt)}>
+          {formatDate(publishedAt)}
+        </time>
+      </p>
+      <Tags names={tags} />
+    </header>
+
+    <main>
+        <Content />
+    </main>
+  </section>
+</Layout>
+
 <head>
 <script is:inline type="application/ld+json">
   {
@@ -49,21 +70,45 @@ const { Content } = await post.render();
 
 </head>
 
-<Layout title={title} description={description}>
-  <main class="my-10 post mx-auto flex w-full max-w-prose flex-col gap-4">
-    <header role="presentation" class="justify-between align-baseline">
-      <h1 class="text-4xl">
-        {title}
-      </h1>
-      <p class="flex gap-6">
-        <span>{postState}</span>
-        <time class="italic" datetime={formatDate(publishedAt)}>
-          {formatDate(publishedAt)}
-        </time>
-      </p>
-      <Tags names={tags} />
-    </header>
 
-    <Content />
-  </main>
-</Layout>
+<style>
+main:has(p) {
+  @apply leading-7;
+}
+
+main:has(code) {
+  @apply rounded-sm bg-neutral-800 px-1 py-1 text-orange-500;
+}
+
+main:has(h2) {
+  @apply mt-6 text-3xl text-neutral-100;
+}
+
+main:has(h3) {
+  @apply mt-4 text-xl text-neutral-100;
+}
+
+main:has(code) {
+  @apply rounded-sm bg-neutral-800 px-1 py-[2px] text-red-500;
+}
+
+main:has(a) {
+  @apply text-neutral-100 underline;
+}
+
+main:has(ul) {
+  @apply list-disc;
+}
+
+main:has(blockquote) {
+  @apply flex flex-row gap-2 before:block before:h-auto before:w-1 before:max-w-[1px] before:bg-red-400 before:content-[''];
+}
+
+main:has(pre) {
+  @apply p-4;
+}
+
+ main:has(pre > code) {
+  @apply bg-transparent;
+}
+</style>

@@ -56,7 +56,10 @@ posts.forEach((post) => {
 const names = Array.from(tag_store.keys());
 ---
 
-<Layout>
+<Layout
+  title="Listing of Tags | GavDaly"
+  description="A listing of the tags from the content on the site"
+>
   <h1>Tags</h1>
   <Tags names={names} />
 </Layout>

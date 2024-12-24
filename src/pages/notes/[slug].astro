@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import type { CollectionEntry } from "astro:content";
 import Tags from "@/components/Tags.astro";
+import License from "@/components/CreativeCommons.astro";
 
 export async function getStaticPaths() {
   const notes = await getCollection("notes");
@@ -26,11 +27,10 @@ const {
 const { Content } = await note.render();
 ---
 
-<head>
-  <title>{`${title} | Notes | GavDaly`}</title>
-</head>
-
-<Layout>
+<Layout
+  title={`${title} | Notes | GavDaly`}
+  description={`Notes about ${note}`}
+>
   <h2>{title}</h2>
   <Tags names={tags} />
   <Content />

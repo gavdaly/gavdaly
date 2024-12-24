@@ -14,11 +14,12 @@ const headTags = Astro.props;
   <SEOTags {...headTags} />
 
   <body
-    class="mx-auto max-w-[872px] bg-neutral-950 px-10 py-8 text-sm text-neutral-400 md:gap-20 md:py-16"
+    class="mx-auto max-w-4xl bg-neutral-950 px-10 py-8 text-sm text-neutral-400 md:gap-20 md:py-16"
   >
     <Header />
     <slot />
-  </body><footer>
-    <SocialLinks />
-  </footer>
+    <footer>
+      <SocialLinks />
+    </footer>
+  </body>
 </html>

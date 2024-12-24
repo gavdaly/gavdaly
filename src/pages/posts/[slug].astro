@@ -4,7 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 import formatDate from "@/utils/formatDate";
 import type { CollectionEntry } from "astro:content";
 import Tags from "@/components/Tags.astro";
-
+import License from "@/components/CreativeCommons.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -46,6 +46,7 @@ const { Content } = await post.render();
     <main>
         <Content />
     </main>
+    <License title={title} />
   </section>
 </Layout>
 

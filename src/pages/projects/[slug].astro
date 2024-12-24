@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Tags from "@/components/Tags.astro";
 import type { CollectionEntry } from "astro:content";
+import License from "@/components/CreativeCommons.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -20,13 +21,16 @@ type Props = {
 const { project } = Astro.props;
 const {
   project: {
-    data: { title, link, status, technology, tags },
+    data: { title, link, status, technology, tags, summary },
   },
 } = Astro.props;
 const { Content } = await project.render();
 ---
 
-<Layout title={`GavDaly | Project: ${title}`}>
+<Layout
+  title={`Project: ${title} | GavDaly`}
+  description={summary || `Project: ${title}`}
+>
   <div class="flex mt-3 mb-3 gap-6 items-baseline">
     <h2 class="font-extrabold text-3xl">{title}</h2>
     {
@@ -49,4 +53,5 @@ const { Content } = await project.render();
   </ul>
   <Tags names={tags} />
   <Content />
+  <License title={title} />
 </Layout>

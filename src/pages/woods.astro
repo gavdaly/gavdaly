@@ -1,0 +1,52 @@
+---
+import { Picture } from "astro:assets";
+import woods1 from "./_woods1.png";
+import woods2 from "./_woods2.png";
+import woods3 from "./_woods3.png";
+import woods4 from "./_woods4.png";
+import woods5 from "./_woods5.png";
+---
+
+<!doctype html>
+<html lang="en">
+  <body
+    class="mx-auto max-w-4xl bg-neutral-950 px-10 py-8 text-sm text-neutral-400 md:gap-20 md:py-16"
+  >
+    <h1 class="font-black text-5xl">Woods</h1>
+    <Picture
+      src={woods1}
+      alt=""
+      width={woods1.width}
+      formats={["webp", "avif"]}
+      loading="lazy"
+    />
+    <Picture
+      src={woods2}
+      alt=""
+      width={woods2.width}
+      formats={["webp", "avif"]}
+      loading="lazy"
+    />
+    <Picture
+      src={woods3}
+      alt=""
+      width={woods3.width}
+      formats={["webp", "avif"]}
+      loading="lazy"
+    />
+    <Picture
+      src={woods4}
+      alt=""
+      width={woods4.width}
+      formats={["webp", "avif"]}
+      loading="lazy"
+    />
+    <Picture
+      src={woods5}
+      alt=""
+      width={woods5.width}
+      formats={["webp", "avif"]}
+      loading="lazy"
+    />
+  </body>
+</html>

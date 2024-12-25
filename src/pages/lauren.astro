@@ -1,0 +1,20 @@
+---
+import { Picture } from "astro:assets";
+import lauren from "./_lauren.jpeg";
+---
+
+<!doctype html>
+<html lang="en">
+  <body
+    class="mx-auto max-w-4xl bg-neutral-950 px-10 py-8 text-sm text-neutral-400 md:gap-20 md:py-16"
+  >
+    <h1 class="font-black text-5xl">Lauren</h1>
+    <Picture
+      src={lauren}
+      alt=""
+      width={lauren.width}
+      formats={["webp", "avif"]}
+      loading="lazy"
+    />
+  </body>
+</html>

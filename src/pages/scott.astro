@@ -1,0 +1,44 @@
+---
+import { Picture } from "astro:assets";
+import scott1 from "./_scott1.png";
+import scott2 from "./_scott2.png";
+import scott3 from "./_scott3.png";
+import scott4 from "./_scott4.png";
+---
+
+<!doctype html>
+<html lang="en">
+  <body
+    class="mx-auto max-w-4xl bg-neutral-950 px-10 py-8 text-sm text-neutral-400 md:gap-20 md:py-16"
+  >
+    <h1 class="font-black text-5xl">Scott</h1>
+    <Picture
+      src={scott1}
+      alt=""
+      width={scott1.width}
+      formats={["webp", "avif"]}
+      loading="lazy"
+    />
+    <Picture
+      src={scott2}
+      alt=""
+      width={scott2.width}
+      formats={["webp", "avif"]}
+      loading="lazy"
+    />
+    <Picture
+      src={scott3}
+      alt=""
+      width={scott3.width}
+      formats={["webp", "avif"]}
+      loading="lazy"
+    />
+    <Picture
+      src={scott4}
+      alt=""
+      width={scott4.width}
+      formats={["webp", "avif"]}
+      loading="lazy"
+    />
+  </body>
+</html>

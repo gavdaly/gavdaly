@@ -19,22 +19,22 @@ export const presentation: Presentation = {
     {
       label: "Github",
       link: "https://github.com/gavdaly",
-      image: "/svgs/github.svg",
+      image: "github",
     },
     {
       label: "Nostr",
       link: "https://snort.social/p/npub1f78kggwlt3pfjtwaxgqw80xlp5vqnux6zjmr0hrg2fzwksjr0sts8shlsu",
-      image: "/svgs/nostr.svg",
+      image: "nostr",
     },
     {
       label: "Telegram",
       link: "https://t.me/gavdaly",
-      image: "/svgs/telegram.svg",
+      image: "telegram",
     },
     {
       label: "Mastadon",
       link: "https://indiehackers.social/@gav",
-      image: "/svgs/mastodon.svg",
+      image: "mastodon",
     },
   ],
 };

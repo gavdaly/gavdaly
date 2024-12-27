@@ -73,43 +73,43 @@ const { Content } = await post.render();
 
 
 <style>
-main:has(p) {
+main p {
   @apply leading-7;
 }
 
-main:has(code) {
+main code {
   @apply rounded-sm bg-neutral-800 px-1 py-1 text-orange-500;
 }
 
-main:has(h2) {
+main h2 {
   @apply mt-6 text-3xl text-neutral-100;
 }
 
-main:has(h3) {
+main h3 {
   @apply mt-4 text-xl text-neutral-100;
 }
 
-main:has(code) {
+main code {
   @apply rounded-sm bg-neutral-800 px-1 py-[2px] text-red-500;
 }
 
-main:has(a) {
+main a {
   @apply text-neutral-100 underline;
 }
 
-main:has(ul) {
+main ul {
   @apply list-disc;
 }
 
-main:has(blockquote) {
+main blockquote {
   @apply flex flex-row gap-2 before:block before:h-auto before:w-1 before:max-w-[1px] before:bg-red-400 before:content-[''];
 }
 
-main:has(pre) {
+main pre {
   @apply p-4;
 }
 
- main:has(pre > code) {
+ main pre > code {
   @apply bg-transparent;
 }
 </style>

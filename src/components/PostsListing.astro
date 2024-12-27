@@ -11,7 +11,7 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
 
 <article class="mb-6">
   <header class="flex mb-4 w-full flex-row justify-between gap-2">
-    <h3 class="text-lg text-neutral-100">Latest posts</h3>
+    <h3 class="text-lg">Latest posts</h3>
     <Link href="/posts" label="See all posts" isUnderline target="_self" />
   </header>
   {posts.length === 0 && <p>Soon, stay connected 👀...</p>}

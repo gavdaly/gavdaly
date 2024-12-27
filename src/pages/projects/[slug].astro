@@ -35,19 +35,23 @@ const { Content } = await project.render();
     <h2 class="font-extrabold text-3xl">{title}</h2>
     {
       link && (
-        <a target="_blank" rel="noopener noreferrer" href={link}>
-          <img class="h-6" src="/svgs/github.svg" alt="GitHub" />
+        <a href={link} rel="noopener noreferrer">
+          <span class="sr-only">GitHub link to {title}</span>
+          <svg class="icon h-5 w-5">
+            <use href={`#github`} />
+          </svg>
         </a>
       )
     }
   </div>
 
-  <span class="w-fit rounded-md bg-neutral-900 px-4 py-1 my-8">{status}</span>
-  <h3>Technology</h3>
+  <span class="w-fit rounded-lg border border-blue-800 px-4 py-1">{status}</span
+  >
+  <h3 class="mt-3">Technology</h3>
   <ul class="flex flex-row gap-3 my-4">
     {
       technology.map((tech: string) => (
-        <li class="py-1 px-2 bg-gray-800 text-xs rounded-full">{tech}</li>
+        <li class="text-xs font-thin">{tech}</li>
       ))
     }
   </ul>

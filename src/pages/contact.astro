@@ -13,12 +13,12 @@ import Layout from "@/layouts/Layout.astro";
   title="GavDaly | Contact"
   description="A contact form for getting intoch with Gavin"
 >
-  <form class="my-6 w-1/3 mx-auto" name="contact" method="POST">
+  <form class="my-6 max-w-lg mx-auto" name="contact" method="POST">
     <input type="hidden" name="form-name" value="contact" />
     <div class="cf-turnstile" data-sitekey="0x4AAAAAAAwkdALrJuLEDATp"></div>
     <div class="w-full">
       <label
-        class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2"
+        class="block uppercase tracking-wide text-xs font-bold mb-2"
         for="name">Name</label
       >
       <input
@@ -30,7 +30,7 @@ import Layout from "@/layouts/Layout.astro";
     </div>
     <div class="w-full">
       <label
-        class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2"
+        class="block uppercase tracking-wide text-xs font-bold mb-2"
         for="email">Email</label
       >
       <input
@@ -42,7 +42,7 @@ import Layout from "@/layouts/Layout.astro";
     </div>
     <div class="w-full">
       <label
-        class="block uppercase tracking-wide text-gray-200 text-xs font-bold mb-2"
+        class="block uppercase tracking-wide text-xs font-bold mb-2"
         for="message">Message</label
       >
       <textarea
@@ -51,7 +51,7 @@ import Layout from "@/layouts/Layout.astro";
         id="message"></textarea>
     </div>
     <button
-      class="w-full mt-3 g-transparent hover:bg-gray-500 text-drey-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded"
+      class="w-full mt-3 g-transparent font-semibold hover:text-sky-300 py-2 px-4 border border-sky-600 hover:border-sky-300 rounded transition duration-200"
       type="submit">Send</button
     >
   </form>

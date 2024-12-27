@@ -11,11 +11,8 @@ let { names } = Astro.props;
     names && (
       <ul class="my-2 flex flex-wrap gap-2">
         {names?.map((name) => (
-          <li class="inline-block border border-gray-600 rounded-full px-4 py-1 font-thin">
-            <a
-              class="text-xsm no-underline text-gray-700"
-              href={`/tags/${name}`}
-            >
+          <li class="inline-block border border-sky-200 rounded-full px-4 py-1 font-light">
+            <a class="text-sm no-underline" href={`/tags/${name}`}>
               <span class="font-extralight">#</span>
               {name}
             </a>

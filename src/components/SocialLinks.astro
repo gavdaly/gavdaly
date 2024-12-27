@@ -1,5 +1,4 @@
 ---
-import Link from "./shared/Link.astro";
 import { presentation } from "@/data/presentation";
 let { socials } = presentation;
 ---
@@ -9,7 +8,12 @@ let { socials } = presentation;
     socials.map(({ label, link, image }, index) => (
       <>
         <li>
-          <Link href={link} label={label} image={image} />
+          <a href={link}>
+            <span class="sr-only">Link to {label}</span>
+            <svg class="icon h-5 w-5">
+              <use href={`#${image}`} />
+            </svg>
+          </a>
         </li>
 
         {socials.length - 1 !== index && <span class="text-lg">|</span>}

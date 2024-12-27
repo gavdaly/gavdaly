@@ -1,15 +1,14 @@
 ---
 import { getCollection } from "astro:content";
 import ProjectCard from "@/components/ProjectCard.astro";
-
+import Link from "@/components/shared/Link.astro";
 const projects = await getCollection("projects");
 ---
 
 <article class="mb-6">
-  <header class="mb-4">
-    <h3 class="text-lg text-neutral-100">
-      Selected projects ({projects.length})
-    </h3>
+  <header class="mb-4 flex justify-between">
+    <h3 class="text-lg font-bold">Selected Projects</h3>
+    <Link href="/posts" label="See all posts" isUnderline target="_self" />
   </header>
 
   <section class="flex flex-col gap-4">

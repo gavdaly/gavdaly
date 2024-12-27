@@ -12,10 +12,10 @@ const { title, publishedAt, description, slug } = Astro.props;
 ---
 
 <a
-  class="grid grid-cols-2 group cursor-pointer rounded-md border border-neutral-700 p-4 transition-all duration-300 hover:-translate-y-2 hover:border-neutral-400"
+  class="grid grid-cols-[1fr_auto] group cursor-pointer rounded-md border border-blue-800 p-4 transition-all duration-300 hover:-translate-y-2"
   href={`/posts/${slug}`}
 >
-  <p class="title text-neutral-100">{title}</p>
+  <p class="title font-bold text-lg">{title}</p>
 
   <svg
     width="18"
@@ -36,7 +36,7 @@ const { title, publishedAt, description, slug } = Astro.props;
       stroke-linejoin="round"></path>
   </svg>
 
-  <time datetime={publishedAt.toISOString()} class="col-span-2"
+  <time datetime={publishedAt.toISOString()} class="col-span-2 text-xs"
     >{formatDate(publishedAt)}</time
   >
 

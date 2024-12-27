@@ -20,7 +20,7 @@ import profile from "./_profile.jpg";
     <div class="w-1/4 md:justify-end">
       <Picture
         src={profile}
-        class="rounded-full md:justify-end"
+        class="rounded-full md:justify-end shadow-md"
         alt="Profile Image"
         widths={[100, 200, 400, profile.width]}
         formats={["webp", "avif"]}
@@ -31,14 +31,11 @@ import profile from "./_profile.jpg";
     </div>
 
     <div class="flex flex-col gap-8">
-      <h1 class="text-3xl text-neutral-100">
+      <h1 class="text-3xl font-bold">
         {presentation.title}
       </h1>
 
-      <h2
-        class="w-auto max-w-[60ch] leading-6"
-        set:html={presentation.description}
-      />
+      <h2 class="w-auto leading-6" set:html={presentation.description} />
 
       <SocialLinks />
     </div>

@@ -13,8 +13,8 @@ const { label, image, isUnderline, ...props } = Astro.props;
 <a
   href={props.href}
   class:list={{
-    ["hover:text-neutral-100 cursor-pointer"]: true,
-    ["underline decoration-dashed underline-offset-8"]: isUnderline,
+    ["hover:text-sky-800 dark:hover:text-sky-100 transition cursor-pointer"]: true,
+    ["underline decoration-dashed hover:underline-offset-2"]: isUnderline,
   }}
   {...props}
   rel="noreferrer"

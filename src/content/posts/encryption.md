@@ -1,7 +1,7 @@
 ---
-title: "People Don't Understand Encryption"
+title: "Understanding Encryption"
 publishedAt: 2024-12-22
-description: "I find many people get confused between encrypted transport and encrypted data. The biggest gap is with email. Most people’s emails aren’t encrypted. The communication between the server"
+description: "A dive into the crucial difference between encrypted transport and encrypted data, and why this distinction matters for your privacy and security."
 postState: "idea"
 tags:
   - encryption
@@ -9,41 +9,95 @@ tags:
   - security
 ---
 
-I find many people get confused between encrypted transport and encrypted data.
+### The Encryption Misconception
 
-The biggest gap is with email. Most people’s emails aren’t encrypted. The communication between the server
+When you hear "your data is encrypted," most people imagine their information being completely unreadable to anyone except themselves. The much more nuanced and depends entirely on **where** and **when** the data is decrypted. Understanding this difference is crucial for making informed decisions about your privacy and security.
 
-The way to think is if your data isn’t encrypted on the internet then it’s public.
+Data can also be encrypted many times and still be decrypted. The data can be encrypted many times and still be able to reverse the process.
 
-I find this has the biggest problem where people think that encrypted transmission is encrypted data. People also think that end to end encryption is completely safe.
+### Where Encryption Happens
 
-There’s a big difference between Encrypted on disk and encrypted transmission. If it is encrypted on the desk or in the database, that means that even the users of the company can’t access, the information is raw data encrypted transmission is just where you are sending the data over the Internet and it’s Less likely to be intercepted by a third-party.
+1. **Transport Encryption** (like HTTPS):
 
-The other one that confuses people is email. This is slightly different because send it to the server is encrypted, but once it’s on your server, it is not encrypted and when goes to the other person server, it’s not encrypted as well. The Way to do this now is to set up SMI encryption. TODO! Show how to set it up.
+   - Protects data while it's moving between points
+   - This is the green padlock in your browser
+   - Like an armored car moving valuable cargo
+   - Once delivered, the data is "unboxed" and readable
+   - Examples: Website connections, basic email transmission
 
-### Encrypting Your Personal Data
+2. **End-to-End Encryption**:
 
-#### Apple
+   - Protects the actual content regardless of where it's stored
+   - Like a locked safe that moves with your valuables
+   - Stays encrypted until you specifically decrypt it
+   - Examples: Signal messages, properly configured email encryption
 
-As of The end of 2024 Apple is the only one that allows you to fully enter to end encrypt your day that that is only visible by you.
+<aside>
+for end-to-end video calls, the video is encrypted on your device and decrypted on the recipient's device. The service provider cannot see the video.
+</aside>
 
-TODO! Show the instructions on how to encrypt data for iCloud so it’s end to end so that no one not even Apple can see it.
+### Following Your Data's Journey
 
-#### Microsoft
+Let's trace what happens to your data in two common scenarios:
 
-Microsoft is the second best they will enter and encrypt the data, but they have the description key stored on their servers so that they can decrypt the data and do whatever they want with it. This is the third best option.
+#### What Most Services Use
 
-TODO! Show instructions on how to enable Microsoft encryption for their
+1. You fillout a form on your device
+2. The _data_ is sent through an encrypted connection (HTTPS)
+3. It arrives at the service's servers and the _data_ is decrypted
+4. The service processes and stores your _data_
+5. When requested, the service retrieves and reads your _data_
+6. The _data_ is sent back through an encrypted connection
+7. You see the decrypted _data_ on your screen
 
-#### Google
+The critical point here is that the service provider can read your data at steps 3-5.
 
-well, this one simple they don’t allow it at all.
+#### True End-to-End Encryption
 
-#### Linux
+1. You fillout a from on your device
+2. The _data_ is encrypted on your device
+3. The encrypted _data_ travels through encrypted connections
+4. The service stores the _data_, but cannot read it
+5. The recipient's device downloads the encrypted _data_
+6. The _data_ is decrypted on your device
+7. You see the decrypted _data_ on your screen
 
-this one is all up to you. There are many ways to do it. You can make your own cloud many different ways, but that’s the whole thing with Lennox. There’s multiple ways to do things and it’s all up to you to make sure you follow best practises if I were to set up a personal cloud in Lennox what I would.
+### Common Misconceptions
 
-1. have full disk encryption for every computer
-2. On every computer set up, `Tailscale`
-3. I will create `Tailscale` shares as well, so that’s easier to share just through the network
-4. On a server of your choosing, I would then install `next cloud`
+#### Email: Not as Private as You Think
+
+Most email services encrypt the connection between you and their servers (transport encryption). However, once your email arrives at the server:
+
+- The service can read your emails
+- Emails can travel unencrypted between different email providers
+- Your emails are typically stored unencrypted on servers
+
+To achieve [email privacy](/posts/encryption-email), you need to use additional encryption like PGP or S/MIME.
+
+#### The Password Reset Paradox
+
+If a service can reset your password and you don't lose access to your encrypted data, it means they can access your data. True end-to-end encryption means:
+
+- Only you have the decryption keys
+- If you lose your password/keys, your data is permanently inaccessible
+- The service provider cannot help you recover your data
+
+* A review of how popular services handle your data: [Apple, Microsoft, Google, and Self-hosted](/posts/encrypted-personal-data)
+
+### Best Practices for Personal Security
+
+To maximize your data security:
+
+1. Use end-to-end encrypted messaging apps for sensitive communications
+2. Enable full-disk encryption on all your devices
+3. Use a password manager with local encryption
+4. Be skeptical of services that claim "encryption" without specifying details
+5. Remember: If a service can read your data, so can anyone who compromises that service
+
+### The Bottom Line
+
+When evaluating a service's security, always ask: "Who can decrypt my data, and when?" If the answer includes anyone besides you and your intended recipients, your data isn't truly private. Transport encryption is important but insufficient for sensitive information.
+
+<aside>
+Remember: The internet is like a public space. If your data isn't encrypted end-to-end, assume it is public.
+</aside>

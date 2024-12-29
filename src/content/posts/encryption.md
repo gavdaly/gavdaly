@@ -9,13 +9,13 @@ tags:
   - security
 ---
 
-### The Encryption Misconception
+## The Encryption Misconception
 
 When you hear "your data is encrypted," most people imagine their information being completely unreadable to anyone except themselves. The much more nuanced and depends entirely on **where** and **when** the data is decrypted. Understanding this difference is crucial for making informed decisions about your privacy and security.
 
 Data can also be encrypted many times and still be decrypted. The data can be encrypted many times and still be able to reverse the process.
 
-### Where Encryption Happens
+## Where Encryption Happens
 
 1. **Transport Encryption** (like HTTPS):
 
@@ -36,11 +36,11 @@ Data can also be encrypted many times and still be decrypted. The data can be en
 for end-to-end video calls, the video is encrypted on your device and decrypted on the recipient's device. The service provider cannot see the video.
 </aside>
 
-### Following Your Data's Journey
+## Following Your Data's Journey
 
 Let's trace what happens to your data in two common scenarios:
 
-#### What Most Services Use
+### What Most Services Use
 
 1. You fillout a form on your device
 2. The _data_ is sent through an encrypted connection (HTTPS)
@@ -52,7 +52,7 @@ Let's trace what happens to your data in two common scenarios:
 
 The critical point here is that the service provider can read your data at steps 3-5.
 
-#### True End-to-End Encryption
+### True End-to-End Encryption
 
 1. You fillout a from on your device
 2. The _data_ is encrypted on your device
@@ -62,9 +62,9 @@ The critical point here is that the service provider can read your data at steps
 6. The _data_ is decrypted on your device
 7. You see the decrypted _data_ on your screen
 
-### Common Misconceptions
+## Common Misconceptions
 
-#### Email: Not as Private as You Think
+### Email: Not as Private as You Think
 
 Most email services encrypt the connection between you and their servers (transport encryption). However, once your email arrives at the server:
 
@@ -74,7 +74,7 @@ Most email services encrypt the connection between you and their servers (transp
 
 To achieve [email privacy](/posts/encryption-email), you need to use additional encryption like PGP or S/MIME.
 
-#### The Password Reset Paradox
+### The Password Reset Paradox
 
 If a service can reset your password and you don't lose access to your encrypted data, it means they can access your data. True end-to-end encryption means:
 
@@ -84,7 +84,7 @@ If a service can reset your password and you don't lose access to your encrypted
 
 * A review of how popular services handle your data: [Apple, Microsoft, Google, and Self-hosted](/posts/encrypted-personal-data)
 
-### Best Practices for Personal Security
+## Best Practices for Personal Security
 
 To maximize your data security:
 
@@ -94,7 +94,7 @@ To maximize your data security:
 4. Be skeptical of services that claim "encryption" without specifying details
 5. Remember: If a service can read your data, so can anyone who compromises that service
 
-### The Bottom Line
+## The Bottom Line
 
 When evaluating a service's security, always ask: "Who can decrypt my data, and when?" If the answer includes anyone besides you and your intended recipients, your data isn't truly private. Transport encryption is important but insufficient for sensitive information.
 

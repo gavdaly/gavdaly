@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "@/layouts/Layout.astro";
+import Layout from "@/layouts/MarkdownLayout.astro";
 import formatDate from "@/utils/formatDate";
 import type { CollectionEntry } from "astro:content";
 import Tags from "@/components/Tags.astro";
@@ -29,7 +29,6 @@ const { Content } = await post.render();
 ---
 
 <Layout title={title} description={description}>
-  <section class="my-10">
     <header role="presentation" class="justify-between align-baseline mb-4">
       <h1 class="text-3xl font-black mb-2">
         {title}
@@ -40,14 +39,16 @@ const { Content } = await post.render();
           {formatDate(publishedAt)}
         </time>
       </p>
-      <Tags names={tags} />
+      <Tags names={tags}  />
     </header>
 
-    <main id="main">
+    <article>
         <Content />
-    </main>
-    <License title={title} />
-  </section>
+    <article>
+
+    <footer>
+        <License title={title} />
+    </footer>
 </Layout>
 
 <head>
@@ -70,62 +71,3 @@ const { Content } = await post.render();
 </script>
 
 </head>
-
-
-<style is:global>
-#main p {
-  @apply leading-5;
-}
-
-#main code {
-  @apply rounded-sm bg-neutral-800 px-1 py-1 text-orange-500;
-}
-
-#main h2 {
-  @apply mt-6 text-3xl font-black;
-}
-
-#main h3 {
-  @apply mt-5 text-2xl font-black;
-}
-
-#main h4 {
-  @apply mt-4 text-xl font-black;
-}
-
-#main h5 {
-  @apply mt-3 text-lg font-black;
-}
-
-#main h6 {
-  @apply mt-2 font-black;
-}
-
-#main code {
-  @apply rounded-sm bg-neutral-800 px-1 py-[2px] text-red-500;
-}
-
-#main a {
-  @apply text-neutral-100 underline;
-}
-
-#main ul {
-  @apply list-disc ml-4;
-}
-
-#main ol {
-  @apply list-decimal ml-6;
-}
-
-#main blockquote {
-  @apply flex flex-row gap-2 before:block before:h-auto before:w-1 before:max-w-[1px] before:bg-red-400 before:content-[''];
-}
-
-#main pre {
-  @apply p-4;
-}
-
- #main pre > code {
-  @apply bg-transparent;
-}
-</style>

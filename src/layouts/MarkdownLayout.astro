@@ -1,0 +1,71 @@
+---
+import Layout from "./Layout.astro";
+import type { HeadTags } from "@/components/seo/SEOTags.astro";
+
+type Props = HeadTags;
+const props = Astro.props;
+---
+
+<Layout {...props}>
+  <main id="main" class="my-10">
+    <slot />
+  </main>
+</Layout>
+
+<style is:global>
+  main p {
+    @apply leading-5;
+  }
+
+  main code {
+    @apply rounded-sm bg-neutral-800 px-1 py-1 text-orange-500;
+  }
+
+  main h2 {
+    @apply mt-6 text-3xl font-black;
+  }
+
+  main h3 {
+    @apply mt-5 text-2xl font-black;
+  }
+
+  main h4 {
+    @apply mt-4 text-xl font-black;
+  }
+
+  main h5 {
+    @apply mt-3 text-lg font-black;
+  }
+
+  main h6 {
+    @apply mt-2 font-black;
+  }
+
+  main code {
+    @apply rounded-sm bg-neutral-800 px-1 py-[2px] text-red-500;
+  }
+
+  main a {
+    @apply text-neutral-100 underline;
+  }
+
+  main ul {
+    @apply list-disc ml-4;
+  }
+
+  main ol {
+    @apply list-decimal ml-6;
+  }
+
+  main blockquote {
+    @apply flex flex-row gap-2 before:block before:h-auto before:w-1 before:max-w-[1px] before:bg-red-400 before:content-[''];
+  }
+
+  main pre {
+    @apply p-4;
+  }
+
+  main pre > code {
+    @apply bg-transparent;
+  }
+</style>

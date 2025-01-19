@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "@/layouts/Layout.astro";
+import Layout from "@/layouts/MarkdownLayout.astro";
 import type { CollectionEntry } from "astro:content";
 import Tags from "@/components/Tags.astro";
 import License from "@/components/CreativeCommons.astro";
@@ -33,6 +33,8 @@ const { Content } = await note.render();
 >
   <h2>{title}</h2>
   <Tags names={tags} />
-  <Content />
+  <article>
+    <Content />
+  </article>
   <License title={title} />
 </Layout>

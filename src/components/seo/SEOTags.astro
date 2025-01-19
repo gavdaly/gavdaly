@@ -1,20 +1,27 @@
 ---
 import { SEO } from "astro-seo";
-import type { HeadTags } from "@/utils/types/HeadTags";
 
 type Props = HeadTags;
 
-const { title, description, noindex, og } = Astro.props;
-const url = `https://${Astro.url.host}`;
+export interface HeadTags {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  type?: string;
+  image?: string;
+  alt?: string;
+}
 
-const openGraph = {
-  title: title,
-  type: og?.type || "website",
-  image: og?.image || "/opengraph-image.jpg",
-  alt: og?.alt || "gavdaly portfolio image",
-  url,
-  description: og?.description,
+const props = Astro.props;
+const { title, description, noindex, type, alt, image } = {
+  title: props.title || "Gav Daly",
+  description: props.description || "Gav Daly's personal blog",
+  noindex: props.noindex || false,
+  type: props.type || "website",
+  image: props.image || "/images/og-image.jpg",
+  alt: props.alt || "Og Image",
 };
+const url = `https://${Astro.url.host}`;
 ---
 
 <head>
@@ -25,12 +32,12 @@ const openGraph = {
     noindex={noindex || false}
     openGraph={{
       basic: {
-        title: openGraph.title,
-        type: openGraph.type,
-        image: openGraph.image,
+        title: title,
+        type: type,
+        image: image,
       },
       image: {
-        alt: openGraph.alt,
+        alt: alt,
       },
     }}
     twitter={{
@@ -46,11 +53,11 @@ const openGraph = {
         { name: "generator", content: Astro.generator },
         {
           name: "twitter:image",
-          content: openGraph.image,
+          content: image,
         },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: openGraph.title },
-        { name: "twitter:description", content: openGraph.description },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
         { name: "twitter:site", content: "@gavdaly" },
       ],
     }}

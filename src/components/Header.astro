@@ -16,8 +16,10 @@ let pathname = new URL(Astro.request.url).pathname;
             ["hover:text-sky-900 dark:hover:text-sky-100 hover:underline"]: true,
             ["text-sky-900 dark:text-sky-100 hover:no-underline"]:
               pathname === "/",
-          }}>home</a
+          }}
         >
+          home
+        </a>
       </li>
       <span>|</span>
       <li>
@@ -27,8 +29,10 @@ let pathname = new URL(Astro.request.url).pathname;
             ["hover:text-sky-900 dark:hover:text-sky-100 hover:underline"]: true,
             ["text-sky-900 dark:text-sky-100 hover:no-underline"]:
               pathname === "/posts",
-          }}>posts</a
+          }}
         >
+          posts
+        </a>
       </li>
       <span>|</span>
       <li>
@@ -38,8 +42,10 @@ let pathname = new URL(Astro.request.url).pathname;
             ["hover:text-sky-900 dark:hover:text-sky-100 hover:underline"]: true,
             ["text-sky-900 dark:text-sky-100 hover:no-underline"]:
               pathname === "/projects",
-          }}>projects</a
+          }}
         >
+          projects
+        </a>
       </li>
       <span>|</span>
       <li>
@@ -49,8 +55,23 @@ let pathname = new URL(Astro.request.url).pathname;
             ["hover:text-sky-900 dark:hover:text-sky-100 hover:underline"]: true,
             ["text-sky-900 dark:text-sky-100 hover:no-underline"]:
               pathname === "/contact",
-          }}>contact</a
+          }}
         >
+          contact
+        </a>
+      </li>
+      <span>|</span>
+      <li>
+        <a
+          href="/uses"
+          class:list={{
+            ["hover:text-sky-900 dark:hover:text-sky-100 hover:underline"]: true,
+            ["text-sky-900 dark:text-sky-100 hover:no-underline"]:
+              pathname === "/uses",
+          }}
+        >
+          uses
+        </a>
       </li>
     </ul>
   </nav>

@@ -5,31 +5,116 @@ tags:
   - security
 ---
 
+## SSH Key
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
 ## Algorithms
 
-### Curve25519 (Asymetric, ECC)
+| Algorithm Name     | Type       | Security Level           | Use Cases                    |
+| ------------------ | ---------- | ------------------------ | ---------------------------- |
+| **AES**            | Symmetric  | Highly Secure            | TLS, File Encryption, VPNs   |
+| **ChaCha20**       | Symmetric  | Highly Secure            | TLS, Mobile Encryption       |
+| DES                | Symmetric  | Weak (Deprecated)        | Legacy Systems               |
+| 3DES               | Symmetric  | Moderate                 | Legacy Banking Systems       |
+| Blowfish           | Symmetric  | Moderate                 | File Encryption, VPNs        |
+| RSA                | Asymmetric | Secure (With Large Keys) | Digital Signatures, TLS, SSH |
+| **Curve25519**     | Asymmetric | Highly Secure            | TLS, Cryptographic Wallets   |
+| **NIST**           | Asymmetric | Highly Secure            | TLS, Cryptographic Wallets   |
+| **Diffie-Hellman** | Asymmetric | Secure                   | Key Exchange, VPNs           |
+| **DSA**            | Asymmetric | Secure                   | Digital Signatures           |
+| **Kyber**          | Asymmetric | Post-Quantum Secure      | Key Exchange, TLS            |
+| **Dilithium**      | Asymmetric | Post-Quantum Secure      | Digital Signatures           |
+| **Falcon**         | Asymmetric | Post-Quantum Secure      | Digital Signatures           |
+| **BIKE**           | Asymmetric | Post-Quantum Secure      | Key Exchange                 |
+| **NTRU**           | Asymmetric | Post-Quantum Secure      | Public Key Encryption        |
+| **SPHINCS+**       | Asymmetric | Post-Quantum Secure      | Digital Signatures           |
 
-### NIST P-256/P-384/P-521 (ECC)
+### Curve25519
 
-### Lattice-based cryptography (Post-Quantum)
+Crate: [ring](https://docs.rs/ring/latest/ring/)
+Type: Asymetric
+Security: Highly Secure
+Use Cases: TLS, Cryptographic Wallets
+Key Exchange Method: Public/Private Key
+Computtational Complexity: High
 
-### Multivariate cryptography (Post-Quantum)
+Curve25519 is a high-speed elliptic curve designed for use in asymmetric cryptography and key agreement.
 
-The strength of these algorithms depends on proper key sizes and implementation. RSA and ECC are most widely used, while post-quantum algorithms are being developed to resist quantum computer attacks.
+Key features:
+
+- 32-byte public keys
+- 32-byte private keys
+- Provides ~128 bits of security
+- Fast and constant-time operations
+- Built into many protocols like TLS 1.3
+
+### NIST
+
+Crate: [ring](https://docs.rs/ring/latest/ring/)
+Type: Asymetric
+Security: Highly Secure
+Use Cases: TLS, Cryptographic Wallets
+Key Exchange Method: Public/Private Key
+Computtational Complexity: High
+
+NIST elliptic curves are standardized curves commonly used in cryptographic protocols. In Rust, you can use them via the `ring` crate:
+
+Key features:
+
+- P-256: 256-bit keys (~128-bit security)
+- P-384: 384-bit keys (~192-bit security)
+- P-521: 521-bit keys (~256-bit security)
+- Widely used in PKI and TLS
+- FIPS 140-2 validated implementations available
+
+### NTRU
+
+Crate: [pgcrypto-ntru](https://docs.rs/pqcrypto-ntru/latest/pqcrypto_ntru/)
+
+NTRU (N-th degree TRUncated polynomial ring) is a lattice-based cryptosystem.
+
+Key features:
+
+- Post-quantum secure
+- Fast encryption/decryption operations
+- Compact keys and ciphertexts
+- Believed resistant to quantum computer attacks
+- Active area of research and standardization
 
 ### AES - Advanced Encryption Standard (Symetric)
 
-128-bit, 192-bit, 256-bit key sizes
-GCM and CBC modes recommended
+AES is a widely-used symmetric block cipher providing fast, secure encryption. In Rust, you can use it via the `aes-gcm` crate for authenticated encryption:
+
+Key features:
+
+- Supports 128-bit, 192-bit, and 256-bit key sizes
+- GCM mode provides authenticated encryption
+- CBC mode available for legacy compatibility
+- Fast hardware acceleration on modern CPUs
+- FIPS certified implementations available
 
 ### ChaCha20 (Symetric)
 
-Paired with Poly1305 for authenticated encryption
+ChaCha20 is a high-performance stream cipher that's often paired with Poly1305 for authenticated encryption. It's designed to be faster than AES on platforms without dedicated hardware acceleration. In Rust, you can use it via the `chacha20poly1305` crate:
 
-### Serpent (Symetric)
+Key features:
 
-128-bit, 192-bit, 256-bit key sizes
+- 256-bit key size
+- 96-bit nonce
+- High performance in software
+- No padding required
+- Authenticated encryption with Poly1305
+- Widely used in TLS 1.3 and WireGuard
 
-### Twofish (Symetric)
+## Termonology
 
-128-bit, 192-bit, 256-bit key sizes
+### Asymetric
+
+Asymetric Algorithims are where there is a public key and private key. Used for when you want to publicly send the encryption key and keep the decription private.
+
+### Symetic
+
+Symetic Algorithms have oney key that encrypts and decryps the data.

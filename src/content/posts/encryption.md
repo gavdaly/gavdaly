@@ -32,9 +32,7 @@ Data can also be encrypted many times and still be decrypted. The data can be en
    - Stays encrypted until you specifically decrypt it
    - Examples: Signal messages, properly configured email encryption
 
-<aside>
-for end-to-end video calls, the video is encrypted on your device and decrypted on the recipient's device. The service provider cannot see the video.
-</aside>
+> for end-to-end video calls, the video is encrypted on your device and decrypted on the recipient's device. The service provider cannot see the video.
 
 ## Following Your Data's Journey
 
@@ -74,7 +72,7 @@ Most email services encrypt the connection between you and their servers (transp
 
 To achieve [email privacy](/posts/encryption-email), you need to use additional encryption like PGP or S/MIME.
 
-### The Password Reset Paradox
+### The Password Reset Understanding
 
 If a service can reset your password and you don't lose access to your encrypted data, it means they can access your data. True end-to-end encryption means:
 
@@ -98,6 +96,4 @@ To maximize your data security:
 
 When evaluating a service's security, always ask: "Who can decrypt my data, and when?" If the answer includes anyone besides you and your intended recipients, your data isn't truly private. Transport encryption is important but insufficient for sensitive information.
 
-<aside>
-Remember: The internet is like a public space. If your data isn't encrypted end-to-end, assume it is public.
-</aside>
+> Remember: The internet is like a public space. If your data isn't encrypted end-to-end, assume it is public.

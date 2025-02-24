@@ -19,12 +19,9 @@ type Props = {
   post: CollectionEntry<"posts">;
 };
 
-const { post } = Astro.props;
-const {
-  post: {
-    data: { title, description, publishedAt, postState, tags },
-  },
-} = Astro.props;
+const post  = Astro.props.post;
+const data = post.data;
+const { title, description, publishedAt, postState, tags } = data;
 const { Content } = await post.render();
 ---
 

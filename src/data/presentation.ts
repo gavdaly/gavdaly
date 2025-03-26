@@ -21,20 +21,20 @@ export const presentation: Presentation = {
       link: "https://github.com/gavdaly",
       image: "github",
     },
-    {
-      label: "Nostr",
-      link: "https://snort.social/p/npub1f78kggwlt3pfjtwaxgqw80xlp5vqnux6zjmr0hrg2fzwksjr0sts8shlsu",
-      image: "nostr",
-    },
+    // {
+    //   label: "Nostr",
+    //   link: "https://snort.social/p/npub1f78kggwlt3pfjtwaxgqw80xlp5vqnux6zjmr0hrg2fzwksjr0sts8shlsu",
+    //   image: "nostr",
+    // },
     {
       label: "Telegram",
       link: "https://t.me/gavdaly",
       image: "telegram",
     },
-    {
-      label: "Mastadon",
-      link: "https://indiehackers.social/@gav",
-      image: "mastodon",
-    },
+    // {
+    //   label: "Mastadon",
+    //   link: "https://indiehackers.social/@gav",
+    //   image: "mastodon",
+    // },
   ],
 };

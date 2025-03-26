@@ -25,9 +25,9 @@ const { title, publishedAt, description, slug } = Astro.props;
     <use href="#arrow"></use>
   </svg>
 
-  <time datetime={publishedAt.toISOString()} class="col-span-2 text-xs"
-    >{formatDate(publishedAt)}</time
-  >
+  <time datetime={publishedAt.toISOString()} class="col-span-2 text-xs">
+    {formatDate(publishedAt)}
+  </time>
 
   <p class="truncate col-span-2">
     {description}

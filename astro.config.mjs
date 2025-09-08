@@ -11,6 +11,10 @@ export default defineConfig({
   integrations: [tailwind(), sitemap(), robotsTxt(), solidJs()],
   trailingSlash: "never",
   site: SITE_URL,
+  image: {
+    // Use portable no-op service (Astro v5: squoosh removed)
+    service: { entrypoint: "astro/assets/services/noop" },
+  },
   markdown: {
     syntaxHighlight: "shiki",
     shikiConfig: {

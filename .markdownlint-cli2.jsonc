@@ -1,14 +1,8 @@
 {
-  "globs": [
-    "**/*.md",
-    "!node_modules",
-    "!dist",
-    "!public"
-  ],
+  "globs": ["**/*.md", "!node_modules", "!dist", "!public"],
   "config": {
     "default": true,
     "MD013": false,
-    "MD033": false
-  }
+    "MD033": false,
+  },
 }
-

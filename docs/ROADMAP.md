@@ -19,7 +19,7 @@ Guiding Principles
 - [ ] E2E smoke tests (Playwright)
   - Routes: home, posts index + one post, tags index, contact, 404
   - Basic assertions: status 200/404, key content visible, no console errors
-- [ ] CI quality/caching
+- [x] CI quality/caching
   - Cache node_modules based on lockfile; matrix Node 18/20/22 LTS
   - Enforce `eslint --max-warnings=0`; keep `ts-prune` report-only
 - [ ] Security headers (Workers)

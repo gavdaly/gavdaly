@@ -7,6 +7,11 @@ Thanks for your interest in improving this project! For day‑to‑day conventio
 - Use Node `v23.5.0` (`nvm use`), then `npm i`.
 - Run locally: `npm run dev`. Type checks: `npm run check`. Build: `npm run build`.
 
+## Pre-commit Hooks
+
+- Husky + lint-staged run on commit: ESLint, Markdownlint, CSpell, and `astro check`.
+- After `npm i`, Husky installs automatically via `npm run prepare`. If hooks are missing, run `npm run prepare`.
+
 ## Branches & Commits
 
 - Branch from `main`; use short, descriptive names (e.g., `feat/tags-filter`).

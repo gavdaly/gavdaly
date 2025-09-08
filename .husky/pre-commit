@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh" 2>/dev/null || true
+
+# Run staged-file linters
+npx --no -- lint-staged
+
+# Run project-wide Astro type/config checks (fast enough for commit)
+npx --no -- astro check
+

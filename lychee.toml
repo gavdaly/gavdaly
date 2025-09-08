@@ -1,6 +1,4 @@
 # Lychee link checker configuration
-
-verbose = true
 timeout = 20
 max_retries = 3
 retry_wait_time = 2
@@ -19,4 +17,3 @@ exclude = [
   "https://medium.com/.*",
   "https://www.youtube.com/.*",
 ]
-

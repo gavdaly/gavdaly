@@ -11,7 +11,10 @@
     "typecheck": "astro check",
     "lint": "eslint 'src/**/*.{astro,ts,tsx}'",
     "format": "prettier --write .",
-    "astro": "astro"
+    "astro": "astro",
+    "cf:dev": "wrangler pages dev --compatibility-date=2024-12-01",
+    "d1:migrate": "wrangler d1 migrations apply your-d1-db",
+    "d1:console": "wrangler d1 execute your-d1-db --local --command '.tables'"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

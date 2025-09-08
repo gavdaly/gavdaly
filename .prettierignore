@@ -5,3 +5,4 @@ dist
 # Preserve frontmatter style in authored content
 src/content/**/*.md
 
+package.json

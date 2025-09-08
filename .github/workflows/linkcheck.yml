@@ -2,7 +2,7 @@ name: Link Check
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
   schedule:
     - cron: "0 6 * * 1" # Weekly, Mondays at 06:00 UTC
   workflow_dispatch:
@@ -17,8 +17,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
+          node-version-file: ".nvmrc"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
@@ -35,4 +35,3 @@ jobs:
             "dist/**/*.html" "README.md" "src/content/**/*.md"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-

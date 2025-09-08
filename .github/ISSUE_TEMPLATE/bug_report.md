@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help us improve
 title: "bug: <short description>"
 labels: bug
-assignees: ''
+assignees: ""
 ---
 
 ## Description
@@ -18,7 +18,7 @@ What happened? What did you expect instead?
 
 ## Environment
 
-- URL/path: 
+- URL/path:
 - Node: `node -v`
 - Package version: from `package.json`
 - Astro: `npx astro --version`

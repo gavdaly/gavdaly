@@ -5,6 +5,12 @@
 
 See the project roadmap: [docs/ROADMAP.md](docs/ROADMAP.md)
 
+## E2E Tests
+
+- Install browsers: `npx playwright install`
+- Run smoke tests: `npm run test:e2e`
+- Run headed: `npm run test:e2e:headed`
+
 ## About Me 👋
 
 Hi, I’m Gavin, a developer based in Canada 🇨🇦. I focus on privacy, efficiency, security, and sustainability. My current work includes projects like the Lordly Framework in Leptos and several Rust-based initiatives.

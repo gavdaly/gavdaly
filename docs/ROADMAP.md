@@ -16,9 +16,10 @@ Guiding Principles
 
 - [ ] Pre-commit hooks (husky + lint-staged)
   - Run: `eslint`, `markdownlint-cli2`, `cspell`, `astro check` on staged files
-- [ ] E2E smoke tests (Playwright)
-  - Routes: home, posts index + one post, tags index, contact, 404
-  - Basic assertions: status 200/404, key content visible, no console errors
+- [x] E2E smoke tests (Playwright)
+  - Implemented in `e2e/smoke.spec.ts` with `playwright.config.ts`
+  - Routes covered: home, posts index + first post, tags index, contact, 404
+  - Assertions: status 200/404, key content visible, and no console errors on home
 - [x] CI quality/caching
   - Cache node_modules based on lockfile; matrix Node 18/20/22 LTS
   - Enforce `eslint --max-warnings=0`; keep `ts-prune` report-only

@@ -14,8 +14,8 @@ Guiding Principles
 
 ## Phase 1 — Near-term
 
-- [ ] Pre-commit hooks (husky + lint-staged)
-  - Run: `eslint`, `markdownlint-cli2`, `cspell`, `astro check` on staged files
+- [x] Pre-commit hooks (husky + lint-staged)
+  - Run: `eslint`, `markdownlint-cli2`, `cspell`, and a project `astro check`
 - [ ] E2E smoke tests (Playwright)
   - Routes: home, posts index + one post, tags index, contact, 404
   - Basic assertions: status 200/404, key content visible, no console errors

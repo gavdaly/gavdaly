@@ -13,6 +13,7 @@ exclude = [
   "nostr:*",
   "https://x.com/.*",
   "https://twitter.com/.*",
+  "https://www.reddit.com/*",
   "https://snort.social/.*",
   "https://medium.com/.*",
   "https://www.youtube.com/.*",

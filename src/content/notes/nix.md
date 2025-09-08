@@ -52,7 +52,7 @@ I've just started to use nix and nixos, my [personal config](https://github.com/
 
 - [A Beyond-the-basics Rust Flake](https://log.woodweb.ca/articles/rust-flake/)
 
-- [Anatomy of a NixOS Config](https://unmovedcentre.com/technology/2024/02/24/anatomy-of-a-nixos-config.html)
+- [NixOS Resources](https://unmovedcentre.com)
 - [Writing your own NixOS modules for fun and (hopefully) profit](https://www.youtube.com/watch?v=SzyuLVzS5Fg_)
 
 - [NixOS 63: Install NixOS 23.11 and Use Flakes Out Of the Box](https://www.youtube.com/watch?v=hoB0pHZ0fpI)

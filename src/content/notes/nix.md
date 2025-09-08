@@ -76,7 +76,7 @@ github runner
 
 ## stalwart-mail
 
-```nixos
+```nix
 services.stalwart-mail
 ```
 

@@ -239,6 +239,10 @@ async function verifyTurnstileToken(
   token: string,
   secretKey: string,
 ): Promise<boolean> {
+  type TurnstileVerifyResponse = {
+    success: boolean;
+    [key: string]: unknown;
+  };
   const formData = new URLSearchParams();
   formData.append("secret", secretKey);
   formData.append("response", token);
@@ -254,6 +258,10 @@ async function verifyTurnstileToken(
     },
   );
 
-  const outcome = await result.json();
-  return outcome.success;
+  if (!result.ok) {
+    return false;
+  }
+
+  const outcome = (await result.json()) as TurnstileVerifyResponse;
+  return Boolean(outcome.success);
 }

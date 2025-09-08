@@ -90,7 +90,7 @@ fn submit() {
     }, 300);
 
     // do something
-    // after sucessful operation
+    // after successful operation
     fetch('https://api.example.com', {
         method: 'POST',
         body: JSON.stringify({}),

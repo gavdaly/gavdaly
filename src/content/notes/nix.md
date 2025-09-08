@@ -10,23 +10,23 @@ tags:
 
 I've just started to use nix and nixos, my [personal config](https://github.com/gavdaly/nix-config) is just getting started.
 
-# Installation
+## Installation
 
 [link to shell script](https://nixos.org/download.html#nix-install-macos)
 
 [bcachefs](https://nixos.wiki/wiki/Bcachefs)
 [disko](https://github.com/nix-community/disko)
 
-## Default Nix Config
+### Default Nix Config
 
 ```nix
 {
-	description = "Your discription would go here";
-	inputs = {
-		nixpkgs.url = "hithub:nixos/nixpkgs/nixpkgs-unstable";
-	};
-	outputs = {
-	}
+  description = "Your description would go here";
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+  };
+  outputs = {
+  };
 }
 ```
 
@@ -36,10 +36,10 @@ I've just started to use nix and nixos, my [personal config](https://github.com/
 
 - [Nix for startups](https://www.youtube.com/watch?v=WJZgzwB3ziE)
 
-# Examples
+## Examples
 
 - [Anatomy of a NixOS Config](https://www.youtube.com/watch?v=YHm7e3f87iY&list=PLAWyx2BxU4OyERRTbzNAaRHK08DQ0DD_l)
-- [Emergentind example](https://github.com/EmergentMind/nix-config)
+- [EmergentMind example](https://github.com/EmergentMind/nix-config)
 - [erictossell example](https://github.com/erictossell/nixflakes)
 - [Misterio77 example](https://github.com/Misterio77/nix-config)
 - [Misterio77 starter](https://github.com/Misterio77/nix-starter-configs)
@@ -72,7 +72,7 @@ github runner
 - [github actions runner](https://nix-community.github.io/srvos/github_actions_runner/)
 - [Using cloudflared with Zero Trust Dashboard on NixOS](https://discourse.nixos.org/t/using-cloudflared-with-zero-trust-dashboard-on-nixos/19069)
 
-# To Add
+## To Add
 
 ## stalwart-mail
 
@@ -82,4 +82,4 @@ services.stalwart-mail
 
 ## cal
 
-https://github.com/calcom/cal.com
+<https://github.com/calcom/cal.com>

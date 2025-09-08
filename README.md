@@ -1,3 +1,5 @@
+# Gavin Daly Website
+
 [![CI](https://github.com/gavdaly/gavdaly/actions/workflows/ci.yml/badge.svg)](https://github.com/gavdaly/gavdaly/actions/workflows/ci.yml)
 [![Link Check](https://github.com/gavdaly/gavdaly/actions/workflows/linkcheck.yml/badge.svg)](https://github.com/gavdaly/gavdaly/actions/workflows/linkcheck.yml)
 

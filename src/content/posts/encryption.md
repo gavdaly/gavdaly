@@ -40,7 +40,7 @@ Let's trace what happens to your data in two common scenarios:
 
 ### What Most Services Use
 
-1. You fillout a form on your device
+1. You fill out a form on your device
 2. The _data_ is sent through an encrypted connection (HTTPS)
 3. It arrives at the service's servers and the _data_ is decrypted
 4. The service processes and stores your _data_
@@ -52,7 +52,7 @@ The critical point here is that the service provider can read your data at steps
 
 ### True End-to-End Encryption
 
-1. You fillout a from on your device
+1. You fill out a form on your device
 2. The _data_ is encrypted on your device
 3. The encrypted _data_ travels through encrypted connections
 4. The service stores the _data_, but cannot read it
@@ -80,7 +80,7 @@ If a service can reset your password and you don't lose access to your encrypted
 - If you lose your password/keys, your data is permanently inaccessible
 - The service provider cannot help you recover your data
 
-* A review of how popular services handle your data: [Apple, Microsoft, Google, and Self-hosted](/posts/encrypted-personal-data)
+- A review of how popular services handle your data: [Apple, Microsoft, Google, and Self-hosted](/posts/encrypted-personal-data)
 
 ## Best Practices for Personal Security
 

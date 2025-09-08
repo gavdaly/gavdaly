@@ -35,7 +35,7 @@ tags:
 - [nostr pubminer](https://github.com/lacaulac/nostr-pubminer)
 - [rana](https://github.com/grunch/rana)
 
-### Relays
+### Relay Resources
 
 - [official docs](https://nostr.com/relays)
 - [relay](https://sr.ht/~gheartsfield/nostr-rs-relay/)

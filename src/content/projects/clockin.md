@@ -12,4 +12,4 @@ tags:
 
 ## Why?
 
-I wanted to build a simple timetracking app that I could use to track staff's time, it was taking a long time to total their hours.
+I wanted to build a simple time-tracking app that I could use to track staff's time; it was taking a long time to total their hours.

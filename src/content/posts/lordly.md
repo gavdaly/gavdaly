@@ -1,161 +1,105 @@
 ---
 title: "lordly"
 publishedAt: 2024-09-23
-description: "The stateful component library"
+description: "Creating CSS and HTML-Based Stateful Components"
 postState: "idea"
 ---
 
-Article Outline: Creating CSS and HTML-Based Stateful Components in Leptos
+## Lordly: Creating CSS and HTML-Based Stateful Components
 
-1. Introduction
+### Introduction
 
-   • Overview of Leptos
-   • Brief introduction to Leptos as a Rust-based framework for building web applications.
-   • Emphasize how Leptos allows developers to create web components using standard HTML and CSS, enhanced with Rust’s performance.
-   • The Role of Stateful Components
-   • Explain the importance of state in web interfaces.
-   • Discuss how stateful components built with HTML and CSS can enhance user interactivity.
-   • Purpose of the Article
-   • Guide readers through creating CSS and HTML-based stateful components using Leptos.
-   • Outline prerequisites: basic knowledge of Rust, HTML, and CSS.
+TODO: Need to build the library more.
 
-2. Setting Up the Development Environment
+Having a simple library that focusses on state full static components, that give you the hint with the correct sematic elements in them.
 
-   • Installing Rust and Cargo
-   • Step-by-step instructions for installing Rust and its package manager, Cargo.
-   • Setting Up Leptos
-   • How to install Leptos and integrate it with your development environment.
-   • Creating a New Leptos Project
-   • Walkthrough of initializing a new Leptos project focused on HTML and CSS components.
-   • Overview of the project structure and key files.
+One of the biggest things and the one thing that drives me crazy on the Internet is people not using the input element somatically and asking for numbers, but showing the text keyboard on mobile there's lots of other examples and I'm trying to go we get through the, all.
 
-3. Fundamentals of Leptos with HTML and CSS
+And asked for the staple components this comes down to forms, especially where when we're submitting a form, we have the initial states, dirty states, valid states, invalid states, and then submitted.
 
-   • Leptos Component Architecture
-   • Understanding how Leptos components are structured with HTML templates.
-   • Integrating CSS into Components
-   • Methods for applying CSS styles within Leptos components.
-   • Using inline styles vs. external stylesheets.
-   • State Management Basics
-   • Introduction to state in Leptos components.
-   • How state interacts with HTML and CSS to create dynamic interfaces.
+One of the things that I really wanna do is use the built-in abilities of the browser and not create extra JavaScript.
 
-4. Building Your First Stateful Component
+### Inputs
 
-   • Designing the Component
-   • Planning an HTML structure for a simple interactive component.
-   • Implementing the HTML Template
-   • Writing HTML within Leptos components.
-   • Styling the Component with CSS
-   • Applying CSS styles to your component.
-   • Adding Statefulness
-   • Incorporating state to change the component’s behavior and appearance.
-   • Example: Clickable Button that Changes Color
-   • A hands-on example demonstrating state affecting CSS styles.
+Inputs are very complicated. We want them to deal with a lot of information for us and we want them to look nice and handle our dad and not give us back shit.
 
-5. Advanced Styling Techniques
+But for the user experience, we don't want to control everything and have everything be all a cluster fuck went on a slow connection. Try not to have your validation hit the server. We can do server checks when we submit all the data and not as you type every fucking character.
 
-   • Dynamic Class Binding
-   • How to toggle CSS classes based on component state.
-   • Inline Styles Based on State
-   • Changing inline styles dynamically with Leptos.
-   • Using CSS Frameworks
-   • Integrating frameworks like Tailwind CSS or Bootstrap with Leptos components.
+The other thing with inputs is the HTML is a gigantic grab bag of everything that can possibly be used on it and sometimes it's not contextually sensitive to what we're trying to do.
 
-6. Building Complex Components
+## It's easy to make mistakes and the **`Code Completions`** list can be huge
 
-   • Component Composition
-   • Creating complex components by combining simpler ones.
-   • State Sharing Between Components
-   • Techniques for passing state and data between parent and child components.
-   • Example: Responsive Navigation Bar
-   • Building a navigation bar that changes based on user interaction and screen size.
+```tsx
+<Input type="number" autocomplete="address" inputmode="text">
+<Input type="url" autocomplete="credit-card">
+```
 
-7. Responsive and Adaptive Design
+### Forms
 
-   • Media Queries in Leptos
-   • Applying CSS media queries within Leptos components.
-   • State-Driven Layout Changes
-   • Adjusting component layouts dynamically based on state.
-   • Example: Responsive Grid Layout
-   • Creating a grid that adapts to different screen sizes and states.
+#### JS Free Form Flow
 
-8. Animations and Transitions
+Form -> Submit -> Fix Invalid -> Submit -> Success
 
-   • CSS Transitions
-   • Implementing smooth transitions in response to state changes.
-   • State-Triggered Animations
-   • Using CSS animations that are activated by component state.
-   • Example: Expanding and Collapsing Panels
-   • Building interactive panels with animated transitions.
+### Controlled Form Flow
 
-9. Forms and User Input
+Form -> Start Typing -> Everything glows red showing invalid states -> Submit -> Success
 
-   • Creating Form Components
-   • Designing forms using HTML and CSS in Leptos.
-   • Handling Input State
-   • Managing form data and validation states.
-   • Dynamic Styling Based on Input
-   • Changing styles in response to user input (e.g., highlighting errors).
-   • Example: Interactive Login Form
-   • Implementing a form with real-time validation feedback.
+### Stateful Form Flow
 
-10. Optimizing CSS and HTML in Leptos
+Form -> Start Typing -> Only shows invalid if the user has left the field -> Submit -> Success
 
-    • Organizing Stylesheets
-    • Best practices for maintaining clean and scalable CSS in your project.
-    • Avoiding Common Pitfalls
-    • Tips to prevent conflicts and issues with CSS specificity and inheritance.
-    • Performance Considerations
-    • Techniques to optimize rendering and loading times.
+This is a little trickier with validation fields, but I have a few ideas on how to do this.
 
-11. Testing and Debugging Components
+#### The Form Double Click
 
-    • Debugging CSS and HTML
-    • Using browser developer tools to inspect and troubleshoot components.
-    • Testing Component State
-    • Strategies for testing state changes and their effects on the UI.
-    • Automated Testing Tools
-    • Introduction to testing frameworks compatible with Leptos.
+```ts
+type FormState =
+  | "initial"
+  | "dirty"
+  | "valid"
+  | "invalid"
+  | "pending"
+  | "submitted";
 
-12. Deployment
+type InputState = "initial" | "dirty" | "valid" | "invalid";
+```
 
-    • Preparing for Production
-    • Steps to optimize your Leptos application for deployment.
-    • Asset Management
-    • Handling CSS and HTML assets in a production environment.
-    • Deployment Options
-    • Overview of hosting solutions for Leptos applications.
+• Guide readers through creating CSS and HTML-based stateful components using Leptos.
 
-13. Conclusion
+• Outline prerequisites: basic knowledge of Rust, HTML, and CSS.
 
-    • Recap of Key Points
-    • Summarize the process of creating CSS and HTML-based stateful components in Leptos.
-    • Encouragement to Explore Further
-    • Inspire readers to build more complex components and contribute to the Leptos community.
-    • Additional Resources
-    • Provide links to documentation, tutorials, and community forums for further learning.
+1. Building Your First Stateful Component
 
-Appendices (Optional)
+I personally think that any user input should be done within a form. That basically means if you're doing a put or a patch request, you are using a form and get request should be going places getting information, not setting values.
 
-    •	Appendix A: Integrating Third-Party Libraries
-    •	Instructions on using additional JavaScript libraries or CSS files with Leptos.
-    •	Appendix B: Troubleshooting Common Issues
-    •	Solutions to frequent problems encountered when working with CSS and HTML in Leptos.
+1. Advanced Styling Techniques
 
-Tips for Writing the Article
+There is no styling with Lord Lee all we're doing is providing hooks for you to style your components however, you like whether be with talent or regular CSS or anything your heart desires.
 
-    •	Practical Examples
-    •	Include code snippets and step-by-step guides for each example.
-    •	Ensure examples are relevant and demonstrate the concepts clearly.
-    •	Visual Aids
-    •	Use screenshots or diagrams to illustrate how components should look and behave.
-    •	Clarity and Accessibility
-    •	Explain technical terms and avoid unnecessary jargon.
-    •	Write in a way that is approachable for readers new to Leptos but familiar with HTML and CSS.
-    •	Engage with the Reader
-    •	Pose questions or challenges to encourage readers to apply what they’ve learned.
-    •	Code Quality
-    •	Ensure all code examples follow best practices and are tested.
-    •	Update References
-    •	Provide up-to-date links and resources, given your knowledge cutoff date is October 2023.
+But the state of components is controlled through the data type.
+The goal here have no in-line styles no dynamic styles have everything the static that can be looked at in the CSS and not guess upon.
+
+• Changing inline styles dynamically with Leptos.
+• Using CSS Frameworks
+• Integrating frameworks like Tailwind CSS or Bootstrap with Leptos components.
+
+1. Building Complex Components
+
+- I'm just gonna build simple print tips for the form and inputs.
+
+### Tips for Writing the Article
+
+- Practical examples
+- Include code snippets and step-by-step guides for each example
+- Ensure examples are relevant and demonstrate the concepts clearly
+- Visual aids
+- Use screenshots or diagrams to illustrate how components should look and behave
+- Clarity and accessibility
+- Explain technical terms and avoid unnecessary jargon
+- Write in a way that is approachable for readers new to Leptos but familiar with HTML and CSS
+- Engage with the reader
+- Pose questions or challenges to encourage readers to apply what they’ve learned
+- Code quality
+- Ensure all code examples follow best practices and are tested
+- Update references
+- Provide up-to-date links and resources

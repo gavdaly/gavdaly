@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": ["node_modules", "dist", ".astro", "package-lock.json"],
+  "words": [
+    "astrojs",
+    "astro",
+    "wrangler",
+    "Cloudflare",
+    "Turnstile",
+    "Daly",
+    "Gavin",
+    "nostr",
+    "leptos",
+    "lychee",
+    "tsprune",
+    "depscan",
+    "tsx",
+    "vite",
+    "solidjs"
+  ]
+}

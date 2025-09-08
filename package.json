@@ -11,6 +11,10 @@
     "typecheck": "astro check",
     "lint": "eslint 'src/**/*.{astro,ts,tsx}'",
     "format": "prettier --write .",
+    "lint:md": "markdownlint-cli2",
+    "lint:spell": "cspell --no-progress --no-summary '**/*.{md,mdx,astro,ts,tsx}'",
+    "typecheck:workers": "tsc --noEmit -p tsconfig.workers.json",
+    "lint:all": "npm run lint && npm run lint:md && npm run lint:spell",
     "astro": "astro",
     "cf:dev": "wrangler pages dev --compatibility-date=2024-12-01",
     "d1:migrate": "wrangler d1 migrations apply your-d1-db",
@@ -31,11 +35,21 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
     "@typescript-eslint/parser": "8.2.0",
+    "cspell": "^8.16.0",
+    "depcheck": "^1.4.7",
     "eslint": "9.9.1",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-astro": "1.2.3",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "markdownlint-cli2": "^0.15.0",
     "prettier": "3.3.3",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-tailwindcss": "0.6.6"
+    "prettier-plugin-tailwindcss": "0.6.6",
+    "remark-cli": "^12.0.1",
+    "remark-validate-links": "^13.0.2",
+    "ts-prune": "^0.10.3"
   }
 }

@@ -25,11 +25,30 @@ jobs:
       - name: Prettier check
         run: npx prettier --check .
 
-      - name: ESLint
-        run: npx eslint "src/**/*.{astro,ts,tsx}"
+      - name: ESLint (no warnings)
+        run: npx eslint "src/**/*.{astro,ts,tsx}" --max-warnings=0
 
       - name: Astro check
         run: npm run check
+
+      - name: Workers type check
+        run: npx tsc --noEmit -p tsconfig.workers.json
+
+      - name: Markdown lint
+        run: npx markdownlint-cli2
+
+      - name: Markdown links (remark)
+        run: npx remark -q -f .
+
+      - name: Spell check (cspell)
+        run: npx cspell --no-progress --no-summary "**/*.{md,mdx,astro,ts,tsx}"
+
+      - name: Dead code (ts-prune)
+        run: |
+          npx ts-prune -p tsconfig.json > ts-prune.out || true
+          if [ -s ts-prune.out ]; then
+            echo "Unused exports detected:" && cat ts-prune.out && exit 1;
+          fi
 
       - name: Build
         run: npm run build
@@ -40,7 +59,3 @@ jobs:
           name: site-dist
           path: dist
           retention-days: 7
-
-  
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

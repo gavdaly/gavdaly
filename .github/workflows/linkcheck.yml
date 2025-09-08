@@ -1,13 +1,14 @@
-name: CI
+name: Link Check
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
+  schedule:
+    - cron: "0 6 * * 1" # Weekly, Mondays at 06:00 UTC
+  workflow_dispatch:
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,25 +23,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Prettier check
-        run: npx prettier --check .
-
-      - name: ESLint
-        run: npx eslint "src/**/*.{astro,ts,tsx}"
-
-      - name: Astro check
-        run: npm run check
-
       - name: Build
         run: npm run build
 
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+      - name: Check links in built site and content
+        uses: lycheeverse/lychee-action@v1
         with:
-          name: site-dist
-          path: dist
-          retention-days: 7
-
-  
+          args: >-
+            --no-progress --max-concurrency 4
+            --config lychee.toml
+            "dist/**/*.html" "README.md" "src/content/**/*.md"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

@@ -1,3 +1,6 @@
+[![CI](https://github.com/gavdaly/gavdaly/actions/workflows/ci.yml/badge.svg)](https://github.com/gavdaly/gavdaly/actions/workflows/ci.yml)
+[![Link Check](https://github.com/gavdaly/gavdaly/actions/workflows/linkcheck.yml/badge.svg)](https://github.com/gavdaly/gavdaly/actions/workflows/linkcheck.yml)
+
 ## About Me 👋
 
 Hi, I’m Gavin, a developer based in Canada 🇨🇦. I focus on privacy, efficiency, security, and sustainability. My current work includes projects like the Lordly Framework in Leptos and several Rust-based initiatives.

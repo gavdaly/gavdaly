@@ -1,0 +1,38 @@
+[
+  {
+    "label": "dev",
+    "command": "npm",
+    "args": ["run", "dev"],
+    "tags": ["astro"]
+  },
+  {
+    "label": "build",
+    "command": "npm",
+    "args": ["run", "build"],
+    "tags": ["astro"]
+  },
+  {
+    "label": "preview",
+    "command": "npm",
+    "args": ["run", "preview"],
+    "tags": ["astro"]
+  },
+  {
+    "label": "check",
+    "command": "npm",
+    "args": ["run", "check"],
+    "tags": ["astro", "typescript"]
+  },
+  {
+    "label": "lint",
+    "command": "npx",
+    "args": ["eslint", "src/", "--ext", ".ts,.tsx,.astro"],
+    "tags": ["lint"]
+  },
+  {
+    "label": "format",
+    "command": "npx",
+    "args": ["prettier", "--write", "src/"],
+    "tags": ["format"]
+  }
+]

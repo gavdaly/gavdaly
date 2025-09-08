@@ -1,0 +1,45 @@
+[
+  {
+    "adapter": "node",
+    "label": "Debug Astro Dev Server",
+    "request": "launch",
+    "program": "${workspaceFolder}/node_modules/.bin/astro",
+    "args": ["dev", "--inspect"],
+    "cwd": "${workspaceFolder}",
+    "env": {
+      "NODE_ENV": "development"
+    }
+  },
+  {
+    "adapter": "msedge",
+    "label": "Launch Edge Dev for Astro",
+    "request": "launch",
+    "url": "http://localhost:4321",
+    "webRoot": "${workspaceFolder}/src"
+  },
+  {
+    "adapter": "node",
+    "label": "Debug Astro Build",
+    "request": "launch",
+    "program": "${workspaceFolder}/node_modules/.bin/astro",
+    "args": ["build"],
+    "cwd": "${workspaceFolder}",
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
+  {
+    "adapter": "node",
+    "label": "Debug TypeScript Check",
+    "request": "launch",
+    "program": "${workspaceFolder}/node_modules/.bin/astro",
+    "args": ["check"],
+    "cwd": "${workspaceFolder}"
+  },
+  {
+    "adapter": "node",
+    "label": "Attach to Node Process",
+    "request": "attach",
+    "port": 9229
+  }
+]

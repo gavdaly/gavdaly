@@ -1,0 +1,59 @@
+{
+  "languages": {
+    "Astro": {
+      "formatter": "prettier",
+      "tab_size": 2
+    },
+    "TypeScript": {
+      "formatter": "prettier",
+      "tab_size": 2
+    },
+    "JavaScript": {
+      "formatter": "prettier",
+      "tab_size": 2
+    },
+    "JSON": {
+      "formatter": "prettier",
+      "tab_size": 2
+    }
+  },
+  "formatter": "prettier",
+  "format_on_save": "on",
+  "tab_size": 2,
+  "soft_wrap": "editor_width",
+  "show_whitespaces": "selection",
+  "remove_trailing_whitespace_on_save": true,
+  "ensure_final_newline_on_save": true,
+  "file_types": {
+    "Astro": ["astro"]
+  },
+  "lsp": {
+    "astro-ls": {
+      "initialization_options": {
+        "typescript": {
+          "tsdk": "./node_modules/typescript/lib"
+        }
+      }
+    }
+  },
+  "terminal": {
+    "shell": {
+      "program": "/bin/zsh"
+    },
+    "working_directory": "current_project_directory"
+  },
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "vim_mode": false,
+  "buffer_font_size": 14,
+  "ui_font_size": 14,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  }
+}

@@ -48,8 +48,6 @@ export const onRequest: PagesFunction<Env> = async (
 
   const turnstileToken = formData.get("cf-turnstile-response");
   if (!turnstileToken) {
-    storeInvalidRequest;
-
     await storeInvalidRequest(connection, "missing_token", request, formData);
 
     return new Response("ok", { status: 200 }) as unknown as CFResponse;

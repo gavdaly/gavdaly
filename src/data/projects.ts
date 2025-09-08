@@ -1,4 +1,4 @@
-type Status = "Comming Soon" | "Completed" | "Inprogress" | "On Hold";
+type Status = "Coming Soon" | "Completed" | "In Progress" | "On Hold";
 
 export interface Project {
   slug: string;

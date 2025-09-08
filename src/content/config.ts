@@ -12,30 +12,30 @@ const PostState = z.union([
 const postsCollection = defineCollection({
   type: "content",
   schema: z.object({
-    title: z.string(),
-    publishedAt: z.date(),
-    description: z.string(),
+    title: z.string().min(1),
+    // Accept string dates in frontmatter and coerce to Date
+    publishedAt: z.coerce.date(),
+    description: z.string().min(10),
     postState: PostState,
-    tags: z.optional(z.array(z.string())),
+    tags: z.array(z.string()).optional(),
   }),
 });
 
 const StatusSchema = z.union([
-  z.literal("Comming Soon"),
+  z.literal("Coming Soon"),
   z.literal("Completed"),
-  z.literal("Inprogress"),
+  z.literal("In Progress"),
   z.literal("On Hold"),
 ]);
 
 const projectsCollection = defineCollection({
   schema: z.object({
-    title: z.string(),
-    sluged: z.string(),
-    technology: z.array(z.string()),
+    title: z.string().min(1),
+    technology: z.array(z.string()).min(1),
     status: StatusSchema,
-    link: z.optional(z.string()),
-    summary: z.optional(z.string()),
-    tags: z.optional(z.array(z.string())),
+    link: z.string().url().optional(),
+    summary: z.string().optional(),
+    tags: z.array(z.string()).optional(),
   }),
 });
 

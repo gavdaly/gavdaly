@@ -66,7 +66,19 @@ export const onRequest: PagesFunction<Env> = async (
     return new Response("ok", { status: 200 }) as unknown as CFResponse;
   }
 
-  const name = formData.get("form-name") as string;
+  const nameEntry = formData.get("form-name");
+  if (!nameEntry) {
+    await storeInvalidRequest(
+      connection,
+      "missing_form_name",
+      request,
+      formData,
+    );
+    return new Response("Unknown form name", {
+      status: 400,
+    }) as unknown as CFResponse;
+  }
+  const name = nameEntry.toString();
   switch (name) {
     case "contact":
       return await contact(formData, discord_hook, connection, request);
@@ -94,7 +106,7 @@ export const onRequest: PagesFunction<Env> = async (
  */
 async function storeInvalidRequest(
   connection: D1Database,
-  reason: String,
+  reason: string,
   request: Request<unknown, IncomingRequestCfProperties<unknown>>,
   formData: FormData,
 ) {

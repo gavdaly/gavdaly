@@ -1,15 +1,15 @@
-type Social = {
+interface Social {
   image?: string;
   label: string;
   link: string;
-};
+}
 
-type Presentation = {
+interface Presentation {
   title: string;
   description: string;
   socials: Social[];
   profile?: string;
-};
+}
 
 export const presentation: Presentation = {
   title: "Hi, I’m Gavin 👋",
@@ -17,7 +17,7 @@ export const presentation: Presentation = {
   description: "Developer from Canada 🇨🇦. I like to build things with code.",
   socials: [
     {
-      label: "Github",
+      label: "GitHub",
       link: "https://github.com/gavdaly",
       image: "github",
     },
@@ -32,7 +32,7 @@ export const presentation: Presentation = {
       image: "telegram",
     },
     // {
-    //   label: "Mastadon",
+    //   label: "Mastodon",
     //   link: "https://indiehackers.social/@gav",
     //   image: "mastodon",
     // },

@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro";
 
 <head>
   <script
+    is:inline
     src="https://challenges.cloudflare.com/turnstile/v0/api.js"
     async
     defer></script>
@@ -11,7 +12,7 @@ import Layout from "@/layouts/Layout.astro";
 
 <Layout
   title="GavDaly | Contact"
-  description="A contact form for getting intoch with Gavin"
+  description="A contact form for getting in touch with Gavin"
 >
   <form class="my-6 max-w-lg mx-auto" name="contact" method="POST">
     <input type="hidden" name="form-name" value="contact" />

@@ -15,8 +15,8 @@ I decided to work in public. I'm excited to see where this goes. I'm going to be
 
 ### August 27th, 2024
 
-Everything is going well, I have started to setup more social accounts and wroking on getting everything setup. Working on making a few blog posts and getting them ready to publish. Also working on a few projects that I will be releasing soon. I'm excited to see where this goes.
+Everything is going well, I have started to set up more social accounts and working on getting everything set up. Working on making a few blog posts and getting them ready to publish. Also working on a few projects that I will be releasing soon. I'm excited to see where this goes.
 
-### Feburary 24th, 2024
+### February 24th, 2024
 
-I've been busy working and some personal matters. Need to get into a habbit of posting more.
+I've been busy working and some personal matters. Need to get into a habit of posting more.

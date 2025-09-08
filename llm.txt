@@ -1,0 +1,60 @@
+# Astro SolidJS Project
+
+> A modern web application built with Astro framework, utilizing SolidJS for interactive components, Tailwind CSS for styling, marked for markdown processing, and TypeScript for type safety. Deployed on Cloudflare with serverless functions.
+
+This project leverages Astro's islands architecture to deliver fast, content-focused websites with selective hydration. The combination of SolidJS provides performant reactive components, while Tailwind CSS enables rapid styling with utility classes. Markdown content is processed using the marked library, and the entire codebase is written in TypeScript for enhanced developer experience and code reliability.
+
+The application is deployed on Cloudflare Pages with Functions providing serverless backend capabilities through the `/functions` directory structure.
+
+## Core Framework & Architecture
+
+- [Astro Documentation](https://docs.astro.build/): Complete guide to Astro's file-based routing, components, and islands architecture
+- [Astro Project Structure](https://docs.astro.build/en/basics/project-structure/): Understanding the standard Astro project layout with src/, public/, and configuration files
+- [Astro SolidJS Integration](https://docs.astro.build/en/guides/integrations-guide/solid-js/): Official guide for integrating SolidJS components in Astro projects
+
+## UI Framework & Components
+
+- [SolidJS Documentation](https://www.solidjs.com/docs/latest): Comprehensive guide to SolidJS reactive primitives, components, and patterns
+- [SolidJS + Astro Setup](https://docs.astro.build/en/guides/framework-components/): How to use SolidJS components within Astro's component system
+- [Client-side Hydration](https://docs.astro.build/en/concepts/islands/): Understanding Astro's islands architecture and when to hydrate components
+
+## Styling & Design
+
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs): Complete reference for Tailwind's utility classes and configuration
+- [Astro Tailwind Integration](https://docs.astro.build/en/guides/integrations-guide/tailwind/): Setting up and configuring Tailwind CSS with Astro
+- [Tailwind with Astro Guide](https://tailwindcss.com/docs/guides/astro): Official Tailwind guide for Astro integration
+
+## Content Processing
+
+- [Marked Documentation](https://marked.js.org/): Fast markdown parser and compiler for JavaScript
+- [Marked Usage Guide](https://marked.js.org/using-advanced): Advanced usage patterns and configuration options
+- [Astro Markdown Pages](https://docs.astro.build/en/guides/markdown-content/): Using markdown files as pages in Astro
+
+## Development & Type Safety
+
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/): Complete TypeScript language reference and guides
+- [Astro TypeScript Setup](https://docs.astro.build/en/guides/typescript/): Configuring TypeScript in Astro projects
+- [TSConfig Reference](https://www.typescriptlang.org/tsconfig/): Complete reference for TypeScript configuration options
+
+## Deployment & Serverless Functions
+
+- [Cloudflare Pages Documentation](https://developers.cloudflare.com/pages/): Complete guide to deploying static sites on Cloudflare Pages
+- [Cloudflare Functions](https://developers.cloudflare.com/pages/functions/): Creating serverless functions with file-based routing
+- [Functions Get Started](https://developers.cloudflare.com/pages/functions/get-started/): Quick start guide for adding Functions to your Pages project
+- [Functions Routing](https://developers.cloudflare.com/pages/functions/routing/): Understanding file-based routing for serverless functions
+
+## Configuration Files
+
+- [astro.config.mjs](astro.config.mjs): Main Astro configuration with integrations for SolidJS and Tailwind
+- [tailwind.config.cjs](tailwind.config.cjs): Tailwind CSS configuration and customization
+- [tsconfig.json](tsconfig.json): TypeScript compiler configuration and path mapping
+- [package.json](package.json): Project dependencies and scripts
+- [.eslintrc.js](.eslintrc.js): ESLint configuration (Astro plugin)
+- [.prettier.config.cjs](.prettier.config.cjs): Prettier with Astro/Tailwind plugins
+
+## Optional
+
+- [Astro Content Collections](https://docs.astro.build/en/guides/content-collections/): Advanced content management with type-safe schemas
+- [SolidJS Devtools](https://docs.astro.build/en/guides/integrations-guide/solid-js/#devtools): Development tools for debugging SolidJS components
+- [Cloudflare Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/): Command-line tool for Cloudflare development
+- [Astro Performance Guide](https://docs.astro.build/en/concepts/why-astro/): Understanding Astro's performance benefits and optimization techniques

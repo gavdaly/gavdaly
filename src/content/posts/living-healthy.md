@@ -5,7 +5,7 @@ description: "It took me a while to start **Living Healthy** this is what help m
 postState: "idea"
 ---
 
-**Living healthy** is hard, espically in today with all of the redialy available carbohydrates. I have struggled for many years trying to keep my weight down. I've tried many diets and excercise programs. I've found there is no magic solution. Here is what has worked for me, I hope it can help you.
+**Living healthy** is hard, especially today with all of the readily available carbohydrates. I have struggled for many years trying to keep my weight down. I've tried many diets and exercise programs. I've found there is no magic solution. Here is what has worked for me, I hope it can help you.
 
 ### Eating Healthy
 
@@ -13,11 +13,11 @@ Eat whole foods, don't eat too many calories, and eat enough protein. The more y
 
 ### Walkin', Ruckin' and Rowin'
 
-These are the excercises that I do. Walking is super important, it helps relax your body and, it's a form of meditation. Rucking is simply walking with a weighted backpack. And rowing is a great full body workout that really get's your heart rate up, I do this in a high intensity style.
+These are the exercises that I do. Walking is super important; it helps relax your body and it's a form of meditation. Rucking is simply walking with a weighted backpack. And rowing is a great full body workout that really gets your heart rate up. I do this in a high intensity style.
 
 ### Drink Lots of Water
 
-I drink lots of water, aim for at least 1 gallon (4 liters) a day. I have a gallon water bottle I carry around everywhere. When I'm feeling exta thirsty or hungry when I think I shouldn't be I'll have some electrolytes. It normally helps.
+I drink lots of water; aim for at least 1 gallon (4 liters) a day. I have a gallon water bottle I carry around everywhere. When I'm feeling extra thirsty or hungry when I think I shouldn't be, I'll have some electrolytes. It normally helps.
 
 ### Sleep
 

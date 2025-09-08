@@ -1,0 +1,7 @@
+node_modules
+dist
+.astro
+
+# Preserve frontmatter style in authored content
+src/content/**/*.md
+

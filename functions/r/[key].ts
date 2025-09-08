@@ -31,7 +31,7 @@ export const onRequest: PagesFunction<Env> = async (
     const now = () => Math.floor(new Date().getTime() / 1000);
 
     await DB.prepare(
-      "INSERT INTO forwared_links (location, headers, timestamp) VALUES (?, ?, ?)",
+      "INSERT INTO forwarded_links (location, headers, timestamp) VALUES (?, ?, ?)",
     )
       .bind(key, headers, now())
       .run();

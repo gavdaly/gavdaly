@@ -66,7 +66,19 @@ export const onRequest: PagesFunction<Env> = async (
     return new Response("ok", { status: 200 }) as unknown as CFResponse;
   }
 
-  const name = formData.get("form-name") as string;
+  const nameEntry = formData.get("form-name");
+  if (!nameEntry) {
+    await storeInvalidRequest(
+      connection,
+      "missing_form_name",
+      request,
+      formData,
+    );
+    return new Response("Unknown form name", {
+      status: 400,
+    }) as unknown as CFResponse;
+  }
+  const name = nameEntry.toString();
   switch (name) {
     case "contact":
       return await contact(formData, discord_hook, connection, request);
@@ -94,7 +106,7 @@ export const onRequest: PagesFunction<Env> = async (
  */
 async function storeInvalidRequest(
   connection: D1Database,
-  reason: String,
+  reason: string,
   request: Request<unknown, IncomingRequestCfProperties<unknown>>,
   formData: FormData,
 ) {
@@ -227,6 +239,10 @@ async function verifyTurnstileToken(
   token: string,
   secretKey: string,
 ): Promise<boolean> {
+  type TurnstileVerifyResponse = {
+    success: boolean;
+    [key: string]: unknown;
+  };
   const formData = new URLSearchParams();
   formData.append("secret", secretKey);
   formData.append("response", token);
@@ -242,6 +258,10 @@ async function verifyTurnstileToken(
     },
   );
 
-  const outcome = await result.json();
-  return outcome.success;
+  if (!result.ok) {
+    return false;
+  }
+
+  const outcome = (await result.json()) as TurnstileVerifyResponse;
+  return Boolean(outcome.success);
 }

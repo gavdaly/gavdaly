@@ -31,9 +31,9 @@ well, this one simple they don’t allow it at all.
 
 #### Self Hosted
 
-This one is all up to you. There are many ways to do it. You can make your own cloud many different ways, but that’s the whole thing with Lennox. There’s multiple ways to do things and it’s all up to you to make sure you follow best practises if I were to set up a personal cloud in Lennox what I would.
+This one is all up to you. There are many ways to do it. You can make your own cloud many different ways, but that’s the whole thing with Linux. There are multiple ways to do things and it’s all up to you to make sure you follow best practices. If I were to set up a personal cloud in Linux, what I would do is:
 
-This is one of the best options if you want mix operating systems. Because the big companis want you to buy into their silos and keep you there.
+This is one of the best options if you want to mix operating systems, because the big companies want you to buy into their silos and keep you there.
 
 Steps to make simple file sharing based on [`Tailscale`](https://tailscale.com):
 

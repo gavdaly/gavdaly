@@ -35,11 +35,11 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 ### Curve25519
 
 Crate: [ring](https://docs.rs/ring/latest/ring/)
-Type: Asymetric
+Type: Asymmetric
 Security: Highly Secure
 Use Cases: TLS, Cryptographic Wallets
 Key Exchange Method: Public/Private Key
-Computtational Complexity: High
+Computational Complexity: High
 
 Curve25519 is a high-speed elliptic curve designed for use in asymmetric cryptography and key agreement.
 
@@ -54,11 +54,11 @@ Key features:
 ### NIST
 
 Crate: [ring](https://docs.rs/ring/latest/ring/)
-Type: Asymetric
+Type: Asymmetric
 Security: Highly Secure
 Use Cases: TLS, Cryptographic Wallets
 Key Exchange Method: Public/Private Key
-Computtational Complexity: High
+Computational Complexity: High
 
 NIST elliptic curves are standardized curves commonly used in cryptographic protocols. In Rust, you can use them via the `ring` crate:
 
@@ -84,7 +84,7 @@ Key features:
 - Believed resistant to quantum computer attacks
 - Active area of research and standardization
 
-### AES - Advanced Encryption Standard (Symetric)
+### AES - Advanced Encryption Standard (Symmetric)
 
 AES is a widely-used symmetric block cipher providing fast, secure encryption. In Rust, you can use it via the `aes-gcm` crate for authenticated encryption:
 
@@ -96,7 +96,7 @@ Key features:
 - Fast hardware acceleration on modern CPUs
 - FIPS certified implementations available
 
-### ChaCha20 (Symetric)
+### ChaCha20 (Symmetric)
 
 ChaCha20 is a high-performance stream cipher that's often paired with Poly1305 for authenticated encryption. It's designed to be faster than AES on platforms without dedicated hardware acceleration. In Rust, you can use it via the `chacha20poly1305` crate:
 
@@ -109,12 +109,12 @@ Key features:
 - Authenticated encryption with Poly1305
 - Widely used in TLS 1.3 and WireGuard
 
-## Termonology
+## Terminology
 
-### Asymetric
+### Asymmetric
 
-Asymetric Algorithims are where there is a public key and private key. Used for when you want to publicly send the encryption key and keep the decription private.
+Asymmetric algorithms use a public key and a private key. They are used when you want to publicly share an encryption key and keep the decryption key private.
 
-### Symetic
+### Symmetric
 
-Symetic Algorithms have oney key that encrypts and decryps the data.
+Symmetric algorithms have one key that encrypts and decrypts the data.

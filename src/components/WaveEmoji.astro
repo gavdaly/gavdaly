@@ -1,0 +1,171 @@
+---
+const { emoji = "👋" } = Astro.props;
+---
+
+<span class="wave" role="img" aria-label="Waving hand">{emoji}</span>
+
+<script type="module">
+  const MAX_DISTANCE = 400;
+  const MIN_DURATION = 1.0;
+  const MAX_DURATION = 2.4;
+  const DEFAULT_DURATION = 2.0;
+  const SPEED_THRESHOLD = 0.03;
+
+  const waveElement =
+    document.currentScript?.previousElementSibling ??
+    document.querySelector(".wave");
+
+  if (!(waveElement instanceof HTMLElement)) {
+    console.warn("Wave emoji element not found");
+    return;
+  }
+
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+  const keyframes = [
+    { transform: "rotate(0deg)" },
+    { transform: "rotate(14deg)", offset: 0.1 },
+    { transform: "rotate(-8deg)", offset: 0.2 },
+    { transform: "rotate(14deg)", offset: 0.3 },
+    { transform: "rotate(-4deg)", offset: 0.4 },
+    { transform: "rotate(10deg)", offset: 0.5 },
+    { transform: "rotate(0deg)", offset: 0.6 },
+    { transform: "rotate(0deg)", offset: 1 },
+  ];
+
+  let animation = null;
+
+  const ensureAnimation = () => {
+    if (animation) {
+      return animation;
+    }
+
+    if (typeof waveElement.animate !== "function") {
+      return null;
+    }
+
+    waveElement.style.animation = "none";
+
+    animation = waveElement.animate(keyframes, {
+      duration: DEFAULT_DURATION * 1000,
+      iterations: Infinity,
+      easing: "linear",
+    });
+
+    animation.play();
+    return animation;
+  };
+
+  const activeAnimation = ensureAnimation();
+
+  let currentDuration = DEFAULT_DURATION;
+  let pendingDuration = currentDuration;
+  let rafHandle = null;
+
+  const applyDuration = (value) => {
+    if (!activeAnimation) {
+      waveElement.style.setProperty("--wave-duration", `${value.toFixed(2)}s`);
+      currentDuration = value;
+      return;
+    }
+
+    activeAnimation.playbackRate = DEFAULT_DURATION / value;
+    currentDuration = value;
+  };
+
+  const flushDuration = () => {
+    rafHandle = null;
+    if (Math.abs(pendingDuration - currentDuration) < SPEED_THRESHOLD) {
+      return;
+    }
+
+    applyDuration(pendingDuration);
+  };
+
+  const scheduleFlush = () => {
+    if (rafHandle !== null) return;
+    rafHandle = requestAnimationFrame(flushDuration);
+  };
+
+  const handleMouseMove = (event) => {
+    const rect = waveElement.getBoundingClientRect();
+    const dx = event.clientX - (rect.left + rect.width / 2);
+    const dy = event.clientY - (rect.top + rect.height / 2);
+    const distance = Math.hypot(dx, dy);
+
+    const proximity = 1 - Math.min(distance, MAX_DISTANCE) / MAX_DISTANCE;
+    const eased = Math.pow(proximity, 1.4);
+    pendingDuration = clamp(
+      MAX_DURATION - eased * (MAX_DURATION - MIN_DURATION),
+      MIN_DURATION,
+      MAX_DURATION,
+    );
+
+    scheduleFlush();
+  };
+
+  const cleanup = () => {
+    document.removeEventListener("mousemove", handleMouseMove);
+    if (rafHandle !== null) {
+      cancelAnimationFrame(rafHandle);
+      rafHandle = null;
+    }
+    if (activeAnimation) {
+      activeAnimation.cancel();
+    }
+  };
+
+  applyDuration(DEFAULT_DURATION);
+  document.addEventListener("mousemove", handleMouseMove, { passive: true });
+  window.addEventListener("astro:cleanup", cleanup, { once: true });
+
+  if (import.meta.hot) {
+    import.meta.hot.dispose(cleanup);
+  }
+</script>
+
+<style>
+  .wave {
+    display: inline-block;
+    margin-left: 0.25em;
+    transform-origin: 70% 70%;
+    animation-name: wave-animation;
+    animation-duration: var(--wave-duration, 2s);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  @keyframes wave-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    10% {
+      transform: rotate(14deg);
+    }
+
+    20% {
+      transform: rotate(-8deg);
+    }
+
+    30% {
+      transform: rotate(14deg);
+    }
+
+    40% {
+      transform: rotate(-4deg);
+    }
+
+    50% {
+      transform: rotate(10deg);
+    }
+
+    60% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+</style>

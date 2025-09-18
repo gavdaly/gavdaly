@@ -9,25 +9,34 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
 });
 ---
 
-<article class="mb-6">
-  <header class="flex mb-4 w-full flex-row justify-between gap-2">
-    <h3 class="text-lg">Latest posts</h3>
-    <Link href="/posts" label="See all posts" isUnderline target="_self" />
+<article class="mb-10 rounded-xl py-6">
+  <header
+    class="flex mb-6 w-full flex-row items-center justify-between gap-4"
+  >
+    <h3 class="text-lg font-bold">Latest posts</h3>
+    <Link
+      href="/posts"
+      label="See all"
+      isUnderline
+      target="_self"
+      showArrow
+    />
   </header>
   {posts.length === 0 && <p>Soon, stay connected 👀...</p>}
 
   <section
-    class="grid grid-cols-1 gap-4 md:grid-cols-2 md:flex-wrap justify-between"
+    class="grid grid-cols-1 gap-6 md:grid-cols-2 md:flex-wrap justify-between"
   >
     {
       posts
         .slice(0, 4)
-        .map((post) => (
+        .map((post, index) => (
           <PostCard
             publishedAt={post.data.publishedAt}
             title={post.data.title}
             description={post.data.description}
             slug={post.slug}
+            animationDelay={index * 100}
           />
         ))
     }

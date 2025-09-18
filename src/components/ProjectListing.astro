@@ -5,16 +5,22 @@ import Link from "@/components/shared/Link.astro";
 const projects = await getCollection("projects");
 ---
 
-<article class="mb-6">
-  <header class="mb-4 flex justify-between">
+<article class="mb-10 rounded-xl py-6">
+  <header class="mb-6 flex items-center justify-between gap-4">
     <h3 class="text-lg font-bold">Selected Projects</h3>
-    <Link href="/posts" label="See all posts" isUnderline target="_self" />
+    <Link
+      href="/projects"
+      label="See all"
+      isUnderline
+      target="_self"
+      showArrow
+    />
   </header>
 
-  <section class="flex flex-col gap-4">
+  <section class="flex flex-col gap-6">
     {
-      projects.map(({ data: project, slug }) => (
-        <ProjectCard slug={slug} {...project} />
+      projects.map(({ data: project, slug }, index) => (
+        <ProjectCard slug={slug} {...project} animationDelay={index * 120} />
       ))
     }
   </section>

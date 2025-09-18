@@ -2,66 +2,126 @@
 import Layout from "./Layout.astro";
 import type { HeadTags } from "@/components/seo/SEOTags.astro";
 
-type Props = HeadTags;
-const props = Astro.props;
+type Props = HeadTags & {
+  bodyClass?: string;
+  mainClass?: string;
+};
+
+const { bodyClass, mainClass, ...layoutProps } = Astro.props as Props;
 ---
 
-<Layout {...props}>
-  <main id="main" class="my-10">
-    <slot />
+<Layout {...layoutProps}>
+  <main
+    id="main"
+    class:list={[
+      "mx-auto flex max-w-3xl flex-col gap-10 px-4 py-12 md:gap-14 md:px-0 md:py-20",
+      mainClass,
+    ]}
+  >
+    <slot name="header" />
+
+    <article class:list={["markdown-body", bodyClass]}>
+      <slot />
+    </article>
+
+    <slot name="footer" />
   </main>
 </Layout>
 
 <style is:global>
-  main p {
-    @apply leading-5;
+  .markdown-body {
+    @apply space-y-6 text-base leading-relaxed text-sky-950 dark:text-sky-100 md:text-lg;
   }
 
-  main code {
-    @apply rounded-sm bg-neutral-800 px-2 py-1 mx-1 text-blue-500;
+  .markdown-body > :where(* + *) {
+    @apply mt-8;
   }
 
-  main h2 {
-    @apply mt-6 text-3xl font-black;
+  .markdown-body :where(h1) {
+    @apply text-3xl font-extrabold tracking-tight text-sky-950 dark:text-sky-100 md:text-4xl;
   }
 
-  main h3 {
-    @apply mt-5 text-2xl font-black;
+  .markdown-body :where(h2) {
+    @apply mt-10 text-2xl font-semibold text-sky-900 dark:text-sky-100 md:text-3xl;
   }
 
-  main h4 {
-    @apply mt-4 text-xl font-black;
+  .markdown-body :where(h3) {
+    @apply mt-8 text-xl font-semibold text-sky-900 dark:text-sky-100 md:text-2xl;
   }
 
-  main h5 {
-    @apply mt-3 text-lg font-black;
+  .markdown-body :where(h4) {
+    @apply mt-6 text-lg font-semibold text-sky-900 dark:text-sky-100;
   }
 
-  main h6 {
-    @apply mt-2 font-black;
+  .markdown-body :where(h5) {
+    @apply mt-5 text-base font-semibold uppercase tracking-wide text-sky-800 dark:text-sky-300;
   }
 
-  main a {
-    @apply text-neutral-800 dark:text-neutral-100 underline;
+  .markdown-body :where(p) {
+    @apply leading-7 text-sky-950 dark:text-sky-100;
   }
 
-  main ul {
-    @apply list-disc ml-4;
+  .markdown-body :where(a) {
+    @apply font-medium text-sky-800 underline underline-offset-4 transition-colors hover:text-sky-600 dark:text-sky-200 dark:hover:text-sky-100;
   }
 
-  main ol {
-    @apply list-decimal ml-6;
+  .markdown-body :where(ul) {
+    @apply my-6 list-disc space-y-2 pl-6 text-sky-950 dark:text-sky-100;
   }
 
-  main blockquote {
-    @apply flex flex-row gap-2 before:block before:h-auto before:w-1 before:max-w-[1px] before:bg-red-400 before:content-[''];
+  .markdown-body :where(ol) {
+    @apply my-6 list-decimal space-y-2 pl-6 text-sky-950 dark:text-sky-100;
   }
 
-  main pre {
-    @apply p-4;
+  .markdown-body :where(li) {
+    @apply leading-7;
   }
 
-  main pre > code {
-    @apply bg-transparent;
+  .markdown-body :where(code) {
+    @apply rounded-md border border-sky-200/60 bg-sky-100 px-2 py-1 font-mono text-sm font-semibold text-sky-900 shadow-sm dark:border-sky-700/70 dark:bg-slate-800 dark:text-sky-100;
+  }
+
+  .markdown-body :where(pre) {
+    @apply overflow-x-auto rounded-xl bg-slate-900/95 p-5 text-sm text-sky-100 shadow-lg dark:bg-slate-900;
+  }
+
+  .markdown-body :where(pre > code) {
+    @apply block min-w-full border-0 bg-transparent p-0 text-[0.95rem] font-mono font-normal leading-7 text-inherit;
+  }
+
+  .markdown-body :where(blockquote) {
+    @apply my-10 border-l-4 border-sky-500/70 bg-sky-100/60 p-6 italic text-sky-900 dark:border-sky-400/60 dark:bg-sky-900/30 dark:text-sky-100;
+  }
+
+  .markdown-body :where(blockquote > * + *) {
+    @apply mt-4;
+  }
+
+  .markdown-body :where(hr) {
+    @apply my-12 border-sky-200/70 dark:border-sky-800/50;
+  }
+
+  .markdown-body :where(img, video) {
+    @apply my-8 w-full rounded-xl border border-sky-200/60 shadow-md dark:border-sky-800/60;
+  }
+
+  .markdown-body :where(figure) {
+    @apply my-10 flex flex-col gap-3;
+  }
+
+  .markdown-body :where(figcaption) {
+    @apply text-sm text-sky-700 dark:text-sky-300;
+  }
+
+  .markdown-body :where(table) {
+    @apply my-8 w-full table-auto border-separate border-spacing-y-2 text-left;
+  }
+
+  .markdown-body :where(th) {
+    @apply border-b border-sky-300/70 pb-2 text-xs font-semibold uppercase tracking-wide text-sky-800 dark:border-sky-700/60 dark:text-sky-200;
+  }
+
+  .markdown-body :where(td) {
+    @apply border-b border-sky-200/60 py-3 text-base leading-7 text-sky-900 dark:border-sky-800/60 dark:text-sky-100;
   }
 </style>

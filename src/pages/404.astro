@@ -6,7 +6,72 @@ import Layout from "../layouts/Layout.astro";
   title="Not Found"
   description="The page you were looking for could not be found."
 >
-  <h1>404</h1>
-  <p>Page not found</p>
-  <a href="/">Go back home</a>
+  <section class="flex flex-col gap-8">
+    <div class="space-y-3">
+      <h1 class="text-5xl font-black text-sky-950 dark:text-sky-100">Page not found</h1>
+      <p class="text-lg text-sky-900 dark:text-sky-200">
+        The page you were looking for doesn't exist or has moved. Try one of the options below to keep exploring.
+      </p>
+    </div>
+
+    <form
+      role="search"
+      action="https://www.google.com/search"
+      method="get"
+      class="flex flex-col gap-2 rounded-lg border border-sky-400/60 bg-white/70 p-4 shadow-sm dark:border-sky-700/60 dark:bg-sky-900/40"
+    >
+      <label class="text-sm font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300" for="search-query">
+        Search the site
+      </label>
+      <input type="hidden" name="as_sitesearch" value="gavdaly.com" />
+      <div class="flex flex-col gap-3 md:flex-row">
+        <input
+          id="search-query"
+          name="q"
+          type="search"
+          placeholder="What are you looking for?"
+          class="w-full rounded border border-sky-400/60 bg-white px-3 py-2 text-base text-sky-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:border-sky-700/60 dark:bg-sky-950 dark:text-sky-100"
+        />
+        <button
+          type="submit"
+          class="w-full rounded bg-sky-800 px-4 py-2 text-base font-semibold text-sky-100 transition hover:bg-sky-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300 dark:bg-sky-600 dark:hover:bg-sky-500"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+
+    <nav aria-label="Helpful links">
+      <ul class="grid gap-3 md:grid-cols-2">
+        <li>
+          <a class="block rounded border border-sky-400/60 bg-white/70 px-4 py-3 font-semibold text-sky-900 transition hover:border-sky-500 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:border-sky-700/60 dark:bg-sky-900/40 dark:text-sky-100 dark:hover:border-sky-500" href="/">
+            ⟵ Head back home
+          </a>
+        </li>
+        <li>
+          <a class="block rounded border border-sky-400/60 bg-white/70 px-4 py-3 font-semibold text-sky-900 transition hover:border-sky-500 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:border-sky-700/60 dark:bg-sky-900/40 dark:text-sky-100 dark:hover:border-sky-500" href="/posts">
+            Read the latest posts
+          </a>
+        </li>
+        <li>
+          <a class="block rounded border border-sky-400/60 bg-white/70 px-4 py-3 font-semibold text-sky-900 transition hover:border-sky-500 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:border-sky-700/60 dark:bg-sky-900/40 dark:text-sky-100 dark:hover:border-sky-500" href="/projects">
+            Explore current projects
+          </a>
+        </li>
+        <li>
+          <a class="block rounded border border-sky-400/60 bg-white/70 px-4 py-3 font-semibold text-sky-900 transition hover:border-sky-500 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:border-sky-700/60 dark:bg-sky-900/40 dark:text-sky-100 dark:hover:border-sky-500" href="/tags">
+            Browse by topic
+          </a>
+        </li>
+        <li class="md:col-span-2">
+          <a
+            class="flex items-center justify-center gap-2 rounded border border-sky-700 bg-sky-800 px-4 py-3 font-semibold text-sky-100 transition hover:bg-sky-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300 dark:border-sky-500 dark:bg-sky-600 dark:hover:bg-sky-500"
+            href="https://github.com/gavdaly/gavdaly/issues/new?title=Broken+link:+&body=I+found+this+broken+link on:"
+          >
+            Report an issue on GitHub
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </section>
 </Layout>

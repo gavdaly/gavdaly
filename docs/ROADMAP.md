@@ -16,16 +16,16 @@ Guiding Principles
 
 - [x] Pre-commit hooks (husky + lint-staged)
   - Run: `eslint`, `markdownlint-cli2`, `cspell`, and a project `astro check`
-- [ ] E2E smoke tests (Playwright)
+- [x] E2E smoke tests (Playwright)
   - Routes: home, posts index + one post, tags index, contact, 404
   - Basic assertions: status 200/404, key content visible, no console errors
 - [x] CI quality/caching
   - Cache node_modules based on lockfile; matrix Node 18/20/22 LTS
   - Enforce `eslint --max-warnings=0`; keep `ts-prune` report-only
-- [ ] Security headers (Workers)
+- [x] Security headers (Workers)
   - Add CSP (start in report-only), Referrer-Policy, Permissions-Policy, COOP/COEP
   - Log violations (report-to endpoint or console for now)
-- [ ] Accessibility quick wins
+- [x] Accessibility quick wins
   - Ensure focus styles, landmarks/roles, skip link; add `@axe-core/playwright` checks
 
 ## Phase 2 — Next (2–4 weeks)
@@ -33,9 +33,9 @@ Guiding Principles
 - [ ] Lighthouse CI with budgets (perf, accessibility)
 - [ ] Error and request telemetry
   - Sentry; scrub PII; sample rates and env tagging
-- [ ] Structured data (JSON-LD)
+- [x] Structured data (JSON-LD)
   - Article + BreadcrumbList for posts; validate in Rich Results Test
-- [ ] 404/500 pages improvements
+- [x] 404/500 pages improvements
   - Helpful navigation, search links, and report-issue CTA
 
 ## Phase 3 — Nice-to-haves

@@ -37,6 +37,8 @@
 
 ## Commit & Pull Request Guidelines
 
+- Version control: use Jujutsu (`jj`) for local history work; rely on commands like `jj status`, `jj log`, `jj commit`, and `jj new` rather than Git equivalents. Sync with remotes via `jj git fetch`/`jj git push`.
+- Jujutsu workflow tips: `jj new <name>` creates a branch-like change, `jj log -r ::@` shows your stack, `jj amend -r @` polishes the current change, and use `jj squash`/`jj rebase` to tidy stacks before a PR.
 - Prefer Conventional Commits: `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`. Use `wip:` only for drafts.
 - Keep messages imperative and scoped (e.g., `feat: add tags page`).
 - PRs should include: concise description, rationale, screenshots for UI, reproduction/verification steps, and linked issues.

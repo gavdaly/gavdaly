@@ -1,7 +1,7 @@
 ---
 title: "GavDev"
 technology: ["Astro", "Blog", "Cloudflare Pages"]
-link: "https://www.gavdev.xyz/"
+link: "https://gavdev.xyz/"
 status: "In Progress"
 tags:
   - "development"

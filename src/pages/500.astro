@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Something went wrong"
+  description="An unexpected error occurred."
+>
+  <section class="flex flex-col gap-8">
+    <div class="space-y-3">
+      <h1 class="text-5xl font-black text-sky-950 dark:text-sky-100">We hit a snag</h1>
+      <p class="text-lg text-sky-900 dark:text-sky-200">
+        Sorry about that — something went wrong while loading this page. Try the options below or let me know what broke.
+      </p>
+    </div>
+
+    <div class="grid gap-3 md:grid-cols-2">
+      <a class="block rounded border border-sky-400/60 bg-white/70 px-4 py-3 font-semibold text-sky-900 transition hover:border-sky-500 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:border-sky-700/60 dark:bg-sky-900/40 dark:text-sky-100 dark:hover:border-sky-500" href="/">
+        ⟵ Return home
+      </a>
+      <a class="block rounded border border-sky-400/60 bg-white/70 px-4 py-3 font-semibold text-sky-900 transition hover:border-sky-500 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:border-sky-700/60 dark:bg-sky-900/40 dark:text-sky-100 dark:hover:border-sky-500" href="/posts">
+        View recent posts
+      </a>
+      <a class="block rounded border border-sky-400/60 bg-white/70 px-4 py-3 font-semibold text-sky-900 transition hover:border-sky-500 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:border-sky-700/60 dark:bg-sky-900/40 dark:text-sky-100 dark:hover:border-sky-500" href="/contact">
+        Get in touch directly
+      </a>
+      <a class="block rounded border border-sky-400/60 bg-white/70 px-4 py-3 font-semibold text-sky-900 transition hover:border-sky-500 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 dark:border-sky-700/60 dark:bg-sky-900/40 dark:text-sky-100 dark:hover:border-sky-500" href="/projects">
+        Discover ongoing projects
+      </a>
+      <a
+        class="md:col-span-2 flex items-center justify-center gap-2 rounded border border-sky-700 bg-sky-800 px-4 py-3 font-semibold text-sky-100 transition hover:bg-sky-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300 dark:border-sky-500 dark:bg-sky-600 dark:hover:bg-sky-500"
+        href="https://github.com/gavdaly/gavdaly/issues/new?title=Server+error:+&body=I+ran+into+a+500+error+on:"
+      >
+        Report this issue on GitHub
+      </a>
+    </div>
+  </section>
+</Layout>

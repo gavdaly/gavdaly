@@ -6,6 +6,7 @@ import type {
   Request,
   IncomingRequestCfProperties,
 } from "@cloudflare/workers-types";
+import { applySecurityHeaders } from "./securityHeaders";
 
 /**
  * Environment variables interface for Cloudflare Pages Function
@@ -37,9 +38,21 @@ export const onRequest: PagesFunction<Env> = async (
   const turnstile_secret = context.env.TURNSTILE_SECRET_KEY;
 
   const request = context.request;
+  const url = new URL(request.url);
+
+  if (request.method === "POST" && url.pathname === "/__csp-report") {
+    try {
+      const report = await request.json();
+      console.warn("CSP violation", JSON.stringify(report));
+    } catch (error) {
+      console.warn("Failed to parse CSP report", error);
+    }
+    return applySecurityHeaders(new Response(null, { status: 204 }));
+  }
 
   if (request.method !== "POST") {
-    return context.next();
+    const response = await context.next();
+    return applySecurityHeaders(response);
   }
 
   const connection = context.env.DB;
@@ -50,7 +63,7 @@ export const onRequest: PagesFunction<Env> = async (
   if (!turnstileToken) {
     await storeInvalidRequest(connection, "missing_token", request, formData);
 
-    return new Response("ok", { status: 200 }) as unknown as CFResponse;
+    return applySecurityHeaders(new Response("ok", { status: 200 }));
   }
 
   const isValid = await verifyTurnstileToken(
@@ -61,7 +74,7 @@ export const onRequest: PagesFunction<Env> = async (
   if (!isValid) {
     await storeInvalidRequest(connection, "invalid_token", request, formData);
 
-    return new Response("ok", { status: 200 }) as unknown as CFResponse;
+    return applySecurityHeaders(new Response("ok", { status: 200 }));
   }
 
   const nameEntry = formData.get("form-name");
@@ -72,14 +85,18 @@ export const onRequest: PagesFunction<Env> = async (
       request,
       formData,
     );
-    return new Response("Unknown form name", {
-      status: 400,
-    }) as unknown as CFResponse;
+    return applySecurityHeaders(
+      new Response("Unknown form name", {
+        status: 400,
+      }),
+    );
   }
   const name = nameEntry.toString();
   switch (name) {
     case "contact":
-      return await contact(formData, discord_hook, connection, request);
+      return applySecurityHeaders(
+        await contact(formData, discord_hook, connection, request),
+      );
     default:
       await storeInvalidRequest(
         connection,
@@ -87,9 +104,11 @@ export const onRequest: PagesFunction<Env> = async (
         request,
         formData,
       );
-      return new Response("Unknown form name", {
-        status: 400,
-      }) as unknown as CFResponse;
+      return applySecurityHeaders(
+        new Response("Unknown form name", {
+          status: 400,
+        }),
+      );
   }
 };
 

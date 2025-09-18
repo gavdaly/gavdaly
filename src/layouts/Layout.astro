@@ -18,10 +18,24 @@ const headTags = Astro.props;
   <body
     class="mx-auto max-w-4xl bg-blue-200 dark:bg-blue-950 px-10 py-8 text-sm text-sky-950 dark:text-sky-200 md:gap-20 md:py-16"
   >
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <Header />
-    <slot />
+    <div id="main-content" role="main" tabindex="-1" class="outline-none">
+      <slot />
+    </div>
     <footer>
       <SocialLinks />
     </footer>
-  </body><Sprite client:idle />
+  </body>
+  <Sprite client:idle />
 </html>
+
+<style is:global>
+  .skip-link {
+    @apply absolute left-4 top-4 z-50 -translate-y-24 rounded bg-sky-900 px-4 py-2 text-sm font-semibold text-sky-100 shadow-lg transition-all duration-200 ease-in-out dark:bg-sky-600;
+  }
+
+  .skip-link:focus-visible {
+    @apply translate-y-0 outline-none;
+  }
+</style>

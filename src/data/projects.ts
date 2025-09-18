@@ -18,7 +18,7 @@ export const PROJECT_STATUS_META: Record<
   ProjectStatus,
   { icon: string; badgeClass: string }
 > = {
-  "Completed": {
+  Completed: {
     icon: "✅",
     badgeClass:
       "bg-emerald-100/80 text-emerald-700 ring-emerald-400/40 dark:bg-emerald-900/40 dark:text-emerald-200",

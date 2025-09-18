@@ -12,6 +12,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "typecheck": "astro check",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
     "lint": "eslint 'src/**/*.{astro,ts,tsx}' --max-warnings=0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -39,6 +41,8 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.9.1",
+    "@playwright/test": "^1.49.1",
     "@cloudflare/workers-types": "^4.20250913.0",
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.42.0",

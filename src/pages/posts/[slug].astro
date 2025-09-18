@@ -5,6 +5,7 @@ import formatDate from "@/utils/formatDate";
 import type { CollectionEntry } from "astro:content";
 import Tags from "@/components/Tags.astro";
 import License from "@/components/CreativeCommons.astro";
+import { SITE_URL } from "@/data/config";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -23,7 +24,59 @@ const post = Astro.props.post;
 const data = post.data;
 const { title, description, publishedAt, postState, tags } = data;
 const { Content } = await post.render();
+
+const postUrl = new URL(`/posts/${post.slug}`, SITE_URL).toString();
+const structuredDataJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      headline: title,
+      description,
+      author: {
+        "@type": "Person",
+        name: "Gavin Daly",
+      },
+      datePublished: publishedAt.toISOString(),
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": postUrl,
+      },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: SITE_URL,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Posts",
+          item: new URL("/posts", SITE_URL).toString(),
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: title,
+          item: postUrl,
+        },
+      ],
+    },
+  ],
+});
+export { structuredDataJson };
+
 ---
+<head>
+  <script is:inline type="application/ld+json">
+    {structuredDataJson}
+  </script>
+</head>
+
 
 <Layout title={title} description={description} bodyClass="post-body">
   <header slot="header" class="flex flex-col gap-6 md:gap-8">
@@ -62,78 +115,3 @@ const { Content } = await post.render();
     <License title={title} />
   </footer>
 </Layout>
-
-<head>
-<script is:inline type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": `${title}`,
-    "description": `${description}`,
-    "author": {
-      "@type": "Person",
-      "name": "Gavin Daly"
-    },
-    "datePublished": `${publishedAt.toISOString()}`,
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `${Astro.url}`
-    }
-  }
-</script>
-
-</head>
-
-<style is:global>
-  .markdown-body.post-body {
-    @apply space-y-8 md:text-lg;
-  }
-
-  .markdown-body.post-body > :where(* + *) {
-    @apply mt-10;
-  }
-
-  .markdown-body.post-body p {
-    @apply leading-8;
-  }
-
-  .markdown-body.post-body strong {
-    @apply font-semibold text-sky-950 dark:text-sky-100;
-  }
-
-  .markdown-body.post-body a {
-    @apply font-semibold;
-  }
-
-  .markdown-body.post-body blockquote {
-    @apply text-lg;
-  }
-
-  .markdown-body.post-body ul {
-    @apply list-disc;
-  }
-
-  .markdown-body.post-body ol {
-    @apply list-decimal;
-  }
-
-  .markdown-body.post-body h2 {
-    @apply mt-16 text-3xl font-bold tracking-tight text-sky-950 dark:text-sky-100 md:text-4xl;
-  }
-
-  .markdown-body.post-body h3 {
-    @apply mt-12 text-2xl font-semibold text-sky-900 dark:text-sky-100 md:text-3xl;
-  }
-
-  .markdown-body.post-body h4 {
-    @apply mt-8 text-xl font-semibold text-sky-900 dark:text-sky-100;
-  }
-
-  .markdown-body.post-body h5 {
-    @apply mt-6 text-lg font-semibold text-sky-900 dark:text-sky-100;
-  }
-
-  .markdown-body.post-body h6 {
-    @apply mt-6 text-sm font-semibold uppercase tracking-wide text-sky-700 dark:text-sky-300;
-  }
-</style>

@@ -4,6 +4,7 @@ import type {
   Response as CFResponse,
   D1Database,
 } from "@cloudflare/workers-types";
+import { applySecurityHeaders } from "../../securityHeaders";
 
 interface Env {
   GAV_DALY_REFERRAL: KVNamespace;
@@ -22,9 +23,11 @@ export const onRequest: PagesFunction<Env> = async (
   try {
     const url = await GAV_DALY_REFERRAL.get(key);
     if (!url) {
-      return new Response("Not found", {
-        status: 404,
-      }) as unknown as CFResponse;
+      return applySecurityHeaders(
+        new Response("Not found", {
+          status: 404,
+        }),
+      );
     }
     const headers = JSON.stringify(
       Array.from(context.request.headers.entries()),
@@ -37,11 +40,13 @@ export const onRequest: PagesFunction<Env> = async (
       .bind(key, headers, campaign, now())
       .run();
 
-    return Response.redirect(url, 302) as unknown as CFResponse;
+    return applySecurityHeaders(Response.redirect(url, 302));
   } catch (e) {
     console.error(e);
-    return new Response("Internal server error", {
-      status: 500,
-    }) as unknown as CFResponse;
+    return applySecurityHeaders(
+      new Response("Internal server error", {
+        status: 500,
+      }),
+    );
   }
 };

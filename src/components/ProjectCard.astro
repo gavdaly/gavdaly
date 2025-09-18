@@ -1,26 +1,36 @@
 ---
+import CardLink from "@/components/CardLink.astro";
 import type { Project } from "@/data/projects";
+import { PROJECT_STATUS_META } from "@/data/projects";
 
-type Props = Project;
+type Props = Project & {
+  animationDelay?: number;
+};
 
-const { title, technology, status, slug } = Astro.props;
+const { title, technology, status, slug, animationDelay = 0 } = Astro.props;
 
 const formatTechs = (values: string[]) =>
   values.toString().replaceAll(",", " • ");
+
+const statusMeta = PROJECT_STATUS_META[status];
 ---
 
-<a
-  class="group w-full cursor-pointer justify-between gap-2 rounded-2xl border border-blue-800 p-4 transition-all duration-300 hover:-translate-y-2 md:flex-row md:items-center"
+<CardLink
   href={`/projects/${slug}`}
+  class="w-full justify-between gap-3 px-5 md:flex-row md:items-center"
+  style={{ animationDelay: `${animationDelay}ms` }}
 >
   <div class="flex flex-wrap gap-2 justify-between mb-2">
     <h2 class="font-bold text-lg">{title}</h2>
 
-    <span class="w-fit rounded-lg border border-blue-800 px-4 py-1"
-      >{status}</span
+    <span
+      class={`inline-flex items-center gap-2 rounded-md px-3 py-1 text-xs font-semibold uppercase tracking-wide ring-1 ${statusMeta.badgeClass}`}
     >
+      <span aria-hidden="true">{statusMeta.icon}</span>
+      <span class="whitespace-nowrap">{status}</span>
+    </span>
   </div>
   <div class="flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
     <span class="truncate font-thin text-sm">{formatTechs(technology)}</span>
   </div>
-</a>
+</CardLink>

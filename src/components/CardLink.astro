@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a"> & {
+  href: string;
+};
+
+const { class: extraClass = "", ...props } = Astro.props as Props;
+
+const baseClass =
+  "group block cursor-pointer rounded-xl px-6 py-6 transition duration-300 ease-out transition-colors bg-white/50 ring-1 ring-sky-900/10 shadow-sm transform motion-safe:opacity-0 motion-safe:animate-card-fade hover:-translate-y-2 hover:scale-[1.03] hover:bg-slate-100/80 hover:shadow-[0_20px_45px_rgba(15,23,42,0.18)] hover:ring-sky-500/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-500 motion-reduce:transform-none motion-reduce:shadow-none motion-reduce:transition-none dark:bg-slate-900/40 dark:ring-sky-100/15 dark:hover:bg-slate-900/60 dark:hover:ring-sky-200/30 dark:shadow-none";
+---
+
+<a class={`${baseClass} ${extraClass}`.trim()} {...props}>
+  <slot />
+</a>

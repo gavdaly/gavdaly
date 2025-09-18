@@ -31,34 +31,59 @@ const { Content } = await project.render();
   title={`Project: ${title} | GavDaly`}
   description={summary || `Project: ${title}`}
 >
-  <div class="flex mt-3 mb-3 gap-6 items-baseline">
-    <h2 class="font-extrabold text-3xl">{title}</h2>
-    {
-      link && (
-        <a href={link} rel="noopener noreferrer">
-          <span class="sr-only">GitHub link to {title}</span>
-          <svg class="icon h-5 w-5">
-            <use href={`#github`} />
-          </svg>
-        </a>
-      )
-    }
-  </div>
+  <header slot="header" class="flex flex-col gap-6 md:gap-8">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <h1 class="text-4xl font-black tracking-tight text-sky-950 dark:text-sky-100 md:text-5xl">
+        {title}
+      </h1>
+      {
+        link && (
+          <a
+            class="inline-flex items-center gap-2 text-sm font-medium text-sky-800 underline-offset-4 hover:underline dark:text-sky-200"
+            href={link}
+            rel="noopener noreferrer"
+          >
+            View project
+            <span class="sr-only">External link to {title}</span>
+            <svg class="icon h-5 w-5">
+              <use href={`#github`} />
+            </svg>
+          </a>
+        )
+      }
+    </div>
 
-  <span class="w-fit rounded-lg border border-blue-800 px-4 py-1">
-    {status}
-  </span>
-  <h3 class="mt-3">Technology Used</h3>
-  <ul class="flex flex-row gap-3 my-4 list-none ml-0">
-    {
-      technology.map((tech: string) => (
-        <li class="text-xs font-thin">{tech}</li>
-      ))
-    }
-  </ul>
-  <Tags names={tags} />
-  <article>
-    <Content />
-  </article>
-  <License title={title} />
+    <div class="flex flex-wrap gap-3">
+      <span
+        class="rounded-full border border-sky-900/20 bg-sky-100 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-sky-900 dark:border-sky-100/10 dark:bg-sky-900/30 dark:text-sky-100"
+      >
+        {status}
+      </span>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <span class="text-xs font-semibold uppercase tracking-wide text-sky-600 dark:text-sky-300">
+        Technology
+      </span>
+      <ul class="flex flex-wrap gap-3">
+        {
+          technology.map((tech: string) => (
+            <li
+              class="rounded-full border border-sky-900/15 bg-sky-100 px-3 py-1 text-sm font-medium text-sky-900 dark:border-sky-100/10 dark:bg-sky-900/30 dark:text-sky-100"
+            >
+              {tech}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <Tags names={tags} />
+  </header>
+
+  <Content />
+
+  <footer slot="footer" class="text-sm text-sky-700 dark:text-sky-300">
+    <License title={title} />
+  </footer>
 </Layout>

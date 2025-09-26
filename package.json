@@ -14,6 +14,8 @@
     "typecheck": "astro check",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
+    "test:e2e:visual": "playwright test visual",
+    "test:e2e:visual:update": "playwright test visual --update-snapshots",
     "lint": "eslint 'src/**/*.{astro,ts,tsx}' --max-warnings=0",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

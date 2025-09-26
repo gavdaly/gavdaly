@@ -41,6 +41,7 @@ Guiding Principles
 ## Phase 3 — Nice-to-haves
 
 - [x] Visual regression testing (Playwright snapshots or Percy)
+  - Playwright baseline screenshots covering home and posts routes
 - [ ] Secret scanning
   - Gitleaks in CI; baseline + allowlist for known test credentials
 - [ ] Dev environment reproducibility

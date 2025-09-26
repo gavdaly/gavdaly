@@ -1,0 +1,27 @@
+{
+  "name": "gavdaly",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "installOhMyZsh": false
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "23.5.0",
+      "pnpm": "9.12.0"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [4321, 8787],
+  "postCreateCommand": "npm install -g wrangler@3 && npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "astro-build.astro-vscode",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  }
+}

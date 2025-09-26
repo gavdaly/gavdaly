@@ -44,8 +44,8 @@ Guiding Principles
   - Playwright baseline screenshots covering home and posts routes
 - [ ] Secret scanning
   - Gitleaks in CI; baseline + allowlist for known test credentials
-- [ ] Dev environment reproducibility
-  - Devcontainer or asdf `.tool-versions` (Node, pnpm, wrangler)
+- [x] Dev environment reproducibility
+  - Devcontainer with Node 23.5, pnpm, npm scripts, and wrangler preinstalled
 - [ ] ts-prune enforcement
   - Calibrate ignores; fail CI once noise is near-zero
 

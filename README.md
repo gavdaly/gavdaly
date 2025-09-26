@@ -5,6 +5,16 @@
 
 See the project roadmap: [docs/ROADMAP.md](docs/ROADMAP.md)
 
+## Development Environment
+
+You can spin up a ready-to-code workspace using the included Dev Container configuration. It installs Node 23.5.0, pnpm, npm, and Cloudflare Wrangler so the usual `npm` scripts and Pages workflows run out of the box.
+
+1. Install the [VS Code Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) or use [GitHub Codespaces](https://github.com/features/codespaces).
+2. Open this repository and choose **Reopen in Container**.
+3. After the container builds, dependencies install automatically (`postCreateCommand`).
+
+The container forwards port `4321` for the Astro dev server and `8787` for Wrangler previews.
+
 ## About Me 👋
 
 Hi, I’m Gavin, a developer based in Canada 🇨🇦. I focus on privacy, efficiency, security, and sustainability. My current work includes projects like the Lordly Framework in Leptos and several Rust-based initiatives.

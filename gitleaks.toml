@@ -1,0 +1,16 @@
+title = "gavdaly gitleaks configuration"
+
+[[extend]]
+repo = "gitleaks/gitleaks"
+ref = "v8.18.0"
+path = "config/gitleaks.toml"
+
+[allowlist]
+description = "Allow known test credentials used in documentation and fixtures"
+regexes = [
+  '''0x4AAAAAAAwkdALrJuLEDATp''',
+  '''1x0000000000000000000000000000000AA'''
+]
+paths = [
+  '''\.env\.example'''
+]

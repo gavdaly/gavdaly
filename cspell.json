@@ -90,6 +90,18 @@
     "credentialless",
     "nosniff",
     "sitesearch",
-    "networkidle"
+    "networkidle",
+    "LHCI",
+    "autorun",
+    "lhci",
+    "lychee",
+    "Lychee",
+    "p95",
+    "Observability",
+    "observability",
+    "Logpush",
+    "Grafana",
+    "PII",
+    "linkcheck"
   ]
 }

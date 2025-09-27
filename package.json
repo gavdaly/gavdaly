@@ -23,6 +23,7 @@
     "lint:spell": "cspell --no-progress --no-summary '**/*.{md,mdx,astro,ts,tsx}'",
     "lint:links": "remark -q -f .",
     "lint:prune": "ts-prune --error",
+    "qa:content": "npm run lint:md && npm run lint:links && npm run lint:spell",
     "typecheck:workers": "tsc --noEmit -p tsconfig.workers.json",
     "lint:all": "npm run lint && npm run lint:md && npm run lint:spell && npm run lint:prune",
     "test:lhci": "npm run build && lhci autorun --config=lighthouserc.json",

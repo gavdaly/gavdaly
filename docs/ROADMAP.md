@@ -32,8 +32,8 @@ Guiding Principles
 
 - [x] Lighthouse CI with budgets (perf, accessibility)
   - LHCI autorun enforcing performance ≥0.90, accessibility ≥0.95, plus size/timing budgets
-- [ ] Error and request telemetry
-  - Sentry; scrub PII; sample rates and env tagging
+- [x] Error and request telemetry
+  - Cloudflare Observability dataset captures sampled request/error logs with PII scrubbing and env tags (`docs/telemetry.md`)
 - [x] Structured data (JSON-LD)
   - Article + BreadcrumbList for posts; validate in Rich Results Test
 - [x] 404/500 pages improvements
@@ -43,7 +43,7 @@ Guiding Principles
 
 - [x] Visual regression testing (Playwright snapshots or Percy)
   - Playwright baseline screenshots covering home and posts routes
-- [ ] Secret scanning
+- [x] Secret scanning
   - Gitleaks in CI; baseline + allowlist for known test credentials
 - [x] Dev environment reproducibility
   - Devcontainer with Node 23.5, pnpm, npm scripts, and wrangler preinstalled
@@ -52,9 +52,13 @@ Guiding Principles
 
 ## Maintenance Tasks
 
-- [ ] Monthly dependency update PRs (manual or Dependabot weekly)
-- [ ] Content QA pass (headings, links, spelling) each release
-- [ ] CI runtime review quarterly (cache hits, flakiness, parallelism)
+- [x] Monthly dependency update PRs (manual or Dependabot weekly)
+  - Dependabot runs every Monday at 07:00 America/Toronto for npm and GitHub Actions
+- [x] Content QA pass (headings, links, spelling) each release
+  - `npm run qa:content` aggregates Markdown lint, link validation, and spell-check before releases
+  - Reference `docs/content-qa.md` for manual review steps and weekly Lychee coverage
+- [x] CI runtime review quarterly (cache hits, flakiness, parallelism)
+  - Follow `docs/ci-runtime-review.md` to track durations, cache hit rates, and flake reports once per quarter
 
 ## References
 

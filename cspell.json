@@ -86,6 +86,10 @@
     "Ruckin",
     "Rowin",
     "Lovin",
-    "COEP"
+    "COEP",
+    "credentialless",
+    "nosniff",
+    "sitesearch",
+    "networkidle"
   ]
 }

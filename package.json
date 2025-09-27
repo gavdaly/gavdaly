@@ -25,6 +25,7 @@
     "lint:prune": "ts-prune --error",
     "typecheck:workers": "tsc --noEmit -p tsconfig.workers.json",
     "lint:all": "npm run lint && npm run lint:md && npm run lint:spell && npm run lint:prune",
+    "test:lhci": "npm run build && lhci autorun --config=lighthouserc.json",
     "prepare": "husky",
     "astro": "astro",
     "cf:dev": "wrangler pages dev --compatibility-date=2024-12-01",
@@ -45,8 +46,9 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.9.1",
-    "@playwright/test": "^1.49.1",
     "@cloudflare/workers-types": "^4.20250913.0",
+    "@lhci/cli": "^0.14.0",
+    "@playwright/test": "^1.49.1",
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.42.0",
     "cspell": "^9.2.1",

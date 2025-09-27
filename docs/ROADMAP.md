@@ -30,7 +30,8 @@ Guiding Principles
 
 ## Phase 2 — Next (2–4 weeks)
 
-- [ ] Lighthouse CI with budgets (perf, accessibility)
+- [x] Lighthouse CI with budgets (perf, accessibility)
+  - LHCI autorun enforcing performance ≥0.90, accessibility ≥0.95, plus size/timing budgets
 - [ ] Error and request telemetry
   - Sentry; scrub PII; sample rates and env tagging
 - [x] Structured data (JSON-LD)

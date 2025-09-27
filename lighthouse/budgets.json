@@ -1,0 +1,26 @@
+[
+  {
+    "path": "/",
+    "resourceSizes": [
+      { "resourceType": "document", "budget": 60 },
+      { "resourceType": "script", "budget": 170 },
+      { "resourceType": "total", "budget": 450 }
+    ],
+    "timings": [
+      { "metric": "interactive", "budget": 4000 },
+      { "metric": "first-contentful-paint", "budget": 2000 }
+    ]
+  },
+  {
+    "path": "/posts",
+    "resourceSizes": [
+      { "resourceType": "document", "budget": 70 },
+      { "resourceType": "script", "budget": 170 },
+      { "resourceType": "total", "budget": 500 }
+    ],
+    "timings": [
+      { "metric": "interactive", "budget": 4200 },
+      { "metric": "first-contentful-paint", "budget": 2100 }
+    ]
+  }
+]

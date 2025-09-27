@@ -15,6 +15,12 @@ You can spin up a ready-to-code workspace using the included Dev Container confi
 
 The container forwards port `4321` for the Astro dev server and `8787` for Wrangler previews.
 
+## Quality Checks
+
+- `npm run lint:all` — ESLint, Markdown, spelling, and ts-prune
+- `npm run test:e2e` — Playwright smoke + accessibility suites
+- `npm run test:lhci` — Build the site and run Lighthouse CI with performance/accessibility budgets
+
 ## About Me 👋
 
 Hi, I’m Gavin, a developer based in Canada 🇨🇦. I focus on privacy, efficiency, security, and sustainability. My current work includes projects like the Lordly Framework in Leptos and several Rust-based initiatives.

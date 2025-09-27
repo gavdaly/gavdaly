@@ -9,6 +9,7 @@ dist/
 
 # dependencies
 node_modules/
+lhci-results/
 
 # logs
 npm-debug.log*

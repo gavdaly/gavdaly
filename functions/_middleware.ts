@@ -8,10 +8,7 @@ import type {
   IncomingRequestCfProperties,
 } from "@cloudflare/workers-types";
 import { applySecurityHeaders } from "./securityHeaders";
-import {
-  createTelemetryClient,
-  type RequestLogEvent,
-} from "./telemetry";
+import { createTelemetryClient, type RequestLogEvent } from "./telemetry";
 
 /**
  * Environment variables interface for Cloudflare Pages Function
@@ -193,7 +190,9 @@ export const onRequest: PagesFunction<Env> = async (
   telemetryEvent.durationMs = Date.now() - startTime;
 
   if (!response) {
-    response = applySecurityHeaders(new Response("Internal Server Error", { status: 500 }));
+    response = applySecurityHeaders(
+      new Response("Internal Server Error", { status: 500 }),
+    );
   }
 
   if (!telemetryEvent.status) {
@@ -201,8 +200,7 @@ export const onRequest: PagesFunction<Env> = async (
   }
 
   if (telemetryEvent.outcome === "unhandled") {
-    telemetryEvent.outcome =
-      telemetryEvent.status >= 500 ? "error" : "ok";
+    telemetryEvent.outcome = telemetryEvent.status >= 500 ? "error" : "ok";
   }
 
   context.waitUntil(telemetry.recordRequest(telemetryEvent));

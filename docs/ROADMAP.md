@@ -46,8 +46,8 @@ Guiding Principles
   - Gitleaks in CI; baseline + allowlist for known test credentials
 - [x] Dev environment reproducibility
   - Devcontainer with Node 23.5, pnpm, npm scripts, and wrangler preinstalled
-- [ ] ts-prune enforcement
-  - Calibrate ignores; fail CI once noise is near-zero
+- [x] ts-prune enforcement
+  - Fail lint suite with ts-prune --error; add npm script for local checks
 
 ## Maintenance Tasks
 

@@ -61,9 +61,6 @@ Guiding Principles
 - [ ] Launch newsletter signup with double opt-in
   - Evaluate a privacy-friendly email provider and wire a call-to-action across the site.
   - Document consent handling, unsubscribe flows, and telemetry expectations.
-- [ ] Improve content authoring workflow
-  - Offer live preview and content validation feedback within the editor.
-  - Provide automated pull request comments summarizing content linting results.
 
 ## Phase 3
 
@@ -119,7 +116,7 @@ Guiding Principles
 - [x] Accessibility quick wins
   - Ensure focus styles, landmarks/roles, skip link; add `@axe-core/playwright` checks
 
-## Phase 2 — Next (2–4 weeks)
+### Quality & Observability
 
 - [x] Lighthouse CI with budgets (perf, accessibility)
   - LHCI autorun enforcing performance ≥0.90, accessibility ≥0.95, plus size/timing budgets
@@ -130,7 +127,7 @@ Guiding Principles
 - [x] 404/500 pages improvements
   - Helpful navigation, search links, and report-issue CTA
 
-## Phase 3 — Nice-to-haves
+### Tooling Enhancements
 
 - [x] Visual regression testing (Playwright snapshots or Percy)
   - Playwright baseline screenshots covering home and posts routes

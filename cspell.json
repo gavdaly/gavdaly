@@ -102,6 +102,10 @@
     "Logpush",
     "Grafana",
     "PII",
-    "linkcheck"
+    "linkcheck",
+    "affordances",
+    "signup",
+    "geolocation",
+    "runbooks"
   ]
 }

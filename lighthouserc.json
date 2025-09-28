@@ -3,12 +3,7 @@
     "collect": {
       "staticDistDir": "./dist",
       "numberOfRuns": 1,
-      "url": [
-        "/",
-        "/posts",
-        "/posts/working-in-public",
-        "/contact"
-      ],
+      "url": ["/", "/posts", "/posts/working-in-public", "/contact"],
       "budgetsFile": "./lighthouse/budgets.json"
     },
     "assert": {

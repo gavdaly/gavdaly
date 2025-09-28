@@ -34,6 +34,18 @@ Guiding Principles
 - [ ] Automate scheduled content QA sweeps
   - Schedule `npm run qa:content` to run nightly and open an issue when failures occur.
   - Track link, spelling, and metadata regressions over time for trend insights.
+- Improve content authoring workflow
+  - [x] Provide templates for new posts and projects with prefilled frontmatter.
+  - Templates: `docs/templates/post-template.md`, `docs/templates/project-template.md`
+  - [ ] Explore integrating a headless CMS or git-based editor with preview builds.
+- [ ] Post template readability upgrades
+  - Refresh header hierarchy, add breadcrumbs/back links, and expose a "Last updated" stamp for technical guides.
+  - Tighten list spacing, standardize code blocks/inline callouts, and evaluate a table of contents for long-form posts.
+- [ ] Projects list UX improvements
+  - Pair titles with short descriptions, explicit repo/demo links, and consistent card heights.
+  - Distinguish status labels with icons/colors, add filtering options, and consider a featured project highlight.
+- [ ] Project detail storytelling pass
+  - Introduce a hero image, summary paragraph, and prominently aligned status badge.
 
 ## Phase 2
 
@@ -49,17 +61,6 @@ Guiding Principles
 - [ ] Launch newsletter signup with double opt-in
   - Evaluate a privacy-friendly email provider and wire a call-to-action across the site.
   - Document consent handling, unsubscribe flows, and telemetry expectations.
-- Improve content authoring workflow
-  - [ ] Provide templates for new posts and projects with prefilled frontmatter.
-  - [ ] Explore integrating a headless CMS or git-based editor with preview builds.
-- [ ] Post template readability upgrades
-  - Refresh header hierarchy, add breadcrumbs/back links, and expose a "Last updated" stamp for technical guides.
-  - Tighten list spacing, standardize code blocks/inline callouts, and evaluate a table of contents for long-form posts.
-- [ ] Projects list UX improvements
-  - Pair titles with short descriptions, explicit repo/demo links, and consistent card heights.
-  - Distinguish status labels with icons/colors, add filtering options, and consider a featured project highlight.
-- [ ] Project detail storytelling pass
-  - Introduce a hero image, summary paragraph, and prominently aligned status badge.
 
 ## Phase 3
 
@@ -74,7 +75,7 @@ Guiding Principles
 
 - [ ] Research Astro View Transitions for smoother navigation
   - Prototype the experience and measure layout shift improvements.
-- [ ] Explore MDX adoption for interactive content blocks
+- [x] Explore MDX adoption for interactive content blocks
   - Assess authoring overhead and compatibility with existing Markdown collections.
 - [ ] Assess incremental content builds or on-demand revalidation
   - Compare build times and cache behavior between full and partial deploys.

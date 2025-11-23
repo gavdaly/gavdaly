@@ -8,13 +8,17 @@ import { SITE_URL } from "./src/data/config";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), sitemap(), robotsTxt(), solidJs(), mdx()],
+  integrations: [
+    tailwind(),
+    sitemap(),
+    robotsTxt(),
+    solidJs(),
+    mdx(),
+  ],
   trailingSlash: "never",
   site: SITE_URL,
-  image: {
-    // Use portable no-op service (Astro v5: squoosh removed)
-    service: { entrypoint: "astro/assets/services/noop" },
-  },
+
+
   markdown: {
     syntaxHighlight: "shiki",
     shikiConfig: {

@@ -15,6 +15,36 @@ const headTags = Astro.props;
 <html lang="en">
   <SEOTags {...headTags} />
 
+  <script is:inline>
+    const getTheme = () => {
+      if (typeof localStorage !== "undefined" && localStorage.getItem("color-theme")) {
+        return localStorage.getItem("color-theme");
+      }
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
+      }
+      return "light";
+    };
+
+    const setTheme = (theme) => {
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    };
+
+    // Initial set
+    setTheme(getTheme());
+
+    // Listen for system changes
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+      if (!localStorage.getItem("color-theme")) {
+        setTheme(e.matches ? "dark" : "light");
+      }
+    });
+  </script>
+
   <body
     class="mx-auto max-w-4xl bg-blue-200 dark:bg-blue-950 px-10 py-8 text-sm text-sky-950 dark:text-sky-200 md:gap-20 md:py-16"
   >

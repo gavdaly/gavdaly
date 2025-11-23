@@ -1,0 +1,224 @@
+<div id="vector-search">
+  <!-- Search Toggle Button -->
+  <button
+    id="search-toggle"
+    class="p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 rounded-lg focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
+    aria-label="Open Search"
+  >
+    <svg
+      class="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+    </svg>
+  </button>
+
+  <!-- Search Dialog -->
+  <dialog
+    id="search-dialog"
+    class="bg-transparent p-0 backdrop:bg-gray-900/50 backdrop:backdrop-blur-sm open:animate-fade-in"
+  >
+    <div class="fixed inset-0 z-50 flex items-start justify-center pt-20 sm:pt-32">
+      <div
+        class="w-full max-w-2xl transform overflow-hidden rounded-xl bg-white p-4 text-left shadow-2xl transition-all dark:bg-gray-900 border border-gray-200 dark:border-gray-700"
+      >
+        <div class="relative">
+          <svg
+            class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <input
+            type="text"
+            id="vector-search-input"
+            class="h-12 w-full border-0 bg-transparent pl-11 pr-10 text-gray-900 placeholder:text-gray-400 focus:ring-0 dark:text-white sm:text-sm"
+            placeholder="Search..."
+            role="combobox"
+            aria-expanded="false"
+            aria-controls="options"
+          />
+          <div class="absolute right-2 top-2.5 flex items-center gap-1">
+            <div id="vector-search-loading" class="hidden">
+               <svg
+                  class="animate-spin h-5 w-5 text-sky-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  ></circle>
+                  <path
+                    class="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+            </div>
+            <button
+              id="search-dialog-close"
+              class="rounded-md p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-500 dark:hover:bg-gray-800 dark:hover:text-gray-300"
+              aria-label="Close Search"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <ul
+          id="results-list"
+          class="max-h-96 scroll-py-3 overflow-y-auto p-3"
+          id="options"
+          role="listbox"
+        >
+          <!-- Results injected here -->
+          <li class="p-4 text-center text-sm text-gray-500 dark:text-gray-400">
+            Type to search...
+          </li>
+        </ul>
+        
+        <div class="mt-2 border-t border-gray-100 px-4 py-2 text-xs text-gray-500 dark:border-gray-800 dark:text-gray-400 flex justify-between">
+           <span>Press <kbd class="font-sans">ESC</kbd> to close</span>
+        </div>
+      </div>
+    </div>
+  </dialog>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById("search-toggle");
+  const dialog = document.getElementById("search-dialog") as HTMLDialogElement;
+  const closeBtn = document.getElementById("search-dialog-close");
+  const input = document.getElementById("vector-search-input") as HTMLInputElement;
+  const resultsList = document.getElementById("results-list");
+  const loading = document.getElementById("vector-search-loading");
+
+  let debounceTimer: NodeJS.Timeout;
+
+  const openSearch = () => {
+    dialog?.showModal();
+    input?.focus();
+  };
+
+  const closeSearch = () => {
+    dialog?.close();
+  };
+
+  toggleBtn?.addEventListener("click", openSearch);
+  closeBtn?.addEventListener("click", closeSearch);
+
+  // Keyboard Shortcuts
+  document.addEventListener("keydown", (e) => {
+    // Open with "/"
+    if (e.key === "/" && !dialog?.open && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
+      e.preventDefault();
+      openSearch();
+    }
+    // Close with ESC (handled natively by dialog, but good to be explicit if needed, though native is fine)
+  });
+
+  // Close on backdrop click
+  dialog?.addEventListener("click", (e) => {
+    if (e.target === dialog) {
+      closeSearch();
+    }
+  });
+
+  // Search Logic
+  input?.addEventListener("input", (e) => {
+    const query = (e.target as HTMLInputElement).value;
+    
+    clearTimeout(debounceTimer);
+
+    if (query.length < 3) {
+      resultsList!.innerHTML = `<li class="p-4 text-center text-sm text-gray-500 dark:text-gray-400">Type to search...</li>`;
+      return;
+    }
+
+    debounceTimer = setTimeout(async () => {
+      loading?.classList.remove("hidden");
+      
+      try {
+        const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+        
+        interface SearchResult {
+          matches: {
+            metadata: {
+              url: string;
+              title: string;
+              description?: string;
+            };
+          }[];
+        }
+        
+        const data = (await res.json()) as SearchResult;
+
+        if (data.matches && data.matches.length > 0) {
+          resultsList!.innerHTML = data.matches
+            .map(
+              (match) => `
+              <li class="group flex cursor-default select-none rounded-xl p-3 hover:bg-gray-100 dark:hover:bg-gray-800">
+                <a href="${match.metadata.url}" class="flex flex-col flex-auto truncate">
+                  <div class="font-semibold text-gray-900 dark:text-white">${match.metadata.title}</div>
+                  <div class="truncate text-gray-500 dark:text-gray-400">${match.metadata.description || ''}</div>
+                </a>
+              </li>
+            `
+            )
+            .join("");
+        } else {
+          resultsList!.innerHTML = `<li class="p-4 text-center text-sm text-gray-500 dark:text-gray-400">No results found</li>`;
+        }
+      } catch (error) {
+        console.error("Search failed", error);
+        resultsList!.innerHTML = `<li class="p-4 text-center text-sm text-red-500">Error searching</li>`;
+      } finally {
+        loading?.classList.add("hidden");
+      }
+    }, 500);
+  });
+</script>
+
+<style>
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Animation for dialog */
+  dialog[open] {
+    animation: fade-in 0.2s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+</style>

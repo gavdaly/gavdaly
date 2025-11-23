@@ -5,14 +5,12 @@ type Props = HTMLAttributes<"a"> & {
   label: string;
   isUnderline?: boolean;
   image?: string;
-  showArrow?: boolean;
 };
 
 const {
   label,
   image,
   isUnderline,
-  showArrow = false,
   target = "_blank",
   rel = "noreferrer",
   ...props
@@ -37,15 +35,6 @@ const {
     ) : (
       <span class="inline-flex items-center gap-2 text-lg">
         {label}
-        {showArrow && (
-          <svg
-            class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-            viewBox="0 0 18 18"
-            aria-hidden="true"
-          >
-            <use href="#arrow"></use>
-          </svg>
-        )}
       </span>
     )
   }

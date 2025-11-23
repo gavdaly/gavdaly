@@ -1,4 +1,7 @@
 ---
+import ThemeToggle from "@/components/ThemeToggle.astro";
+import VectorSearch from "@/components/VectorSearch.astro";
+
 let pathname = new URL(Astro.request.url).pathname;
 ---
 
@@ -9,87 +12,48 @@ let pathname = new URL(Astro.request.url).pathname;
 
   <nav aria-label="Primary" role="navigation">
     <ul role="list" class="flex flex-row items-center gap-2">
+      {
+        [
+          { label: "home", href: "/" },
+          { label: "posts", href: "/posts" },
+          { label: "projects", href: "/projects" },
+          { label: "contact", href: "/contact" },
+          { label: "uses", href: "/uses" },
+        ].map((link, index, array) => (
+          <>
+            <li>
+              <a
+                href={link.href}
+                class="rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
+                class:list={{
+                  ["hover:text-sky-900 dark:hover:text-sky-100 hover:underline"]: true,
+                  ["text-sky-900 dark:text-sky-100 hover:no-underline"]:
+                    pathname === link.href,
+                }}
+                aria-current={pathname === link.href ? "page" : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+            {index < array.length - 1 && (
+              <li aria-hidden="true" class="select-none text-sky-500 dark:text-sky-400">
+                |
+              </li>
+            )}
+          </>
+        ))
+      }
+      <li aria-hidden="true" class="select-none text-sky-500 dark:text-sky-400">
+        |
+      </li>
       <li>
-        <a
-          href="/"
-          class="rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-          class:list={{
-            ["hover:text-sky-900 dark:hover:text-sky-100 hover:underline"]: true,
-            ["text-sky-900 dark:text-sky-100 hover:no-underline"]:
-              pathname === "/",
-          }}
-          aria-current={pathname === "/" ? "page" : undefined}
-        >
-          home
-        </a>
+        <VectorSearch />
       </li>
       <li aria-hidden="true" class="select-none text-sky-500 dark:text-sky-400">
         |
       </li>
       <li>
-        <a
-          href="/posts"
-          class="rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-          class:list={{
-            ["hover:text-sky-900 dark:hover:text-sky-100 hover:underline"]: true,
-            ["text-sky-900 dark:text-sky-100 hover:no-underline"]:
-              pathname === "/posts",
-          }}
-          aria-current={pathname === "/posts" ? "page" : undefined}
-        >
-          posts
-        </a>
-      </li>
-      <li aria-hidden="true" class="select-none text-sky-500 dark:text-sky-400">
-        |
-      </li>
-      <li>
-        <a
-          href="/projects"
-          class="rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-          class:list={{
-            ["hover:text-sky-900 dark:hover:text-sky-100 hover:underline"]: true,
-            ["text-sky-900 dark:text-sky-100 hover:no-underline"]:
-              pathname === "/projects",
-          }}
-          aria-current={pathname === "/projects" ? "page" : undefined}
-        >
-          projects
-        </a>
-      </li>
-      <li aria-hidden="true" class="select-none text-sky-500 dark:text-sky-400">
-        |
-      </li>
-      <li>
-        <a
-          href="/contact"
-          class="rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-          class:list={{
-            ["hover:text-sky-900 dark:hover:text-sky-100 hover:underline"]: true,
-            ["text-sky-900 dark:text-sky-100 hover:no-underline"]:
-              pathname === "/contact",
-          }}
-          aria-current={pathname === "/contact" ? "page" : undefined}
-        >
-          contact
-        </a>
-      </li>
-      <li aria-hidden="true" class="select-none text-sky-500 dark:text-sky-400">
-        |
-      </li>
-      <li>
-        <a
-          href="/uses"
-          class="rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
-          class:list={{
-            ["hover:text-sky-900 dark:hover:text-sky-100 hover:underline"]: true,
-            ["text-sky-900 dark:text-sky-100 hover:no-underline"]:
-              pathname === "/uses",
-          }}
-          aria-current={pathname === "/uses" ? "page" : undefined}
-        >
-          uses
-        </a>
+        <ThemeToggle />
       </li>
     </ul>
   </nav>

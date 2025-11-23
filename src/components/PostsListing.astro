@@ -19,7 +19,7 @@ const posts = (await getCollection("posts")).sort(function (first, second) {
       label="See all"
       isUnderline
       target="_self"
-      showArrow
+      target="_self"
     />
   </header>
   {posts.length === 0 && <p>Soon, stay connected 👀...</p>}

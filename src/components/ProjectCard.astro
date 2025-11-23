@@ -1,5 +1,6 @@
 ---
 import CardLink from "@/components/CardLink.astro";
+import ProjectStatusIcon from "@/components/ProjectStatusIcon.astro";
 import type { Project } from "@/data/projects";
 import { PROJECT_STATUS_META } from "@/data/projects";
 
@@ -26,7 +27,7 @@ const statusMeta = PROJECT_STATUS_META[status];
     <span
       class={`inline-flex items-center gap-2 rounded-md px-3 py-1 text-xs font-semibold uppercase tracking-wide ring-1 ${statusMeta.badgeClass}`}
     >
-      <span aria-hidden="true">{statusMeta.icon}</span>
+      <ProjectStatusIcon status={status} />
       <span class="whitespace-nowrap">{status}</span>
     </span>
   </div>

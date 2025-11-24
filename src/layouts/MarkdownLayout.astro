@@ -78,15 +78,15 @@ const { bodyClass, mainClass, ...layoutProps } = Astro.props as Props;
   }
 
   .markdown-body :where(code) {
-    @apply rounded-md border border-sky-200/60 bg-sky-100 px-2 py-1 font-mono text-sm font-semibold text-sky-900 shadow-sm dark:border-sky-700/70 dark:bg-slate-800 dark:text-sky-100;
+    @apply rounded-md bg-sky-100 px-2 py-1 font-mono text-sm font-semibold text-sky-900 shadow-sm dark:bg-slate-800 dark:text-sky-100;
   }
 
   .markdown-body :where(pre) {
-    @apply overflow-x-auto rounded-xl bg-slate-900/95 p-5 text-sm text-sky-100 shadow-lg dark:bg-slate-900;
+    @apply overflow-x-auto rounded-xl bg-slate-900/95 p-0 text-sm text-sky-100 shadow-lg dark:bg-slate-900;
   }
 
   .markdown-body :where(pre > code) {
-    @apply block min-w-full border-0 bg-transparent p-0 text-[0.95rem] font-mono font-normal leading-7 text-inherit;
+    @apply block min-w-full border-0 bg-transparent p-5 text-[0.95rem] font-mono font-normal leading-7 text-inherit;
   }
 
   .markdown-body :where(blockquote) {

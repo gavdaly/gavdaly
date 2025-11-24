@@ -54,7 +54,7 @@ const { bodyClass, mainClass, ...layoutProps } = Astro.props as Props;
     });
   }
 
-  async function copyCode(block, button) {
+  async function copyCode(block: HTMLPreElement, button: HTMLButtonElement) {
     const code = block.querySelector("code");
     const text = code?.innerText;
 

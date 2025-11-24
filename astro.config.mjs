@@ -20,6 +20,7 @@ export default defineConfig({
 
 
   markdown: {
+    smartypants: false,
     syntaxHighlight: "shiki",
     shikiConfig: {
       theme: "catppuccin-frappe",

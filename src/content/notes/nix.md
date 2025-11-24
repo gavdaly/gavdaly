@@ -58,7 +58,6 @@ I've just started to use nix and nixos, my [personal config](https://github.com/
 - [NixOS 63: Install NixOS 23.11 and Use Flakes Out Of the Box](https://www.youtube.com/watch?v=hoB0pHZ0fpI)
 - [The Nix Hour](https://www.youtube.com/playlist?app=desktop&list=PLyzwHTVJlRc8yjlx4VR4LU5A5O44og9in)
 - [Informal intro to the Nix language, derivations and nixpkgs](https://www.youtube.com/watch?v=9DJtHIpdp0Y)
-- [nixos.asia](https://nixos.asia/en)
 - [Wiki](https://nixos.wiki/)
 - [nix.dev](https://nix.dev/)
 - [zero to nix](https://zero-to-nix.com)

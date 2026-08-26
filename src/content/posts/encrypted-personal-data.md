@@ -9,23 +9,23 @@ tags:
   - personal-data
 ---
 
-### Encrypting Your Personal Data
+## Encrypting Your Personal Data
 
 Do you use a service to backup your data? Do you know if it's encrypted? Do you know who can see your data? Do you know if you can see your data?
 
-#### Apple
+### Apple
 
 As of The end of 2024 Apple is the only large company that allows you to fully enter to end encrypt your day that that is only visible by you.
 
 TODO! Show the instructions on how to encrypt data for iCloud so it’s end to end so that no one not even Apple can see it.
 
-#### Microsoft
+### Microsoft
 
 Microsoft is the second best they will enter and encrypt the data, but they have the description key stored on their servers so that they can decrypt the data and do whatever they want with it. This is the third best option.
 
 TODO! Show instructions on how to enable Microsoft encryption for their
 
-#### Google
+### Google
 
 well, this one simple they don’t allow it at all.
 

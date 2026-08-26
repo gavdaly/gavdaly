@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/MarkdownLayout.astro";
 import formatDate from "@/utils/formatDate";
 import type { CollectionEntry } from "astro:content";
@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   const posts = await getCollection("posts");
 
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
@@ -23,9 +23,9 @@ type Props = {
 const post = Astro.props.post;
 const data = post.data;
 const { title, description, publishedAt, postState, tags } = data;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
-const postUrl = new URL(`/posts/${post.slug}`, SITE_URL).toString();
+const postUrl = new URL(`/posts/${post.id}`, SITE_URL).toString();
 const structuredDataJson = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
@@ -68,7 +68,6 @@ const structuredDataJson = JSON.stringify({
     },
   ],
 });
-export { structuredDataJson };
 
 ---
 <head>

@@ -1,8 +1,5 @@
 export type ProjectStatus =
-  | "Coming Soon"
-  | "Completed"
-  | "In Progress"
-  | "On Hold";
+  "Coming Soon" | "Completed" | "In Progress" | "On Hold";
 
 export interface Project {
   slug: string;

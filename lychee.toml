@@ -17,4 +17,9 @@ exclude = [
   "https://snort.social/.*",
   "https://medium.com/.*",
   "https://www.youtube.com/.*",
+  "https://stacker.news/.*",
+  "https://nixos.wiki/.*",
+  "https://nix-community.github.io/srvos/.*",
+  "https://bolt12.org/.*",
+  "file://.*",
 ]

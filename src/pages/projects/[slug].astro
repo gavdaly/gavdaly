@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/MarkdownLayout.astro";
 import Tags from "@/components/Tags.astro";
 import type { CollectionEntry } from "astro:content";
@@ -9,7 +9,7 @@ export async function getStaticPaths() {
   const projects = await getCollection("projects");
 
   return projects.map((project) => ({
-    params: { slug: project.slug },
+    params: { slug: project.id },
     props: { project },
   }));
 }
@@ -24,7 +24,7 @@ const {
     data: { title, link, status, technology, tags, summary },
   },
 } = Astro.props;
-const { Content } = await project.render();
+const { Content } = await render(project);
 ---
 
 <Layout

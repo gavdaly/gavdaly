@@ -31,6 +31,7 @@ jobs:
         with:
           args: >-
             --no-progress --max-concurrency 4
+            --root-dir dist
             --config lychee.toml
             "dist/**/*.html" "README.md" "src/content/**/*.md"
         env:

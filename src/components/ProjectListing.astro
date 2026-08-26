@@ -27,7 +27,7 @@ const projects = await getCollection("projects");
 
   <section class="flex flex-col gap-6">
     {
-      projects.map(({ data: project, slug }, index) => (
+      projects.map(({ data: project, id: slug }, index) => (
         <ProjectCard slug={slug} {...project} animationDelay={index * 120} />
       ))
     }

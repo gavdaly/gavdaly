@@ -22,7 +22,7 @@ const structuredDataJson = JSON.stringify({
         headline: post.data.title,
         description: post.data.description,
         datePublished: post.data.publishedAt.toISOString(),
-        url: new URL(`/posts/${post.slug}`, SITE_URL).toString(),
+        url: new URL(`/posts/${post.id}`, SITE_URL).toString(),
       })),
     },
     {
@@ -44,7 +44,6 @@ const structuredDataJson = JSON.stringify({
     },
   ],
 });
-export { structuredDataJson };
 ---
 
 <head>
@@ -62,7 +61,7 @@ export { structuredDataJson };
         posts.map((post) => (
           <a
             class="group flex flex-col gap-2 border-sky-600 border-t-2 py-4 transition-all"
-            href={`/posts/${post.slug}`}
+            href={`/posts/${post.id}`}
           >
             <div class="flex w-full items-center justify-between">
               <h3 class="text-xl font-bold">{post.data.title}</h3>

@@ -1,8 +1,8 @@
 import tsParser from "@typescript-eslint/parser";
 import tseslint from "@typescript-eslint/eslint-plugin";
 import astro from "eslint-plugin-astro";
-import importPlugin from "eslint-plugin-import";
-import jsxA11y from "eslint-plugin-jsx-a11y";
+import importPlugin from "eslint-plugin-import-x";
+
 import eslintConfigPrettier from "eslint-config-prettier";
 
 export default [
@@ -27,7 +27,6 @@ export default [
     plugins: {
       "@typescript-eslint": tseslint,
       import: importPlugin,
-      "jsx-a11y": jsxA11y,
     },
     rules: {
       ...(tseslint.configs["recommended-type-checked"].rules ?? {}),

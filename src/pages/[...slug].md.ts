@@ -6,6 +6,21 @@ interface MarkdownPage {
   body: string;
 }
 
+interface ContentEntry {
+  id: string;
+  body: string;
+  data: {
+    title: string;
+    description?: string;
+    summary?: string;
+    tags?: string[];
+  };
+}
+
+async function getTypedCollection(name: "posts" | "notes" | "projects") {
+  return (await getCollection(name)) as unknown as ContentEntry[];
+}
+
 const staticPages: Record<string, MarkdownPage> = {
   index: {
     title: "Gavin Daly",
@@ -65,9 +80,9 @@ const staticPages: Record<string, MarkdownPage> = {
 };
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
-  const notes = await getCollection("notes");
-  const projects = await getCollection("projects");
+  const posts = await getTypedCollection("posts");
+  const notes = await getTypedCollection("notes");
+  const projects = await getTypedCollection("projects");
 
   const tags = new Set(
     [...posts, ...notes, ...projects].flatMap((entry) => entry.data.tags ?? []),

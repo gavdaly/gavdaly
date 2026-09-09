@@ -1,5 +1,6 @@
 ---
 import { SEO } from "astro-seo";
+import { SITE_URL } from "@/data/config";
 
 type Props = HeadTags;
 
@@ -10,16 +11,88 @@ export interface HeadTags {
   type?: string;
   image?: string;
   alt?: string;
+  markdownUrl?: string;
 }
 
 const props = Astro.props;
-const { title, description, noindex, type, alt, image } = {
+const { title, description, noindex, type, alt, image, markdownUrl } = {
   title: props.title || "Gav Daly",
   description: props.description || "Gav Daly's personal blog",
   noindex: props.noindex || false,
   type: props.type || "website",
   image: props.image || "/images/og-image.jpg",
   alt: props.alt || "Og Image",
+  markdownUrl:
+    props.markdownUrl ??
+    (Astro.url.pathname === "/"
+      ? "/index.md"
+      : `${Astro.url.pathname.replace(/\/$/, "")}.md`),
+};
+
+const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}#person`,
+      name: "Gavin Daly",
+      description: "Software developer based in Canada.",
+      url: SITE_URL,
+      sameAs: ["https://github.com/gavdaly", "https://t.me/gavdaly"],
+      homeLocation: { "@type": "Country", name: "Canada" },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}#organization`,
+      name: "Gav Daly",
+      url: SITE_URL,
+      description: "Personal website and portfolio of Gavin Daly.",
+      sameAs: ["https://github.com/gavdaly", "https://t.me/gavdaly"],
+      address: { "@type": "PostalAddress", addressCountry: "CA" },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "general inquiries",
+        url: `${SITE_URL}contact`,
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}#website`,
+      name: "Gav Daly",
+      description: "A personal portfolio and writing site for Gavin Daly.",
+      url: SITE_URL,
+      publisher: { "@id": `${SITE_URL}#person` },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Who is Gavin Daly?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Gavin Daly is a software developer based in Canada.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is on this site?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The site contains software projects, technical notes, and writing about development, infrastructure, privacy, and security.",
+          },
+        },
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: title, item: canonicalUrl },
+      ],
+    },
+  ],
 };
 ---
 
@@ -46,6 +119,9 @@ const { title, description, noindex, type, alt, image } = {
       link: [
         { rel: "icon", href: "/favicon.svg" },
         { rel: "sitemap", href: "/sitemap-index.xml" },
+        ...(markdownUrl
+          ? [{ rel: "alternate", type: "text/markdown", href: markdownUrl }]
+          : []),
       ],
       meta: [
         { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -61,4 +137,5 @@ const { title, description, noindex, type, alt, image } = {
       ],
     }}
   />
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </head>

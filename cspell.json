@@ -109,6 +109,7 @@
     "signup",
     "geolocation",
     "runbooks",
-    "lucide"
+    "lucide",
+    "describedby"
   ]
 }

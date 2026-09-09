@@ -20,6 +20,7 @@ const descriptionLines = presentation.description
 <Layout
   title="Home"
   description="A minimal portfolio for Gavin Daly, a software developer based in Canada."
+  markdownUrl="/index.md"
 >
   <article
     class="flex flex-col gap-10 md:flex-row-reverse md:justify-between md:gap-14 pb-8"
@@ -52,6 +53,29 @@ const descriptionLines = presentation.description
       <SocialLinks />
     </div>
   </article>
+
+  <section class="mb-10 max-w-3xl space-y-4 text-base leading-7">
+    <h2 class="text-2xl font-bold">About this site</h2>
+    <p>
+      I use this site as a home for the things I build, learn, and write about.
+      It includes notes on software, infrastructure, privacy, and tools that
+      help me understand how the web works, along with longer posts that record
+      ideas and lessons from ongoing projects. The projects section collects
+      practical experiments ranging from small web applications to home-lab
+      and network work. Some are finished, while others are deliberately still
+      in progress: the unfinished parts are often where the most useful
+      questions live.
+    </p>
+    <p>
+      I care about simple interfaces, dependable systems, and software that is
+      understandable to the people who use and maintain it. When I publish
+      something here, I try to include enough context for it to be useful on
+      its own: what I was trying to solve, which tools I chose, and what I
+      learned along the way. Browse the latest writing or selected projects,
+      and follow the links if you want to explore the code or start a
+      conversation.
+    </p>
+  </section>
 
   <PostsListing />
 

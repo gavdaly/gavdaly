@@ -21,5 +21,7 @@ exclude = [
   "https://nixos.wiki/.*",
   "https://nix-community.github.io/srvos/.*",
   "https://bolt12.org/.*",
+  "https://gavdaly.com/about$",
+  "https://gavdaly.com/privacy$",
   "file://.*",
 ]

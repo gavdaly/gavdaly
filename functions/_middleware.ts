@@ -203,6 +203,15 @@ export const onRequest: PagesFunction<Env> = async (
     telemetryEvent.outcome = telemetryEvent.status >= 500 ? "error" : "ok";
   }
 
+  const markdownLink =
+    url.pathname === "/"
+      ? ', </index.md>; rel="alternate"; type="text/markdown"'
+      : "";
+  response.headers.append(
+    "Link",
+    `</sitemap-index.xml>; rel="sitemap", </llm.txt>; rel="describedby"; type="text/markdown"${markdownLink}`,
+  );
+
   context.waitUntil(telemetry.recordRequest(telemetryEvent));
 
   return response;

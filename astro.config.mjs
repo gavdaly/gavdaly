@@ -8,7 +8,16 @@ import { SITE_URL } from "./src/data/config";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [sitemap(), robotsTxt(), solidJs(), mdx()],
+  integrations: [
+    sitemap({
+      serialize(item) {
+        return { ...item, lastmod: "2026-09-09" };
+      },
+    }),
+    robotsTxt(),
+    solidJs(),
+    mdx(),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -1,0 +1,4 @@
+Contact: https://gavdaly.com/contact
+Policy: https://github.com/gavdaly/gavdaly/blob/main/SECURITY.md
+Canonical: https://gavdaly.com/.well-known/security.txt
+Expires: 2027-09-09T00:00:00Z

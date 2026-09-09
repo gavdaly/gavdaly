@@ -1,10 +1,10 @@
 import { getCollection } from "astro:content";
 
-type MarkdownPage = {
+interface MarkdownPage {
   title: string;
   description: string;
   body: string;
-};
+}
 
 const staticPages: Record<string, MarkdownPage> = {
   index: {
@@ -65,11 +65,9 @@ const staticPages: Record<string, MarkdownPage> = {
 };
 
 export async function getStaticPaths() {
-  const [posts, notes, projects] = await Promise.all([
-    getCollection("posts"),
-    getCollection("notes"),
-    getCollection("projects"),
-  ]);
+  const posts = await getCollection("posts");
+  const notes = await getCollection("notes");
+  const projects = await getCollection("projects");
 
   const tags = new Set(
     [...posts, ...notes, ...projects].flatMap((entry) => entry.data.tags ?? []),

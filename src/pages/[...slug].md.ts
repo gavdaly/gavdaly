@@ -111,13 +111,15 @@ export async function getStaticPaths() {
     })),
   ];
 
-  return entries.map(({ slug, page }) => ({ params: { slug }, props: { page } }));
+  return entries.map(({ slug, page }) => ({
+    params: { slug },
+    props: { page },
+  }));
 }
 
 export function GET({ props }: { props: { page: MarkdownPage } }) {
   const { title, description, body } = props.page;
-  return new Response(
-    `# ${title}\n\n${description}\n\n${body}\n`,
-    { headers: { "Content-Type": "text/markdown; charset=utf-8" } },
-  );
+  return new Response(`# ${title}\n\n${description}\n\n${body}\n`, {
+    headers: { "Content-Type": "text/markdown; charset=utf-8" },
+  });
 }

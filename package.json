@@ -66,7 +66,7 @@
     "eslint-plugin-import-x": "^4.15.4",
     "husky": "^9.1.7",
     "lint-staged": "^17.4.1",
-    "markdownlint-cli2": "^0.23.2",
+    "markdownlint-cli2": "^0.23.3",
     "prettier": "3.9.6",
     "prettier-plugin-astro": "^1.0.0",
     "prettier-plugin-tailwindcss": "0.8.1",

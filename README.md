@@ -1,16 +1,20 @@
-## Hi there 👋
+## About Me 👋
 
-<!--
-**gavdaly/gavdaly** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Hi, I’m Gavin, a developer based in Canada 🇨🇦. I focus on privacy, efficiency, security, and sustainability. My current work includes projects like the Lordly Framework in Leptos and several Rust-based initiatives.
 
-Here are some ideas to get you started:
+You can learn more about me here:
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- [🌐 Website](https://gavdaly.com)
+- [X](https://x.com/gavdaly)
+- [nostr](https://snort.social/p/npub1f78kggwlt3pfjtwaxgqw80xlp5vqnux6zjmr0hrg2fzwksjr0sts8shlsu)
+
+I’m always eager to connect with like-minded individuals, collaborate on innovative projects, or discuss new opportunities. [Feel free to reach out](https://gavdaly.com/contact)! ✨
+
+### Projects
+
+- [Lordly Framework](https://github.com/lordly) _WIP_ - A framework built with Leptos.
+- [Clckr](https://github.com/gavdaly/clockr) - A single tenant time-tracking app.
+
+### Experience
+
+- Developed projects focusing on privacy and security.
